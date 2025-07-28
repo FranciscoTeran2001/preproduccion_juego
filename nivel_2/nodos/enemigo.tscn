@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://qgn16mtmqb68"]
+
+[ext_resource type="Script" uid="uid://c53salmsopodp" path="res://scripts/enemigo.gd" id="1_ntqxc"]
+[ext_resource type="Texture2D" uid="uid://cwokl7ierm8wp" path="res://nivel_2/enemigos/lizard/Attack1.png" id="2_6qjc6"]
+[ext_resource type="Texture2D" uid="uid://csko6hlbcfkvp" path="res://nivel_2/enemigos/lizard/Attack2.png" id="3_rsnl0"]
+[ext_resource type="Texture2D" uid="uid://ce8t4x1hiqbov" path="res://nivel_2/enemigos/lizard/Attack3.png" id="4_vmhot"]
+[ext_resource type="Texture2D" uid="uid://dd0mosqkkouks" path="res://nivel_2/enemigos/lizard/Attack4.png" id="5_pmi8m"]
+[ext_resource type="Texture2D" uid="uid://byw8icjo5faxq" path="res://nivel_2/enemigos/lizard/Attack5.png" id="6_ww5cf"]
+[ext_resource type="Texture2D" uid="uid://tcs76b33keet" path="res://nivel_2/enemigos/lizard/Idle1.png" id="7_57cxa"]
+[ext_resource type="Texture2D" uid="uid://bfbl3m57vpdpv" path="res://nivel_2/enemigos/lizard/Idle2.png" id="8_06aks"]
+[ext_resource type="Texture2D" uid="uid://dcrr16h03wk3v" path="res://nivel_2/enemigos/lizard/Idle3.png" id="9_x6qji"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hh67u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6qjc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rsnl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vmhot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pmi8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ww5cf")
+}],
+"loop": true,
+"name": &"atacar",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_57cxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_06aks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x6qji")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxdlo"]
+radius = 3.0
+height = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35jgh"]
+radius = 4.0
+height = 10.0
+
+[node name="enemigo" type="CharacterBody2D"]
+script = ExtResource("1_ntqxc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-17, -4.76837e-07)
+scale = Vector2(0.111572, 0.119141)
+sprite_frames = SubResource("SpriteFrames_hh67u")
+animation = &"atacar"
+frame_progress = 0.713212
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cxdlo")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-15, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_35jgh")
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]

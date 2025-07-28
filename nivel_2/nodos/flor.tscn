@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://rn8q0ir0mih7"]
+
+[ext_resource type="Script" uid="uid://cai825vihfi5y" path="res://scripts/flor.gd" id="1_5u18k"]
+[ext_resource type="Texture2D" uid="uid://b8u6crpjvk7os" path="res://Myassents/flor_escudo.png" id="2_gme7e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf2dw"]
+radius = 1.0
+height = 4.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_5u18k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.0335821, 0.0361446)
+texture = ExtResource("2_gme7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_yf2dw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

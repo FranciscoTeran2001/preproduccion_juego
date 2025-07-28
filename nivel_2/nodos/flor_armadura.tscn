@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt1s8y8jbalg6"]
+
+[ext_resource type="Script" uid="uid://caf33lupbt37v" path="res://scripts/flor_armadura.gd" id="1_7ju17"]
+[ext_resource type="Texture2D" uid="uid://cghafxdol7uif" path="res://Myassents/Yellow_Flower_4.png" id="2_eg6td"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oer64"]
+radius = 1.0
+height = 4.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_7ju17")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.193, 0.701)
+scale = Vector2(0.0219297, 0.0289141)
+texture = ExtResource("2_eg6td")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("CapsuleShape2D_oer64")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
