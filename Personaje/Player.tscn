@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://ce031om8goqsi"]
+[gd_scene load_steps=117 format=3 uid="uid://ce031om8goqsi"]
 
 [ext_resource type="Texture2D" uid="uid://cl4ywfe4qr7cn" path="res://Personaje/escudo/Attacck.png" id="1_0ax5s"]
 [ext_resource type="PackedScene" uid="uid://dsvlswyiokh2t" path="res://Personaje/BalaArea2D.tscn" id="1_8uaeg"]
@@ -16,6 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://bswyah1jgou60" path="res://Personaje/normal/Walk.png" id="10_w7cp6"]
 [ext_resource type="PackedScene" uid="uid://d16f8v1i67l6t" path="res://Personaje/barra.tscn" id="14_m1ww8"]
 [ext_resource type="Texture2D" uid="uid://c2ht0vumemx0j" path="res://assets/dardo.png" id="15_fdbxi"]
+[ext_resource type="AudioStream" uid="uid://ctmkxmgt4e3wb" path="res://efectos_sonidos/walk.mp3" id="17_db7tr"]
+[ext_resource type="AudioStream" uid="uid://dttvtgafilchd" path="res://efectos_sonidos/jump.mp3" id="18_hr85y"]
+[ext_resource type="AudioStream" uid="uid://c6bu85vhuspni" path="res://efectos_sonidos/dead.mp3" id="19_6xc2w"]
+[ext_resource type="AudioStream" uid="uid://rhycjt4dgfbc" path="res://efectos_sonidos/hurt.mp3" id="20_imvnc"]
+[ext_resource type="AudioStream" uid="uid://bfe3w6luvcv3n" path="res://efectos_sonidos/shoot.mp3" id="21_pipto"]
+[ext_resource type="AudioStream" uid="uid://cansbw8ofq7t2" path="res://efectos_sonidos/flor_vida.mp3" id="22_8unad"]
+[ext_resource type="AudioStream" uid="uid://d317g46y5r1ix" path="res://efectos_sonidos/flor_armadura.mp3" id="23_i4lpm"]
 
 [sub_resource type="GDScript" id="GDScript_e8xpl"]
 script/source = "# Agregar estas variables al inicio de tu script del jugador
@@ -30,6 +37,14 @@ const LOW_JUMP_MULTIPLIER = 0.8
 var tiene_armadura := false
 var esta_muerto := false
 
+# NUEVAS VARIABLES PARA AUDIO
+@onready var sonido_pasos = $SonidoPasos
+@onready var sonido_salto = $SonidoSalto
+@onready var sonido_muerte = $SonidoMuerte
+@onready var sonido_daño = $SonidoDaño
+@onready var sonido_disparo = $SonidoDisparo
+@onready var sonido_curar_vida = $SonidoCurarVida
+@onready var sonido_armadura = $SonidoArmadura
 # Sistema de vida
 var vida := 125
 var vida_maxima := 125
@@ -66,7 +81,12 @@ func _physics_process(delta: float) -> void:
 			velocity.y += GRAVITY * LOW_JUMP_MULTIPLIER * delta
 		else:
 			velocity.y += GRAVITY * FALL_MULTIPLIER * delta
-
+			
+	if Input.is_action_just_pressed(\"saltar\") and is_on_floor() and not tiene_armadura:
+		velocity.y = JUMP_VELOCITY
+		# NUEVO: Reproducir sonido de salto
+		sonido_salto.play()
+		
 	if Input.is_action_just_pressed(\"saltar\") and is_on_floor() and not tiene_armadura:
 		velocity.y = JUMP_VELOCITY
 
@@ -79,8 +99,14 @@ func _physics_process(delta: float) -> void:
 
 	if direction != 0:
 		velocity.x = direction * SPEED
+		# NUEVO: Reproducir sonido de pasos si está en el suelo y no está sonando
+		if is_on_floor() and not sonido_pasos.playing:
+			sonido_pasos.play()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		# NUEVO: Detener sonido de pasos cuando se detiene
+		if sonido_pasos.playing:
+			sonido_pasos.stop()
 
 	# MODIFICADO: Animaciones incluyendo disparo
 	if not is_on_floor():
@@ -101,51 +127,32 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-# FUNCIÓN CORREGIDA SIN DUPLICADOS: Sistema de disparo
+# Sistema de disparo con sonido
 func disparar() -> void:
 	if not puede_disparar or $AnimatedSprite2D.animation == \"shot\":
 		return
 	
 	puede_disparar = false
 	
+	# NUEVO: Reproducir sonido de disparo
+	sonido_disparo.play()
+	
 	# Reproducir animación de disparo
 	$AnimatedSprite2D.play(\"shot\")
 	
-	# DEBUG: Verificar scene_bala
-	print(\"=== INICIANDO DISPARO ===\")
-	print(\"scene_bala asignada: \", scene_bala != null)
-	
-	# Crear la bala UNA SOLA VEZ
+	# Crear la bala
 	if scene_bala != null:
-		print(\"Creando bala...\")
 		var bala = scene_bala.instantiate()
 		get_parent().add_child(bala)
-		
-		# VERIFICACIÓN TEMPORAL
-		print(\"Tipo de nodo bala: \", bala.get_class())
-		print(\"¿Tiene script? \", bala.get_script() != null)
-		print(\"Script path: \", bala.get_script().resource_path if bala.get_script() != null else \"Sin script\")
-		
-		# DEBUG: Verificar posición y dirección
-		print(\"Posición jugador: \", global_position)
-		print(\"Posición bala: \", global_position + Vector2(0, -2))
 		
 		# Posicionar la bala
 		bala.global_position = global_position + Vector2(0, -1.5)
 		
 		# Dirección del disparo basada en la orientación del jugador
 		var direccion = 1 if not $AnimatedSprite2D.flip_h else -1
-		print(\"Sprite flip_h: \", $AnimatedSprite2D.flip_h)
-		print(\"Dirección calculada: \", direccion)
 		
-		# DEBUG: Verificar que la bala tiene la función
 		if bala.has_method(\"set_direccion\"):
 			bala.set_direccion(direccion)
-			print(\"set_direccion() llamada exitosamente\")
-		else:
-			print(\"ERROR: La bala no tiene método set_direccion()\")
-	else:
-		print(\"ERROR: scene_bala es null - ¿Asignaste la escena en el Inspector?\")
 	
 	# Esperar a que termine la animación de disparo
 	await $AnimatedSprite2D.animation_finished
@@ -157,13 +164,18 @@ func disparar() -> void:
 func _on_recarga_completa() -> void:
 	puede_disparar = true
 
-# Resto de funciones existentes...
+# Función de daño con sonido
+
+# Función de daño mejorada - Solo reproduce si no está sonando
 func bajar_vida(cantidad: int) -> void:
 	if esta_muerto:
 		return
 
 	if tiene_armadura:
 		tiene_armadura = false
+		# Solo reproducir si no está sonando
+		if not sonido_daño.playing:
+			sonido_daño.play()
 		print(\"¡La armadura se rompió!\")
 	else:
 		vida -= cantidad
@@ -174,12 +186,13 @@ func bajar_vida(cantidad: int) -> void:
 			return
 		actualizar_barra_vida()
 
+		# MEJORADO: Solo reproducir sonido si no se está reproduciendo ya
+		if not sonido_daño.playing:
+			sonido_daño.play()
+
 		$AnimatedSprite2D.play(\"hurt\")
-
 		velocity = Vector2(-50 if $AnimatedSprite2D.flip_h else 50, -10)
-
 		await parpadeo_rojo()
-
 		print(\"¡Me han golpeado! Vida restante:\", vida)
 
 func parpadeo_rojo() -> void:
@@ -196,11 +209,22 @@ func subir_vida(cantidad: int) -> void:
 	vida += cantidad
 	if vida > vida_maxima:
 		vida = vida_maxima
+	
 	actualizar_barra_vida()
-	print(\"Vida actual:\", vida)
+	
+	# NUEVO: Reproducir sonido de curación
+	sonido_curar_vida.play()
+	
+	print(\"¡Vida restaurada! Vida actual:\", vida)
 
+# FUNCIÓN MEJORADA: Activar armadura con sonido
 func activar_armadura() -> void:
 	tiene_armadura = true
+	
+	# NUEVO: Reproducir sonido de armadura
+	sonido_armadura.play()
+	
+	print(\"¡Armadura activada!\")
 
 func actualizar_barra_vida() -> void:
 	if barra_vida != null:
@@ -221,6 +245,14 @@ func morir() -> void:
 	if esta_muerto:
 		return
 	esta_muerto = true
+	
+	# NUEVO: Reproducir sonido de muerte
+	sonido_muerte.play()
+	
+	# Detener todos los sonidos que se estén reproduciendo
+	if sonido_pasos.playing:
+		sonido_pasos.stop()
+	
 	velocity = Vector2.ZERO
 	$AnimatedSprite2D.play(\"dead\")
 	await $AnimatedSprite2D.animation_finished
@@ -983,3 +1015,24 @@ texture = ExtResource("15_fdbxi")
 position = Vector2(-16, -24)
 scale = Vector2(0.00219727, 0.00170898)
 texture = ExtResource("15_fdbxi")
+
+[node name="SonidoPasos" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_db7tr")
+
+[node name="SonidoSalto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_hr85y")
+
+[node name="SonidoMuerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_6xc2w")
+
+[node name="SonidoDaño" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_imvnc")
+
+[node name="SonidoDisparo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_pipto")
+
+[node name="SonidoCurarVida" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_8unad")
+
+[node name="SonidoArmadura" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_i4lpm")
