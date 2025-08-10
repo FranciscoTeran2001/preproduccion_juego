@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://elox233qjwpv"]
+
+[ext_resource type="PackedScene" uid="uid://ce031om8goqsi" path="res://Personaje/Player.tscn" id="1_xx4k4"]
+[ext_resource type="Texture2D" uid="uid://cmjnnvbfbbqq3" path="res://assets/nivel_lava/lava platform.png" id="2_xx4k4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xx4k4"]
+size = Vector2(937.5, 3.8147e-06)
+
+[node name="nivel_lava" type="Node2D"]
+
+[node name="jugador" parent="." instance=ExtResource("1_xx4k4")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(2, 1)
+scale = Vector2(0.038, 0.022)
+texture = ExtResource("2_xx4k4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7, 3)
+scale = Vector2(0.032, 0.022)
+shape = SubResource("RectangleShape2D_xx4k4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(21, 1)
+scale = Vector2(0.038, 0.022)
+texture = ExtResource("2_xx4k4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qgn16mtmqb68"]
+[gd_scene load_steps=19 format=3 uid="uid://qgn16mtmqb68"]
 
 [ext_resource type="Script" uid="uid://c53salmsopodp" path="res://scripts/enemigo.gd" id="1_ntqxc"]
 [ext_resource type="Texture2D" uid="uid://cwokl7ierm8wp" path="res://nivel_2/enemigos/lizard/Attack1.png" id="2_6qjc6"]
@@ -6,9 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://ce8t4x1hiqbov" path="res://nivel_2/enemigos/lizard/Attack3.png" id="4_vmhot"]
 [ext_resource type="Texture2D" uid="uid://dd0mosqkkouks" path="res://nivel_2/enemigos/lizard/Attack4.png" id="5_pmi8m"]
 [ext_resource type="Texture2D" uid="uid://byw8icjo5faxq" path="res://nivel_2/enemigos/lizard/Attack5.png" id="6_ww5cf"]
+[ext_resource type="Texture2D" uid="uid://cx3t27qy8c3uo" path="res://nivel_2/enemigos/lizard/Death1.png" id="7_4hu5t"]
 [ext_resource type="Texture2D" uid="uid://tcs76b33keet" path="res://nivel_2/enemigos/lizard/Idle1.png" id="7_57cxa"]
 [ext_resource type="Texture2D" uid="uid://bfbl3m57vpdpv" path="res://nivel_2/enemigos/lizard/Idle2.png" id="8_06aks"]
+[ext_resource type="Texture2D" uid="uid://dboymlvbs5wq3" path="res://nivel_2/enemigos/lizard/Death2.png" id="8_ao51q"]
+[ext_resource type="Texture2D" uid="uid://y7jb5112625i" path="res://nivel_2/enemigos/lizard/Death3.png" id="9_0m4yl"]
 [ext_resource type="Texture2D" uid="uid://dcrr16h03wk3v" path="res://nivel_2/enemigos/lizard/Idle3.png" id="9_x6qji"]
+[ext_resource type="Texture2D" uid="uid://dni084h76kf8w" path="res://nivel_2/enemigos/lizard/Death4.png" id="10_5tocb"]
+[ext_resource type="Texture2D" uid="uid://dpdjaxmnyahhb" path="res://nivel_2/enemigos/lizard/Death5.png" id="11_8hjvo"]
+[ext_resource type="Texture2D" uid="uid://v1lmimtd7bw8" path="res://nivel_2/enemigos/lizard/Death6.png" id="12_rkhvt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hh67u"]
 animations = [{
@@ -31,6 +37,29 @@ animations = [{
 "loop": true,
 "name": &"atacar",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4hu5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ao51q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0m4yl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5tocb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8hjvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rkhvt")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 4.0
 }, {
 "frames": [],
 "loop": true,
@@ -61,14 +90,16 @@ radius = 4.0
 height = 10.0
 
 [node name="enemigo" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_ntqxc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-17, -4.76837e-07)
 scale = Vector2(0.111572, 0.119141)
 sprite_frames = SubResource("SpriteFrames_hh67u")
-animation = &"atacar"
-frame_progress = 0.713212
+animation = &"dead"
+frame = 5
+frame_progress = 1.0
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

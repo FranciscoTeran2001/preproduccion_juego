@@ -1,27 +1,28 @@
-[gd_scene load_steps=34 format=3 uid="uid://wut6crka1xe3"]
+[gd_scene load_steps=35 format=3 uid="uid://wut6crka1xe3"]
 
-[ext_resource type="Texture2D" uid="uid://466g03u6o3o2" path="res://Myassents/nivel_2/fondo_santacruz.png" id="1_j3mkr"]
-[ext_resource type="Texture2D" uid="uid://by54wem0nyi86" path="res://Myassents/nivel_2/vegetación.png" id="2_dkmsn"]
+[ext_resource type="Texture2D" uid="uid://466g03u6o3o2" path="res://assets/nivel_2/fondo_santacruz.png" id="1_j3mkr"]
+[ext_resource type="Texture2D" uid="uid://by54wem0nyi86" path="res://assets/nivel_2/vegetación.png" id="2_dkmsn"]
 [ext_resource type="Shader" uid="uid://bs5g1ebuvufyl" path="res://nivel_2/Shader/nube.gdshader" id="3_tm28b"]
-[ext_resource type="Texture2D" uid="uid://h78m8y6o3ftx" path="res://Myassents/nivel_2/nube.png" id="4_74bwm"]
-[ext_resource type="Texture2D" uid="uid://cd5mntdj8tbiy" path="res://Myassents/nivel_2/piso.png" id="6_mhiia"]
-[ext_resource type="Texture2D" uid="uid://bn2en4hrql2vu" path="res://Myassents/nivel_2/precipicio.png" id="7_sufx4"]
-[ext_resource type="Texture2D" uid="uid://wqh61k5gu1f4" path="res://Myassents/nivel_2/arbol.png" id="8_6xjko"]
+[ext_resource type="Texture2D" uid="uid://h78m8y6o3ftx" path="res://assets/nivel_2/nube.png" id="4_74bwm"]
+[ext_resource type="Texture2D" uid="uid://cd5mntdj8tbiy" path="res://assets/nivel_2/piso.png" id="6_mhiia"]
+[ext_resource type="Texture2D" uid="uid://bn2en4hrql2vu" path="res://assets/nivel_2/precipicio.png" id="7_sufx4"]
+[ext_resource type="Texture2D" uid="uid://wqh61k5gu1f4" path="res://assets/nivel_2/arbol.png" id="8_6xjko"]
 [ext_resource type="Shader" uid="uid://lqc7riys2jkd" path="res://nivel_2/Shader/hojas.gdshader" id="8_axkiq"]
-[ext_resource type="Texture2D" uid="uid://dulahsn5x638b" path="res://Myassents/nivel_2/hojas.png" id="10_3y47k"]
+[ext_resource type="Texture2D" uid="uid://dulahsn5x638b" path="res://assets/nivel_2/hojas.png" id="10_3y47k"]
 [ext_resource type="Shader" uid="uid://bcpu213x3jqy5" path="res://nivel_2/Shader/rio.gdshader" id="11_8u3d3"]
-[ext_resource type="Texture2D" uid="uid://ctdi3ijj3xyyn" path="res://Myassents/nivel_2/rio.png" id="12_trsk1"]
-[ext_resource type="Texture2D" uid="uid://bhf7v65efge0q" path="res://Myassents/nivel_2/cartel_siguiente_isla.png" id="13_27p37"]
-[ext_resource type="Texture2D" uid="uid://dlspy7ttiqt8i" path="res://Myassents/nivel_2/roca.png" id="14_kfv8f"]
-[ext_resource type="Texture2D" uid="uid://dsixm3adwps7k" path="res://Myassents/nivel_2/roca2.png" id="15_7x4o1"]
-[ext_resource type="Texture2D" uid="uid://dhv444dsa483k" path="res://Myassents/nivel_2/plataforma.png" id="16_xvuls"]
-[ext_resource type="Texture2D" uid="uid://1s1ff6x4xlab" path="res://Myassents/nivel_2/advertencia.png" id="17_noch3"]
-[ext_resource type="Texture2D" uid="uid://5pi7wyumqxdl" path="res://Myassents/final.png" id="18_ally5"]
-[ext_resource type="Texture2D" uid="uid://dvw6uqsklcmk3" path="res://Myassents/inicio.png" id="19_5yxkm"]
+[ext_resource type="Texture2D" uid="uid://ctdi3ijj3xyyn" path="res://assets/nivel_2/rio.png" id="12_trsk1"]
+[ext_resource type="Texture2D" uid="uid://bhf7v65efge0q" path="res://assets/nivel_2/cartel_siguiente_isla.png" id="13_27p37"]
+[ext_resource type="Texture2D" uid="uid://dlspy7ttiqt8i" path="res://assets/nivel_2/roca.png" id="14_kfv8f"]
+[ext_resource type="Texture2D" uid="uid://dsixm3adwps7k" path="res://assets/nivel_2/roca2.png" id="15_7x4o1"]
+[ext_resource type="Texture2D" uid="uid://dhv444dsa483k" path="res://assets/nivel_2/plataforma.png" id="16_xvuls"]
+[ext_resource type="Texture2D" uid="uid://1s1ff6x4xlab" path="res://assets/nivel_2/advertencia.png" id="17_noch3"]
+[ext_resource type="Texture2D" uid="uid://5pi7wyumqxdl" path="res://assets/final.png" id="18_ally5"]
+[ext_resource type="Texture2D" uid="uid://dvw6uqsklcmk3" path="res://assets/inicio.png" id="19_5yxkm"]
 [ext_resource type="PackedScene" uid="uid://b82tti85lgdav" path="res://nivel_2/nodos/piso_llamas.tscn" id="19_axkiq"]
 [ext_resource type="PackedScene" uid="uid://ce031om8goqsi" path="res://Personaje/Player.tscn" id="20_y4fxv"]
 [ext_resource type="PackedScene" uid="uid://rn8q0ir0mih7" path="res://nivel_2/nodos/flor.tscn" id="22_y6lf5"]
 [ext_resource type="PackedScene" uid="uid://bt1s8y8jbalg6" path="res://nivel_2/nodos/flor_armadura.tscn" id="23_6q0n0"]
+[ext_resource type="PackedScene" uid="uid://bb42qe07oouf3" path="res://nivel_2/nodos/serpiente.tscn" id="24_j3mkr"]
 [ext_resource type="PackedScene" uid="uid://qgn16mtmqb68" path="res://nivel_2/nodos/enemigo.tscn" id="24_v8jnx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfivp"]
@@ -778,7 +779,7 @@ position = Vector2(546.875, -2.21484)
 shape = SubResource("RectangleShape2D_0ouqr")
 
 [node name="colision_pidra_rio" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(3, 20.5)
+position = Vector2(3, 20)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_sykvh")
 
@@ -826,13 +827,17 @@ position = Vector2(47, 18)
 position = Vector2(96, 16)
 
 [node name="flor_armadura" parent="." instance=ExtResource("23_6q0n0")]
-position = Vector2(108, 17)
+position = Vector2(215, 17)
 
 [node name="enemigo" parent="." instance=ExtResource("24_v8jnx")]
-position = Vector2(55, 39)
+position = Vector2(172, 15)
+collision_layer = 1
 
 [node name="jugador" parent="." instance=ExtResource("20_y4fxv")]
 position = Vector2(-19, 16)
 
 [node name="piso_llamas2" parent="." instance=ExtResource("19_axkiq")]
 position = Vector2(77, 18)
+
+[node name="Serpiente" parent="." instance=ExtResource("24_j3mkr")]
+position = Vector2(249, 17)
