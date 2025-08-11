@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://ce031om8goqsi"]
+[gd_scene load_steps=115 format=3 uid="uid://ce031om8goqsi"]
 
 [ext_resource type="PackedScene" uid="uid://dsvlswyiokh2t" path="res://Personaje/BalaArea2D.tscn" id="1_8uaeg"]
 [ext_resource type="Texture2D" uid="uid://bxog2tu7yhb43" path="res://Personaje/normal/Attack_1.png" id="1_e8xpl"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://oftmmwb1auam" path="res://Personaje/normal/Run.png" id="8_0uo38"]
 [ext_resource type="Texture2D" uid="uid://b4b0etgb25x4n" path="res://Personaje/normal/Shot.png" id="9_60530"]
 [ext_resource type="Texture2D" uid="uid://bswyah1jgou60" path="res://Personaje/normal/Walk.png" id="10_w7cp6"]
-[ext_resource type="PackedScene" uid="uid://d16f8v1i67l6t" path="res://Personaje/barra.tscn" id="14_m1ww8"]
 [ext_resource type="Texture2D" uid="uid://c2ht0vumemx0j" path="res://assets/dardo.png" id="15_fdbxi"]
 [ext_resource type="AudioStream" uid="uid://ctmkxmgt4e3wb" path="res://efectos_sonidos/walk.mp3" id="17_db7tr"]
 [ext_resource type="AudioStream" uid="uid://dttvtgafilchd" path="res://efectos_sonidos/jump.mp3" id="18_hr85y"]
@@ -25,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://d317g46y5r1ix" path="res://efectos_sonidos/flor_armadura.mp3" id="23_i4lpm"]
 
 [sub_resource type="GDScript" id="GDScript_e8xpl"]
-script/source = "# Agregar estas variables al inicio de tu script del jugador
+script/source = "# Script del jugador con UI fija corregida
 extends CharacterBody2D
 
 const SPEED = 20.0
@@ -33,23 +32,15 @@ const JUMP_VELOCITY = -60.0
 const GRAVITY = 300.0
 const FALL_MULTIPLIER = 0.5
 const LOW_JUMP_MULTIPLIER = 0.8
+const LIMITE_CAIDA_Y = 20.0
 
-# NUEVO: Límite de caída para cámara
-const LIMITE_CAIDA_Y = 20.0  # Cuando Y > 20, fijar cámara
-
-# NUEVO: Posición donde se fija la cámara al caer
-var posicion_fija_camara := Vector2.ZERO  # Se configura automáticamente
-
-# NUEVO: Variable para control de cámara en saltos
+var posicion_fija_camara := Vector2.ZERO
 var camara_siguiendo := true
-
 var tiene_armadura := false
 var esta_muerto := false
-
-# NUEVO: Variable para control de caída
 var ya_inicio_muerte_caida := false
 
-# VARIABLES DE AUDIO CON VERIFICACIÓN DE SEGURIDAD
+# AUDIO
 @onready var sonido_pasos = get_node_or_null(\"SonidoPasos\")
 @onready var sonido_salto = get_node_or_null(\"SonidoSalto\")
 @onready var sonido_muerte = get_node_or_null(\"SonidoMuerte\")
@@ -62,26 +53,33 @@ var ya_inicio_muerte_caida := false
 var vida := 125
 var vida_maxima := 125
 
-# SISTEMA DE DISPARO MEJORADO
+# DISPARO
 var puede_disparar := true
 var tiempo_recarga := 0.2
 var esta_disparando := false
 var timer_recarga: Timer
 @export var scene_bala: PackedScene
 
+# NUEVA: Referencia a la barra de vida en el CanvasLayer
 var barra_vida: TextureProgressBar = null
 
 func _ready() -> void:
-	# Verificar nodos de audio y reportar
 	verificar_nodos_audio()
 	
-	barra_vida = get_node_or_null(\"BarraVida\")
+	# CAMBIO: Buscar la barra de vida en el CanvasLayer del nivel
+	barra_vida = get_node_or_null(\"../CanvasLayer/BarraVida\")
 	if barra_vida == null:
-		print(\"No encontré la barra de vida\")
-	else:
+		print(\"❌ No encontré la barra de vida en CanvasLayer\")
+		# Fallback: buscar en el nivel principal
+		barra_vida = get_tree().get_first_node_in_group(\"barra_vida\")
+	
+	if barra_vida != null:
 		barra_vida.max_value = vida_maxima
 		barra_vida.value = vida
 		actualizar_color_barra_vida()
+		print(\"✅ Barra de vida conectada correctamente\")
+	else:
+		print(\"⚠️ No se pudo conectar la barra de vida\")
 
 	add_to_group(\"jugador\")
 	
@@ -96,87 +94,51 @@ func _ready() -> void:
 	if has_node(\"AnimatedSprite2D\"):
 		$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
 	
-	# NUEVO: Conectar zonas de muerte si existen
 	conectar_zonas_muerte()
 	
-	# NUEVO: Configurar posición fija por defecto (puedes cambiarlo)
 	if posicion_fija_camara == Vector2.ZERO:
-		# Por defecto, usar la posición inicial del jugador
 		posicion_fija_camara = global_position + Vector2(0, -100)
-		print(\"📷 Posición fija de cámara configurada en: \", posicion_fija_camara)
 
-# NUEVA FUNCIÓN: Conectar a zonas de muerte (opcional)
 func conectar_zonas_muerte() -> void:
-	# Buscar zonas de muerte en la escena
 	var zonas_muerte = get_tree().get_nodes_in_group(\"zona_muerte\")
 	for zona in zonas_muerte:
 		if zona.has_signal(\"body_entered\"):
 			zona.body_entered.connect(_on_zona_muerte_entered)
-			print(\"✅ Conectado a zona de muerte: \", zona.name)
 
-# NUEVA FUNCIÓN: Cuando entra a una zona de muerte (CORREGIDA)
 func _on_zona_muerte_entered(body: Node) -> void:
 	if body == self and not ya_inicio_muerte_caida:
 		ya_inicio_muerte_caida = true
-		print(\"💀 ZONA DE MUERTE: Entraste a una zona peligrosa\")
 		fijar_camara_en_posicion()
 		reproducir_sonido_seguro(sonido_muerte)
 
-# NUEVA FUNCIÓN: Verificar que todos los nodos de audio existan
 func verificar_nodos_audio() -> void:
-	print(\"=== VERIFICANDO NODOS DE AUDIO ===\")
+	var audios = [
+		[\"SonidoPasos\", sonido_pasos],
+		[\"SonidoSalto\", sonido_salto], 
+		[\"SonidoMuerte\", sonido_muerte],
+		[\"SonidoDaño\", sonido_daño],
+		[\"SonidoDisparo\", sonido_disparo],
+		[\"SonidoCurarVida\", sonido_curar_vida],
+		[\"SonidoArmadura\", sonido_armadura]
+	]
 	
-	if sonido_pasos == null:
-		print(\"❌ ERROR: SonidoPasos no encontrado\")
-	else:
-		print(\"✅ SonidoPasos encontrado\")
-	
-	if sonido_salto == null:
-		print(\"❌ ERROR: SonidoSalto no encontrado\")
-	else:
-		print(\"✅ SonidoSalto encontrado\")
-	
-	if sonido_muerte == null:
-		print(\"❌ ERROR: SonidoMuerte no encontrado\")
-	else:
-		print(\"✅ SonidoMuerte encontrado\")
-	
-	if sonido_daño == null:
-		print(\"❌ ERROR: SonidoDaño no encontrado\")
-	else:
-		print(\"✅ SonidoDaño encontrado\")
-	
-	if sonido_disparo == null:
-		print(\"❌ ERROR: SonidoDisparo no encontrado\")
-	else:
-		print(\"✅ SonidoDisparo encontrado\")
-	
-	if sonido_curar_vida == null:
-		print(\"❌ ERROR: SonidoCurarVida no encontrado\")
-	else:
-		print(\"✅ SonidoCurarVida encontrado\")
-	
-	if sonido_armadura == null:
-		print(\"❌ ERROR: SonidoArmadura no encontrado\")
-	else:
-		print(\"✅ SonidoArmadura encontrado\")
+	for audio in audios:
+		if audio[1] == null:
+			print(\"❌ ERROR: \", audio[0], \" no encontrado\")
+		else:
+			print(\"✅ \", audio[0], \" encontrado\")
 
 func _physics_process(delta: float) -> void:
 	if esta_muerto:
 		return
 	
-	# NUEVO: Sistema de control de cámara por caída
 	verificar_caida_para_camara(delta)
-	
-	# NUEVO: Sistema de control de cámara en saltos
 	controlar_camara_en_saltos()
 	
-	# SISTEMA DE DISPARO MEJORADO
 	if Input.is_action_just_pressed(\"disparar\"):
 		if puede_disparar and not esta_disparando and is_on_floor():
 			disparar()
 	
-	# Gravedad y salto
 	if not is_on_floor():
 		if velocity.y < 0:
 			velocity.y += GRAVITY * LOW_JUMP_MULTIPLIER * delta
@@ -185,10 +147,8 @@ func _physics_process(delta: float) -> void:
 			
 	if Input.is_action_just_pressed(\"saltar\") and is_on_floor() and not tiene_armadura:
 		velocity.y = JUMP_VELOCITY
-		# AUDIO SEGURO: Verificar antes de reproducir
 		reproducir_sonido_seguro(sonido_salto)
 
-	# Movimiento horizontal y animaciones
 	var direction := Input.get_axis(\"mover_izquierda\", \"mover_derecha\")
 	if direction > 0:
 		$AnimatedSprite2D.flip_h = false
@@ -197,20 +157,17 @@ func _physics_process(delta: float) -> void:
 
 	if direction != 0:
 		velocity.x = direction * SPEED
-		# AUDIO SEGURO: Verificar antes de acceder a 'playing'
 		if is_on_floor() and not esta_sonido_reproduciendose(sonido_pasos):
 			reproducir_sonido_seguro(sonido_pasos)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		# AUDIO SEGURO: Detener sonido de forma segura
 		detener_sonido_seguro(sonido_pasos)
 
-	# SISTEMA DE ANIMACIONES MEJORADO
+	# Animaciones
 	if not is_on_floor():
 		if not esta_disparando:
 			$AnimatedSprite2D.play(\"jump\")
 	elif esta_disparando:
-		# Usar animación de disparo según si tiene armadura o no
 		var animacion_disparo = \"armadura_atacar\" if tiene_armadura else \"shot\"
 		if $AnimatedSprite2D.animation != animacion_disparo:
 			$AnimatedSprite2D.play(animacion_disparo)
@@ -227,85 +184,46 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-# NUEVA FUNCIÓN: Control de cámara en saltos
 func controlar_camara_en_saltos() -> void:
 	if not has_node(\"Camera2D\"):
 		return
 	
 	var camara = $Camera2D
 	
-	# Si está en el suelo y la cámara no está siguiendo, reactivar seguimiento
 	if is_on_floor() and not camara_siguiendo:
-		print(\"✅ Jugador aterrizó - Reactivando seguimiento de cámara\")
 		camara.position_smoothing_enabled = true
 		camara_siguiendo = true
-	
-	# Si está en el aire y la cámara está siguiendo, fijar cámara
 	elif not is_on_floor() and camara_siguiendo:
-		print(\"🚁 Jugador saltó - Fijando cámara\")
 		camara.position_smoothing_enabled = false
 		camara_siguiendo = false
 
-# NUEVA FUNCIÓN: Control de cámara por caída (CORREGIDA)
 func verificar_caida_para_camara(delta: float) -> void:
-	# Solo verificar límite de Y para fijar cámara
 	if global_position.y > LIMITE_CAIDA_Y:
 		if not ya_inicio_muerte_caida:
 			ya_inicio_muerte_caida = true
-			print(\"💀 CAÍDA DETECTADA: Jugador cayó más allá de Y=\", LIMITE_CAIDA_Y)
-			print(\"📷 Fijando cámara - El jugador sigue cayendo\")
-			
-			# CORREGIDO: Fijar la cámara en posición
 			fijar_camara_en_posicion()
-			
-			# Reproducir sonido de muerte UNA sola vez
 			reproducir_sonido_seguro(sonido_muerte)
-			
-			# El jugador continúa cayendo normalmente
-		# No hacer nada más - el jugador sigue cayendo infinitamente
 
-# NUEVA FUNCIÓN: Fijar cámara en posición actual
 func fijar_camara_en_posicion() -> void:
 	if has_node(\"Camera2D\"):
 		var camara = $Camera2D
-		
-		# Guardar la posición actual de la cámara
 		posicion_fija_camara = camara.global_position
-		
-		# Desactivar seguimiento del jugador
 		camara.position_smoothing_enabled = false
-		
-		# Hacer que la cámara se vuelva independiente
 		hacer_camara_independiente()
-		
-		print(\"📷 CÁMARA FIJADA en posición: \", posicion_fija_camara)
-	else:
-		print(\"⚠️ No se encontró nodo Camera2D\")
 
-# NUEVA FUNCIÓN: Hacer la cámara independiente del jugador
 func hacer_camara_independiente() -> void:
 	if has_node(\"Camera2D\"):
 		var camara = $Camera2D
 		var posicion_actual = camara.global_position
-		
-		# Quitar la cámara del jugador
 		remove_child(camara)
-		
-		# Agregar la cámara al nodo padre (nivel)
 		get_parent().add_child(camara)
-		
-		# Fijar su posición
 		camara.global_position = posicion_actual
 		camara.position_smoothing_enabled = false
-		
-		print(\"📷 Cámara ahora es independiente en: \", posicion_actual)
 
-# NUEVAS FUNCIONES DE AUDIO SEGURO
+# FUNCIONES DE AUDIO SEGURO
 func reproducir_sonido_seguro(nodo_audio: AudioStreamPlayer2D) -> void:
 	if nodo_audio != null and nodo_audio.stream != null:
 		nodo_audio.play()
-	elif nodo_audio == null:
-		print(\"⚠️ Intentando reproducir sonido null\")
 
 func detener_sonido_seguro(nodo_audio: AudioStreamPlayer2D) -> void:
 	if nodo_audio != null and esta_sonido_reproduciendose(nodo_audio):
@@ -316,25 +234,18 @@ func esta_sonido_reproduciendose(nodo_audio: AudioStreamPlayer2D) -> bool:
 		return false
 	return nodo_audio.playing
 
-# FUNCIÓN DE DISPARO MEJORADA
+# DISPARO
 func disparar() -> void:
-	print(\"=== INICIANDO DISPARO ===\")
-	
 	esta_disparando = true
 	puede_disparar = false
 	
-	# Reproducir sonido de forma segura
 	reproducir_sonido_seguro(sonido_disparo)
 	
-	# NUEVO: Usar animación correcta según armadura
 	var animacion_disparo = \"armadura_atacar\" if tiene_armadura else \"shot\"
 	$AnimatedSprite2D.play(animacion_disparo)
-	print(\"Animación '\", animacion_disparo, \"' iniciada\")
 	
-	# Crear la bala
 	crear_bala()
 	
-	# Timer para finalizar disparo
 	var timer_animacion = Timer.new()
 	timer_animacion.wait_time = 0.8
 	timer_animacion.one_shot = true
@@ -346,136 +257,87 @@ func crear_bala() -> void:
 	if scene_bala != null:
 		var bala = scene_bala.instantiate()
 		get_parent().add_child(bala)
-		
-		# CORREGIDO: Volver a la posición que funcionaba
 		bala.global_position = global_position + Vector2(0, -1.5)
-		
 		var direccion = 1 if not $AnimatedSprite2D.flip_h else -1
-		
 		if bala.has_method(\"set_direccion\"):
 			bala.set_direccion(direccion)
-		
-		print(\"Bala creada en posición: \", bala.global_position)
-	else:
-		print(\"❌ ERROR: scene_bala es null\")
 
 func _finalizar_disparo(timer_animacion: Timer) -> void:
-	print(\"=== FINALIZANDO DISPARO ===\")
-	
 	esta_disparando = false
-	
 	if is_instance_valid(timer_animacion):
 		timer_animacion.queue_free()
-	
 	if timer_recarga and not timer_recarga.is_stopped():
 		timer_recarga.stop()
-	
 	timer_recarga.start()
-	print(\"Cooldown de recarga iniciado: \", tiempo_recarga, \" segundos\")
 
 func _on_recarga_completa() -> void:
 	puede_disparar = true
-	print(\"✅ DISPARO DISPONIBLE NUEVAMENTE\")
 
 func _on_animation_finished() -> void:
-	# Detectar si terminó cualquiera de las animaciones de disparo
 	var es_animacion_disparo = ($AnimatedSprite2D.animation == \"shot\" or $AnimatedSprite2D.animation == \"armadura_atacar\")
-	
 	if es_animacion_disparo and esta_disparando:
-		print(\"⚠️ Animación de disparo terminó - Backup finalizar disparo\")
 		if esta_disparando:
 			esta_disparando = false
 
 func resetear_disparo() -> void:
-	print(\"🔄 RESETEO DE EMERGENCIA DEL DISPARO\")
 	esta_disparando = false
 	puede_disparar = true
 	if timer_recarga:
 		timer_recarga.stop()
 
-# NUEVA FUNCIÓN: Configurar dónde se fija la cámara al caer
+# FUNCIONES DE CONFIGURACIÓN DE CÁMARA
 func configurar_posicion_fija_camara(posicion: Vector2) -> void:
 	posicion_fija_camara = posicion
-	print(\"📷 NUEVA posición fija de cámara configurada en: \", posicion)
 
-# NUEVA FUNCIÓN: Obtener posición actual para configurar punto fijo
 func marcar_posicion_actual_como_fija() -> void:
 	if has_node(\"Camera2D\"):
 		posicion_fija_camara = $Camera2D.global_position
-		print(\"📷 Posición actual marcada como punto fijo: \", posicion_fija_camara)
 	else:
 		posicion_fija_camara = global_position + Vector2(0, -10)
-		print(\"📷 Usando posición del jugador como punto fijo: \", posicion_fija_camara)
 
-# NUEVA FUNCIÓN: Reactivar seguimiento de cámara (para testing)
 func reactivar_seguimiento_camara() -> void:
-	# Buscar la cámara en el nivel si fue movida
 	var camara_en_nivel = get_parent().get_node_or_null(\"Camera2D\")
-	
 	if camara_en_nivel:
-		# Mover la cámara de vuelta al jugador
 		get_parent().remove_child(camara_en_nivel)
 		add_child(camara_en_nivel)
-		camara_en_nivel.position = Vector2(6, -10)  # Posición relativa original
+		camara_en_nivel.position = Vector2(6, -10)
 		camara_en_nivel.position_smoothing_enabled = true
 		camara_siguiendo = true
-		print(\"📷 CÁMARA REACTIVADA - Vuelve a seguir al jugador\")
 	elif has_node(\"Camera2D\"):
-		# La cámara sigue siendo hija del jugador
 		var camara = $Camera2D
 		camara.position_smoothing_enabled = true
 		camara_siguiendo = true
-		print(\"📷 SEGUIMIENTO REACTIVADO\")
-	else:
-		print(\"⚠️ No se encontró cámara para reactivar\")
 
-# NUEVA FUNCIÓN: Resetear control de caída
 func resetear_control_caida() -> void:
-	print(\"🔄 RESETEO DEL CONTROL DE CAÍDA\")
 	ya_inicio_muerte_caida = false
 	camara_siguiendo = true
 	reactivar_seguimiento_camara()
 
-# NUEVA FUNCIÓN: Teletransportar para testing
 func teletransportar_a_seguro(posicion: Vector2) -> void:
 	global_position = posicion
 	velocity = Vector2.ZERO
 	resetear_control_caida()
-	print(\"📍 Teletransportado a posición segura: \", posicion)
 
-# NUEVA FUNCIÓN: Activar/desactivar cámara fija en saltos
 func alternar_camara_fija_saltos(activar: bool) -> void:
-	if activar:
-		print(\"🎮 CÁMARA FIJA EN SALTOS: ACTIVADA\")
-		print(\"  - La cámara se quedará fija cuando saltes\")
-	else:
-		print(\"🎮 CÁMARA FIJA EN SALTOS: DESACTIVADA\") 
-		print(\"  - La cámara seguirá al jugador normalmente\")
-		# Si está desactivado, asegurar que siempre siga
-		if has_node(\"Camera2D\"):
-			$Camera2D.position_smoothing_enabled = true
-			camara_siguiendo = true
+	if not activar and has_node(\"Camera2D\"):
+		$Camera2D.position_smoothing_enabled = true
+		camara_siguiendo = true
 
-# NUEVA FUNCIÓN: Forzar reactivación de cámara (para emergencias)
 func forzar_reactivacion_camara() -> void:
-	print(\"🔧 FORZANDO REACTIVACIÓN DE CÁMARA\")
 	if has_node(\"Camera2D\"):
 		var camara = $Camera2D
 		camara.position_smoothing_enabled = true
 		camara_siguiendo = true
-		print(\"✅ Cámara forzada a seguir jugador\")
 
-# FUNCIÓN DE DAÑO CON AUDIO SEGURO
+# SISTEMA DE VIDA Y DAÑO
 func bajar_vida(cantidad: int) -> void:
 	if esta_muerto:
 		return
 
 	if tiene_armadura:
 		tiene_armadura = false
-		# Audio seguro
 		if not esta_sonido_reproduciendose(sonido_daño):
 			reproducir_sonido_seguro(sonido_daño)
-		print(\"¡La armadura se rompió!\")
 	else:
 		vida -= cantidad
 		if vida <= 32:
@@ -485,14 +347,12 @@ func bajar_vida(cantidad: int) -> void:
 			return
 		actualizar_barra_vida()
 
-		# Audio seguro
 		if not esta_sonido_reproduciendose(sonido_daño):
 			reproducir_sonido_seguro(sonido_daño)
 
 		$AnimatedSprite2D.play(\"hurt\")
 		velocity = Vector2(-50 if $AnimatedSprite2D.flip_h else 50, -10)
 		await parpadeo_rojo()
-		print(\"¡Me han golpeado! Vida restante:\", vida)
 
 func parpadeo_rojo() -> void:
 	for i in 3:
@@ -511,12 +371,10 @@ func subir_vida(cantidad: int) -> void:
 	
 	actualizar_barra_vida()
 	reproducir_sonido_seguro(sonido_curar_vida)
-	print(\"¡Vida restaurada! Vida actual:\", vida)
 
 func activar_armadura() -> void:
 	tiene_armadura = true
 	reproducir_sonido_seguro(sonido_armadura)
-	print(\"¡Armadura activada!\")
 
 func actualizar_barra_vida() -> void:
 	if barra_vida != null:
@@ -524,12 +382,15 @@ func actualizar_barra_vida() -> void:
 		actualizar_color_barra_vida()
 
 func actualizar_color_barra_vida() -> void:
+	if barra_vida == null:
+		return
+		
 	var porcentaje := float(vida) / vida_maxima
 
 	if porcentaje <= 0.5:
 		barra_vida.tint_progress = Color(1, 0, 0)  # Rojo
 	elif porcentaje <= 0.64:
-		barra_vida.tint_progress = Color(255, 255, 0)  # Amarillo brillante
+		barra_vida.tint_progress = Color(1, 1, 0)  # Amarillo
 	else:
 		barra_vida.tint_progress = Color(0, 1, 0)  # Verde
 
@@ -539,8 +400,6 @@ func morir() -> void:
 	esta_muerto = true
 	
 	reproducir_sonido_seguro(sonido_muerte)
-	
-	# Detener sonidos de forma segura
 	detener_sonido_seguro(sonido_pasos)
 	
 	velocity = Vector2.ZERO
@@ -1264,7 +1123,7 @@ animation = &"idle"
 position = Vector2(7, -7)
 rotation = 6.28319
 offset = Vector2(10, 0)
-zoom = Vector2(10, 30)
+zoom = Vector2(45, 30)
 limit_left = -10000006
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
@@ -1277,25 +1136,19 @@ position = Vector2(2, -0.9)
 shape = SubResource("RectangleShape2D_8unad")
 one_way_collision_margin = 0.0
 
-[node name="BarraVida" parent="." instance=ExtResource("14_m1ww8")]
-offset_left = -24.0
-offset_top = -27.0
-offset_right = 1000.0
-offset_bottom = 997.0
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-20, -24)
 scale = Vector2(0.00219727, 0.00170898)
 texture = ExtResource("15_fdbxi")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-18, -24)
-scale = Vector2(0.00219727, 0.00170898)
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(1820.44, 0)
+scale = Vector2(1, 1)
 texture = ExtResource("15_fdbxi")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(-16, -24)
-scale = Vector2(0.00219727, 0.00170898)
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(910.221, 0)
+scale = Vector2(1, 1)
 texture = ExtResource("15_fdbxi")
 
 [node name="SonidoPasos" type="AudioStreamPlayer2D" parent="."]

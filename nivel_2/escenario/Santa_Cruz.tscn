@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://wut6crka1xe3"]
+[gd_scene load_steps=44 format=3 uid="uid://wut6crka1xe3"]
 
 [ext_resource type="Texture2D" uid="uid://466g03u6o3o2" path="res://assets/nivel_2/fondo_santacruz.png" id="1_j3mkr"]
 [ext_resource type="Texture2D" uid="uid://by54wem0nyi86" path="res://assets/nivel_2/vegetación.png" id="2_dkmsn"]
@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://qgn16mtmqb68" path="res://nivel_2/nodos/enemigo.tscn" id="24_v8jnx"]
 [ext_resource type="PackedScene" uid="uid://bjefj5usp3np0" path="res://nivel_2/nodos/plataforma_movil.tscn" id="25_dkmsn"]
 [ext_resource type="PackedScene" uid="uid://bkxjjpvtdmgvk" path="res://nivel_2/nodos/plataforma_movil2.tscn" id="26_tm28b"]
+[ext_resource type="PackedScene" uid="uid://d16f8v1i67l6t" path="res://Personaje/barra.tscn" id="28_mhiia"]
+[ext_resource type="Texture2D" uid="uid://c2ht0vumemx0j" path="res://assets/dardo.png" id="29_sufx4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfivp"]
 shader = ExtResource("3_tm28b")
@@ -73,15 +75,15 @@ size = Vector2(4.5, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tm28b"]
 size = Vector2(4.5, 2)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_74bwm"]
-size = Vector2(9, 5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u613"]
+size = Vector2(12, 6.5)
 
 [node name="Nivel2" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Fondo" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(272.5, -4.485)
+position = Vector2(273, -6)
 scale = Vector2(0.668945, 0.0795929)
 texture = ExtResource("1_j3mkr")
 
@@ -854,7 +856,7 @@ position = Vector2(72.375, 14)
 shape = SubResource("RectangleShape2D_3b7r1")
 
 [node name="piso_llamas3" parent="StaticBody2D" instance=ExtResource("19_axkiq")]
-position = Vector2(282, 18)
+position = Vector2(301, 18)
 
 [node name="piso_llamas2" parent="StaticBody2D/piso_llamas3" instance=ExtResource("19_axkiq")]
 position = Vector2(9, 0)
@@ -893,14 +895,23 @@ shape = SubResource("RectangleShape2D_dkmsn")
 position = Vector2(476.75, 22)
 shape = SubResource("RectangleShape2D_tm28b")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(179, 16.75)
-scale = Vector2(0.0240196, 0.0269608)
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(200, 13)
+scale = Vector2(0.0329657, 0.0549428)
 texture = ExtResource("20_74bwm")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(179, 20)
-shape = SubResource("RectangleShape2D_74bwm")
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(369, 14.1016)
+scale = Vector2(0.0329657, 0.0395476)
+texture = ExtResource("20_74bwm")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(200, 17)
+shape = SubResource("RectangleShape2D_8u613")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(369, 18)
+shape = SubResource("RectangleShape2D_8u613")
 
 [node name="piso_llamas" parent="." instance=ExtResource("19_axkiq")]
 position = Vector2(48, 19)
@@ -912,17 +923,42 @@ position = Vector2(96, 16)
 position = Vector2(23, 15)
 
 [node name="enemigo" parent="." instance=ExtResource("24_v8jnx")]
-position = Vector2(220, 14)
+position = Vector2(132, 15)
 collision_layer = 1
 
 [node name="jugador" parent="." instance=ExtResource("20_y4fxv")]
-position = Vector2(162, 17)
+position = Vector2(-18, 16)
 
 [node name="Serpiente" parent="." instance=ExtResource("24_j3mkr")]
-position = Vector2(387, 16)
+position = Vector2(396, 16)
 
 [node name="PlataformaMovil2" parent="." instance=ExtResource("26_tm28b")]
-position = Vector2(357, 77)
+position = Vector2(379, 78)
 
 [node name="PlataformaMovil" parent="." instance=ExtResource("25_dkmsn")]
-position = Vector2(320, 78)
+position = Vector2(342, 79)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="BarraVida" parent="CanvasLayer" instance=ExtResource("28_mhiia")]
+anchors_preset = -1
+offset_left = -20.0
+offset_top = 9.0
+offset_right = 1004.0
+offset_bottom = 1033.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(-20, -24)
+scale = Vector2(0.00219727, 0.00170898)
+texture = ExtResource("29_sufx4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/Sprite2D"]
+position = Vector2(1820.44, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("29_sufx4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/Sprite2D"]
+position = Vector2(910.221, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("29_sufx4")

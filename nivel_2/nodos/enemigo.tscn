@@ -109,12 +109,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxdlo"]
-radius = 3.0
-height = 8.0
+radius = 2.0
+height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35jgh"]
 radius = 4.0
-height = 10.0
+height = 12.0
 
 [node name="enemigo" type="CharacterBody2D"]
 collision_layer = 3
@@ -125,18 +125,18 @@ position = Vector2(-17, -4.76837e-07)
 scale = Vector2(0.111572, 0.119141)
 sprite_frames = SubResource("SpriteFrames_hh67u")
 animation = &"walk"
-frame_progress = 0.571689
+frame_progress = 0.969138
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-15, 1)
+position = Vector2(-16, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_cxdlo")
 
 [node name="DamageArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(-15, 0)
+position = Vector2(-16, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_35jgh")
 
@@ -148,6 +148,3 @@ stream = ExtResource("17_8hjvo")
 
 [node name="AudioMuerte" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_rkhvt")
-
-[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
-[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bb42qe07oouf3"]
+[gd_scene load_steps=31 format=3 uid="uid://bb42qe07oouf3"]
 
 [ext_resource type="Script" uid="uid://2pqwwb7d2bmq" path="res://scripts/serpiente.gd" id="1_wsisy"]
 [ext_resource type="Texture2D" uid="uid://br4tchteevu63" path="res://nivel_2/enemigos/Snake/Snake_attack.png" id="2_kuam8"]
@@ -6,14 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://gxdgp0xw4l6h" path="res://nivel_2/enemigos/Snake/Snake_hurt.png" id="4_4wvgn"]
 [ext_resource type="Texture2D" uid="uid://dmsny8otu2rs4" path="res://nivel_2/enemigos/Snake/Snake_idle.png" id="5_ugvo0"]
 [ext_resource type="Texture2D" uid="uid://bfeppjehdkhn0" path="res://nivel_2/enemigos/Snake/Snake_walk.png" id="6_kam2t"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0fuh2"]
-atlas = ExtResource("2_kuam8")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vmwoq"]
-atlas = ExtResource("2_kuam8")
-region = Rect2(48, 0, 48, 48)
+[ext_resource type="AudioStream" uid="uid://x407hqy6adjf" path="res://efectos_sonidos/serpiente/ataque_serpiente.mp3" id="7_4wvgn"]
+[ext_resource type="AudioStream" uid="uid://boixldfcdc54c" path="res://efectos_sonidos/serpiente/hurt_serpiente.mp3" id="8_ugvo0"]
+[ext_resource type="AudioStream" uid="uid://sv01h876n28l" path="res://efectos_sonidos/serpiente/muerte_serpiente.mp3" id="9_kam2t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85rpd"]
 atlas = ExtResource("2_kuam8")
@@ -91,12 +86,6 @@ region = Rect2(144, 0, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0fuh2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vmwoq")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_85rpd")
 }, {
 "duration": 1.0,
@@ -108,9 +97,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5g34d")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
-"speed": 5.5
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -143,7 +132,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -182,22 +171,22 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_djwl2"]
 radius = 2.0
-height = 8.0
+height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wsisy"]
 radius = 2.0
-height = 10.0
+height = 14.0
 
 [node name="Serpiente" type="CharacterBody2D"]
 script = ExtResource("1_wsisy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, -5)
+position = Vector2(4, -5)
 scale = Vector2(0.291667, 0.291667)
 sprite_frames = SubResource("SpriteFrames_5lw1b")
-animation = &"hurt"
+animation = &"attack"
 frame = 1
-frame_progress = 1.0
+frame_progress = 0.660464
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 0)
@@ -207,9 +196,18 @@ shape = SubResource("CapsuleShape2D_djwl2")
 [node name="DamageArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(6, 0)
+position = Vector2(5, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wsisy")
+
+[node name="AudioAtaque" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_4wvgn")
+
+[node name="AudioDamage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ugvo0")
+
+[node name="AudioMuerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_kam2t")
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_area_2d_body_exited"]

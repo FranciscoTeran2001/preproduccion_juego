@@ -26,7 +26,7 @@ var esta_pausado := false
 var jugador_encima := false
 
 # NODOS
-@onready var detection_area: Area2D = $DetectionArea
+
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -36,9 +36,7 @@ func _ready() -> void:
 	# Configurar posiciones inicial y final
 	configurar_posiciones()
 	
-	# Configurar detección de jugador si está habilitada
-	if detectar_jugador:
-		configurar_deteccion_jugador()
+
 	
 	# Iniciar movimiento si está configurado
 	if auto_iniciar:
@@ -60,13 +58,7 @@ func configurar_posiciones() -> void:
 	print("  - Hasta: ", posicion_final)
 	print("  - Dirección: ", direccion_inicial)
 
-func configurar_deteccion_jugador() -> void:
-	if detection_area:
-		detection_area.body_entered.connect(_on_jugador_entro)
-		detection_area.body_exited.connect(_on_jugador_salio)
-		print("✅ Detección de jugador configurada")
-	else:
-		print("⚠️ DetectionArea no encontrada - crear manualmente")
+
 
 func iniciar_movimiento() -> void:
 	if esta_moviendo:

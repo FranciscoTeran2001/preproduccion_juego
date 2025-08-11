@@ -22,7 +22,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	
 	# Destruir bala después de 5 segundos
-	var timer = get_tree().create_timer(0.7)
+	var timer = get_tree().create_timer(0.3)
 	timer.timeout.connect(_destruir_por_tiempo)
 
 func _destruir_por_tiempo() -> void:
