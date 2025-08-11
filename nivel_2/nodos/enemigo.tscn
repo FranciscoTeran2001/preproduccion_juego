@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qgn16mtmqb68"]
+[gd_scene load_steps=28 format=3 uid="uid://qgn16mtmqb68"]
 
 [ext_resource type="Script" uid="uid://c53salmsopodp" path="res://scripts/enemigo.gd" id="1_ntqxc"]
 [ext_resource type="Texture2D" uid="uid://cwokl7ierm8wp" path="res://nivel_2/enemigos/lizard/Attack1.png" id="2_6qjc6"]
@@ -15,6 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://dni084h76kf8w" path="res://nivel_2/enemigos/lizard/Death4.png" id="10_5tocb"]
 [ext_resource type="Texture2D" uid="uid://dpdjaxmnyahhb" path="res://nivel_2/enemigos/lizard/Death5.png" id="11_8hjvo"]
 [ext_resource type="Texture2D" uid="uid://v1lmimtd7bw8" path="res://nivel_2/enemigos/lizard/Death6.png" id="12_rkhvt"]
+[ext_resource type="AudioStream" uid="uid://dpa6hoqjejinf" path="res://efectos_sonidos/enemigo_lanza/ataque_lanza.mp3" id="16_5tocb"]
+[ext_resource type="Texture2D" uid="uid://cgq2wlpxpxbvi" path="res://nivel_2/enemigos/lizard/Walk1.png" id="16_eak6f"]
+[ext_resource type="AudioStream" uid="uid://bqoc1dekwptya" path="res://efectos_sonidos/enemigo_lanza/dead_enemigo.mp3" id="17_8hjvo"]
+[ext_resource type="Texture2D" uid="uid://n00ctdxx7nec" path="res://nivel_2/enemigos/lizard/Walk2.png" id="17_iqj13"]
+[ext_resource type="Texture2D" uid="uid://bcls8tmjdyri" path="res://nivel_2/enemigos/lizard/Walk3.png" id="18_12x7k"]
+[ext_resource type="AudioStream" uid="uid://dv2gpsa1h3iil" path="res://efectos_sonidos/enemigo_lanza/hurt_enemigo.mp3" id="18_rkhvt"]
+[ext_resource type="Texture2D" uid="uid://bio53wl7ktjlo" path="res://nivel_2/enemigos/lizard/Walk4.png" id="19_m6kkq"]
+[ext_resource type="Texture2D" uid="uid://jwo6peqjn811" path="res://nivel_2/enemigos/lizard/Walk5.png" id="20_xdlbx"]
+[ext_resource type="Texture2D" uid="uid://c4vliw3kt321p" path="res://nivel_2/enemigos/lizard/Walk6.png" id="21_6ppei"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hh67u"]
 animations = [{
@@ -61,11 +70,6 @@ animations = [{
 "name": &"dead",
 "speed": 4.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_57cxa")
@@ -78,6 +82,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_eak6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_iqj13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_12x7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_m6kkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xdlbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_6ppei")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -97,9 +124,8 @@ script = ExtResource("1_ntqxc")
 position = Vector2(-17, -4.76837e-07)
 scale = Vector2(0.111572, 0.119141)
 sprite_frames = SubResource("SpriteFrames_hh67u")
-animation = &"dead"
-frame = 5
-frame_progress = 1.0
+animation = &"walk"
+frame_progress = 0.571689
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -113,6 +139,15 @@ shape = SubResource("CapsuleShape2D_cxdlo")
 position = Vector2(-15, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_35jgh")
+
+[node name="AudioAtaque" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_5tocb")
+
+[node name="AudioDamage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_8hjvo")
+
+[node name="AudioMuerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_rkhvt")
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]

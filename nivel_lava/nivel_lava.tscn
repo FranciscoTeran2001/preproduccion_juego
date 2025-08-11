@@ -9,6 +9,7 @@ size = Vector2(937.5, 3.8147e-06)
 [node name="nivel_lava" type="Node2D"]
 
 [node name="jugador" parent="." instance=ExtResource("1_xx4k4")]
+scene_bala = null
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

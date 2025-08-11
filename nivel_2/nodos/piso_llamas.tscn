@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b82tti85lgdav"]
 
 [ext_resource type="Script" uid="uid://yw6114u1an01" path="res://scripts/piso_llamas.gd" id="1_0r07n"]
-[ext_resource type="Texture2D" uid="uid://3sfauibnclee" path="res://Myassents/piso_quemado.png" id="2_ujbgg"]
+[ext_resource type="Texture2D" uid="uid://3sfauibnclee" path="res://assets/piso_quemado.png" id="2_ujbgg"]
 [ext_resource type="Shader" uid="uid://bfurricxic654" path="res://nivel_2/Shader/fuego.gdshader" id="3_lim4h"]
-[ext_resource type="Texture2D" uid="uid://3p5sw4ajrw53" path="res://Myassents/fire.png" id="4_un82k"]
+[ext_resource type="Texture2D" uid="uid://3p5sw4ajrw53" path="res://assets/fire.png" id="4_un82k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vms0p"]
 shader = ExtResource("3_lim4h")

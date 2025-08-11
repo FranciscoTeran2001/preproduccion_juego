@@ -2,9 +2,8 @@ extends CharacterBody2D
 
 # ============ CONFIGURACIÓN SIMPLE ============
 @export var speed: float = 40.0
-@export var detection_range: float = 15.0
-@export var patrol_distance_min: float = 20.0
-@export var patrol_distance_max: float = 20.0
+@export var detection_range: float = 20.0
+@export var patrol_distance: float = 30.0  # Distancia total de patrullaje (ida y vuelta)
 
 # ========== SISTEMA DE VIDA ==========
 var vida := 50  # 2 balas para morir
@@ -14,7 +13,7 @@ var esta_muerto := false
 # ========== VARIABLES DE ATAQUE ==========
 var puede_atacar := true
 var jugadores_en_area := []
-const DISTANCIA_ATAQUE := 1.0
+const DISTANCIA_ATAQUE := 0.1
 const TIEMPO_ENTRE_ATAQUES := 1.0
 const TIEMPO_ENTRE_EMPUJES := 0.3
 const FUERZA_EMPUJE := 200.0
@@ -22,9 +21,16 @@ const DANIO_POR_ATAQUE := 25
 
 # Variables internas
 var jugador: Node2D = null
-var punto_patrulla: Vector2
 var estado: String = "patrulla"
-var tiempo_patrulla: float = 0.0
+var time_elapsed: float = 0.0
+
+# Sistema de patrullaje fijo
+var punto_izquierdo: Vector2
+var punto_derecho: Vector2
+var yendo_a_derecha: bool = true
+
+# Variables para naturalidad
+var speed_variation: float = 0.0
 
 @onready var sprite = $AnimatedSprite2D
 
@@ -60,13 +66,21 @@ func _ready():
 	timer_empuje.start()
 	
 	# Punto inicial de patrulla
-	nuevo_punto_patrulla()
+	# Establecer puntos fijos de patrullaje
+	punto_izquierdo = Vector2(global_position.x - patrol_distance, global_position.y)
+	punto_derecho = Vector2(global_position.x + patrol_distance, global_position.y)
+	
+	# Dirección inicial aleatoria
+	yendo_a_derecha = randf() > 0.5
+	
 	sprite.play("idle")
 
 func _physics_process(delta):
 	# No hacer nada si está muerto
 	if esta_muerto:
 		return
+	
+	time_elapsed += delta  # Para variaciones naturales
 		
 	if not is_on_floor():
 		velocity.y += 980 * delta
@@ -180,28 +194,37 @@ func atacar():
 	elif sprite.animation != "attack":
 		sprite.play("attack")
 
-# ========== PATRULLA ==========
+# ========== PATRULLA FIJO ENTRE DOS PUNTOS ==========
 func patrullar(delta):
 	estado = "patrulla"
-	tiempo_patrulla += delta
 	
-	var distancia_punto = global_position.distance_to(punto_patrulla)
+	# Determinar punto objetivo
+	var punto_objetivo = punto_derecho if yendo_a_derecha else punto_izquierdo
+	var distancia_al_objetivo = global_position.distance_to(punto_objetivo)
 	
-	if tiempo_patrulla > 3.0 or distancia_punto < 15:
-		nuevo_punto_patrulla()
-		tiempo_patrulla = 0.0
-		print("🆕 Nuevo punto: ", punto_patrulla)
+	# Si llegó cerca del objetivo, cambiar dirección
+	if distancia_al_objetivo < 5.0:
+		yendo_a_derecha = !yendo_a_derecha
+		print("🔄 Cambiando dirección - Ahora va a: ", "derecha" if yendo_a_derecha else "izquierda")
 	
-	var direccion_x = sign(punto_patrulla.x - global_position.x)
-	velocity.x = direccion_x * speed * 0.4
+	# Calcular dirección de movimiento
+	var direccion_x = 1 if yendo_a_derecha else -1
 	
-	if abs(velocity.x) > 5:
+	# Aplicar variación sutil de velocidad para naturalidad
+	speed_variation = sin(time_elapsed * 2.0) * 0.1  # 10% de variación
+	var velocidad_actual = speed * 0.5 * (1.0 + speed_variation)
+	
+	# Aplicar movimiento
+	velocity.x = direccion_x * velocidad_actual
+	
+	# Animaciones
+	if abs(velocity.x) > 3:
 		sprite.play("walk")
 		sprite.flip_h = velocity.x > 0
 	else:
 		sprite.play("idle")
 
-# ========== PERSEGUIR JUGADOR ==========
+# ========== PERSEGUIR SIMPLE ==========
 func perseguir():
 	estado = "persigue"
 	
@@ -209,20 +232,12 @@ func perseguir():
 		return
 	
 	var direccion_x = sign(jugador.global_position.x - global_position.x)
-	velocity.x = direccion_x * speed * 0.6
+	var velocidad_persecucion = speed * 0.5
+	
+	velocity.x = direccion_x * velocidad_persecucion
 	
 	sprite.play("walk")
 	sprite.flip_h = velocity.x > 0
-
-# ========== NUEVO PUNTO DE PATRULLA ==========
-func nuevo_punto_patrulla():
-	var distancia = randf_range(patrol_distance_min, patrol_distance_max)
-	var direccion = 1 if randf() > 0.5 else -1
-	
-	punto_patrulla.x = global_position.x + (distancia * direccion)
-	punto_patrulla.y = global_position.y
-	
-	print("📍 Punto patrulla: ", punto_patrulla, " (distancia: ", distancia, ")")
 
 # ========== ÁREA DE DAÑO ==========
 func _on_DamageArea_body_entered(body: Node) -> void:

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjefj5usp3np0"]
+
+[ext_resource type="Script" uid="uid://igo30pl5ojvi" path="res://scripts/plataforma_movil.gd" id="1_v8e8m"]
+[ext_resource type="Texture2D" uid="uid://dhv444dsa483k" path="res://assets/nivel_2/plataforma.png" id="2_5ju74"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x04m"]
+size = Vector2(7.0625, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ytml"]
+size = Vector2(7, 2)
+
+[node name="PlataformaMovil" type="AnimatableBody2D"]
+script = ExtResource("1_v8e8m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-36.0625, -66.4375)
+scale = Vector2(0.013621, 0.00931269)
+texture = ExtResource("2_5ju74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-36.5313, -65)
+shape = SubResource("RectangleShape2D_8x04m")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-36.5, -65)
+shape = SubResource("RectangleShape2D_7ytml")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://wut6crka1xe3"]
+[gd_scene load_steps=40 format=3 uid="uid://wut6crka1xe3"]
 
 [ext_resource type="Texture2D" uid="uid://466g03u6o3o2" path="res://assets/nivel_2/fondo_santacruz.png" id="1_j3mkr"]
 [ext_resource type="Texture2D" uid="uid://by54wem0nyi86" path="res://assets/nivel_2/vegetación.png" id="2_dkmsn"]
@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://5pi7wyumqxdl" path="res://assets/final.png" id="18_ally5"]
 [ext_resource type="Texture2D" uid="uid://dvw6uqsklcmk3" path="res://assets/inicio.png" id="19_5yxkm"]
 [ext_resource type="PackedScene" uid="uid://b82tti85lgdav" path="res://nivel_2/nodos/piso_llamas.tscn" id="19_axkiq"]
-[ext_resource type="Texture2D" uid="uid://qj6ddelp5ebo" path="res://assets/nivel_2/tierraalsa.png" id="20_74bwm"]
 [ext_resource type="PackedScene" uid="uid://ce031om8goqsi" path="res://Personaje/Player.tscn" id="20_y4fxv"]
 [ext_resource type="PackedScene" uid="uid://rn8q0ir0mih7" path="res://nivel_2/nodos/flor.tscn" id="22_y6lf5"]
 [ext_resource type="PackedScene" uid="uid://bt1s8y8jbalg6" path="res://nivel_2/nodos/flor_armadura.tscn" id="23_6q0n0"]
@@ -72,9 +71,6 @@ size = Vector2(4.5, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tm28b"]
 size = Vector2(4.5, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_74bwm"]
-size = Vector2(9, 5)
 
 [node name="Nivel2" type="Node2D"]
 
@@ -893,15 +889,6 @@ shape = SubResource("RectangleShape2D_dkmsn")
 position = Vector2(476.75, 22)
 shape = SubResource("RectangleShape2D_tm28b")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(179, 16.75)
-scale = Vector2(0.0240196, 0.0269608)
-texture = ExtResource("20_74bwm")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(179, 20)
-shape = SubResource("RectangleShape2D_74bwm")
-
 [node name="piso_llamas" parent="." instance=ExtResource("19_axkiq")]
 position = Vector2(48, 19)
 
@@ -912,17 +899,17 @@ position = Vector2(96, 16)
 position = Vector2(23, 15)
 
 [node name="enemigo" parent="." instance=ExtResource("24_v8jnx")]
-position = Vector2(220, 14)
+position = Vector2(220, 15)
 collision_layer = 1
 
 [node name="jugador" parent="." instance=ExtResource("20_y4fxv")]
-position = Vector2(162, 17)
+position = Vector2(233, 16)
 
 [node name="Serpiente" parent="." instance=ExtResource("24_j3mkr")]
-position = Vector2(387, 16)
-
-[node name="PlataformaMovil2" parent="." instance=ExtResource("26_tm28b")]
-position = Vector2(357, 77)
+position = Vector2(355, 17)
 
 [node name="PlataformaMovil" parent="." instance=ExtResource("25_dkmsn")]
-position = Vector2(320, 78)
+position = Vector2(319, 79)
+
+[node name="PlataformaMovil2" parent="PlataformaMovil" instance=ExtResource("26_tm28b")]
+position = Vector2(37, -1)
