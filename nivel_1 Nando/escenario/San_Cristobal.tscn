@@ -1,0 +1,400 @@
+[gd_scene load_steps=30 format=3 uid="uid://kvpq7munv7d2"]
+
+[ext_resource type="Texture2D" uid="uid://2mthirojxgpc" path="res://assets/Nivel_1/fondo_santacruz.png" id="1_18gi3"]
+[ext_resource type="Texture2D" uid="uid://bjpeggq62r4q5" path="res://assets/Nivel_1/fondo_tierra.png" id="2_70s1p"]
+[ext_resource type="Texture2D" uid="uid://cj04lbcocncoy" path="res://assets/Nivel_1/playa.webp" id="2_vhwei"]
+[ext_resource type="Texture2D" uid="uid://q1wt8o5hh3ud" path="res://assets/Nivel_1/fondo final.webp" id="4_xjwsq"]
+[ext_resource type="Texture2D" uid="uid://d0m2gqeolf8i5" path="res://assets/Nivel_1/carro.png" id="5_u86tr"]
+[ext_resource type="Texture2D" uid="uid://b6ck2xs6piupq" path="res://assets/Nivel_1/controles_movimiento-removebg-preview.png" id="8_fcovq"]
+[ext_resource type="Texture2D" uid="uid://dwoe7inhinnmf" path="res://assets/Nivel_1/rocas.webp" id="9_70s1p"]
+[ext_resource type="Texture2D" uid="uid://crohh02fajrfi" path="res://assets/Nivel_1/arbusto.png" id="9_u86tr"]
+[ext_resource type="Texture2D" uid="uid://chjdhoaydoifb" path="res://assets/Nivel_1/cascada.png" id="10_02o5j"]
+[ext_resource type="Texture2D" uid="uid://cgquroqpotvx4" path="res://assets/Nivel_1/roca2.png" id="11_or3o3"]
+[ext_resource type="PackedScene" uid="uid://ce031om8goqsi" path="res://Personaje/Player.tscn" id="12_02o5j"]
+[ext_resource type="Texture2D" uid="uid://dxkw24fiu3qhy" path="res://assets/Nivel_1/click.png" id="12_or3o3"]
+[ext_resource type="PackedScene" uid="uid://bic50320ij4d2" path="res://nivel_1 Nando/nodos/jefe_nivel_1.tscn" id="13_bxep4"]
+[ext_resource type="Texture2D" uid="uid://buic22qh0ekks" path="res://assets/Nivel_1/cabana.png" id="13_or3o3"]
+[ext_resource type="PackedScene" uid="uid://h4purme361xt" path="res://nivel_1 Nando/nodos/centipide.tscn" id="14_u86tr"]
+[ext_resource type="Shader" uid="uid://bs5g1ebuvufyl" path="res://nivel_2/Shader/nube.gdshader" id="14_ws0ce"]
+[ext_resource type="PackedScene" uid="uid://dif08yv7qsngt" path="res://nivel_1 Nando/nodos/gorila.tscn" id="15_02o5j"]
+[ext_resource type="Texture2D" uid="uid://h78m8y6o3ftx" path="res://assets/nivel_2/nube.png" id="15_sd3sb"]
+[ext_resource type="PackedScene" uid="uid://d16f8v1i67l6t" path="res://Personaje/barra.tscn" id="18_ws0ce"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u86tr"]
+size = Vector2(27, 181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02o5j"]
+size = Vector2(381.44, 29.1875)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_or3o3"]
+radius = 4.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_krg4y"]
+radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttjyl"]
+shader = ExtResource("14_ws0ce")
+shader_parameter/speed = 0.03
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dp0yt"]
+shader = ExtResource("14_ws0ce")
+shader_parameter/speed = 0.03
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yrle"]
+size = Vector2(18.5, 1.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ws0ce"]
+a = Vector2(15, -3)
+b = Vector2(-1, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_or3o3"]
+size = Vector2(661.25, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws0ce"]
+size = Vector2(18.75, 2)
+
+[node name="Nivel 1" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(775, -65)
+
+[node name="Fondo Cielo" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1289, 47)
+scale = Vector2(4.27295, 0.0920354)
+texture = ExtResource("1_18gi3")
+
+[node name="base1" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-848.5, 92.25)
+scale = Vector2(0.0657552, 0.0385742)
+texture = ExtResource("2_70s1p")
+
+[node name="base2" type="Sprite2D" parent="StaticBody2D/base1"]
+position = Vector2(1513.19, -6.48106)
+texture = ExtResource("2_70s1p")
+
+[node name="base3" type="Sprite2D" parent="StaticBody2D/base1"]
+position = Vector2(3049.19, -6.48105)
+texture = ExtResource("2_70s1p")
+
+[node name="base4" type="Sprite2D" parent="StaticBody2D/base1"]
+position = Vector2(4569.98, -6.481)
+texture = ExtResource("2_70s1p")
+
+[node name="base5" type="Sprite2D" parent="StaticBody2D/base1"]
+position = Vector2(6060.36, -6.4811)
+texture = ExtResource("2_70s1p")
+
+[node name="Fondo Tierra1" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-837, 63.3125)
+scale = Vector2(0.0794271, 0.0384521)
+texture = ExtResource("2_vhwei")
+
+[node name="Fondo Tierra2" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
+position = Vector2(1208.66, -8.12759)
+scale = Vector2(0.573771, 1)
+texture = ExtResource("2_vhwei")
+
+[node name="Fondo Tierra3" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
+position = Vector2(2417.31, -8.12756)
+texture = ExtResource("2_vhwei")
+
+[node name="Fondo Tierra4" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
+position = Vector2(3625.97, -16.2552)
+scale = Vector2(0.573771, 1)
+texture = ExtResource("2_vhwei")
+
+[node name="Fondo Tierra5" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
+position = Vector2(4840.92, -8.12762)
+scale = Vector2(0.860658, 1)
+texture = ExtResource("2_vhwei")
+
+[node name="Fondo Tierra6" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
+position = Vector2(6433.58, 9.7511)
+scale = Vector2(0.573771, 1)
+texture = ExtResource("2_vhwei")
+
+[node name="Fondo Tierra7" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
+position = Vector2(7642.23, 9.7511)
+texture = ExtResource("2_vhwei")
+
+[node name="Fondo Tierra8" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
+position = Vector2(8850.89, 1.62341)
+scale = Vector2(0.573771, 1)
+texture = ExtResource("2_vhwei")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-900, -8)
+shape = SubResource("RectangleShape2D_u86tr")
+
+[node name="Fondo Final" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1782, -126)
+scale = Vector2(0.260092, 0.195313)
+texture = ExtResource("4_xjwsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-705, 91)
+shape = SubResource("RectangleShape2D_02o5j")
+
+[node name="carro" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-871.938, 73)
+scale = Vector2(0.0390117, 0.0392157)
+texture = ExtResource("5_u86tr")
+
+[node name="rocas 1" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-769, 71.2969)
+scale = Vector2(0.0233561, 0.0181579)
+texture = ExtResource("9_70s1p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-777, 75)
+shape = SubResource("CapsuleShape2D_or3o3")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-771, 76)
+shape = SubResource("CircleShape2D_krg4y")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-758, 77)
+shape = SubResource("CircleShape2D_krg4y")
+
+[node name="arbusto" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-513, 69)
+scale = Vector2(0.0445263, 0.0275735)
+texture = ExtResource("9_u86tr")
+
+[node name="arbusto2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-711, 69)
+scale = Vector2(0.0280841, 0.0230928)
+texture = ExtResource("9_u86tr")
+
+[node name="arbusto3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-586.245, 68.8476)
+scale = Vector2(0.0269446, 0.025257)
+texture = ExtResource("9_u86tr")
+
+[node name="arbusto4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-503, 69)
+scale = Vector2(0.0269446, 0.025257)
+texture = ExtResource("9_u86tr")
+
+[node name="arbusto5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-705, 69)
+scale = Vector2(0.0425265, 0.0265059)
+texture = ExtResource("9_u86tr")
+
+[node name="cascada" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-510, 74)
+scale = Vector2(0.0941586, 0.0953967)
+texture = ExtResource("10_02o5j")
+
+[node name="miniroca1" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-529, 74)
+scale = Vector2(0.0140476, 0.0143281)
+texture = ExtResource("11_or3o3")
+
+[node name="Nube" type="Sprite2D" parent="StaticBody2D"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(-865, 39)
+scale = Vector2(0.064951, 0.0432718)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube2" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(1019.23, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube3" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(307.924, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube4" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(1878.34, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube5" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(2032.3, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube6" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(3048.45, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube7" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(4064.6, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube8" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(5080.75, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube9" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(6096.9, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube10" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(7097.66, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube11" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(3448.75, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube12" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(5019.17, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube13" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(6589.58, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube14" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(8160, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube15" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(-239, 30)
+scale = Vector2(0.064951, 0.0432718)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube2" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(1019.23, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube3" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(307.924, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube4" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(1878.34, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube5" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(2032.3, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube6" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(3048.45, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube7" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(4064.6, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube8" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(5080.75, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube9" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(6096.9, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube10" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(7097.66, 0)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube11" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_ttjyl")
+position = Vector2(3448.75, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube12" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(5019.17, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube13" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(6589.58, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="Nube14" type="Sprite2D" parent="StaticBody2D/Nube/Nube15"]
+material = SubResource("ShaderMaterial_dp0yt")
+position = Vector2(8160, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("15_sd3sb")
+
+[node name="movimientos" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-834, 50)
+scale = Vector2(0.0259396, 0.0214461)
+texture = ExtResource("8_fcovq")
+
+[node name="cabana" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-651.688, 61.75)
+scale = Vector2(0.123162, 0.11152)
+texture = ExtResource("13_or3o3")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-671.25, 64.75)
+shape = SubResource("RectangleShape2D_8yrle")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-659, 67)
+shape = SubResource("SegmentShape2D_ws0ce")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-174.375, 92)
+shape = SubResource("RectangleShape2D_or3o3")
+
+[node name="miniroca2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-519, 75)
+scale = Vector2(0.0108334, 0.0190217)
+texture = ExtResource("11_or3o3")
+
+[node name="disparar" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-739.437, 50.938)
+scale = Vector2(0.0210376, 0.0193015)
+texture = ExtResource("12_or3o3")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-633.375, 65)
+shape = SubResource("RectangleShape2D_ws0ce")
+
+[node name="Jefe_nivel1" parent="." instance=ExtResource("13_bxep4")]
+position = Vector2(216, -76)
+
+[node name="jugador" parent="." instance=ExtResource("12_02o5j")]
+position = Vector2(-90, 9)
+
+[node name="Centipide" parent="." instance=ExtResource("14_u86tr")]
+position = Vector2(43, -124)
+
+[node name="Gorila" parent="." instance=ExtResource("15_02o5j")]
+position = Vector2(14, -54)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BarraVida" parent="CanvasLayer" instance=ExtResource("18_ws0ce")]

@@ -1,0 +1,177 @@
+[gd_scene load_steps=25 format=3 uid="uid://dif08yv7qsngt"]
+
+[ext_resource type="Script" uid="uid://q662xoncs4ea" path="res://scripts/gorila.gd" id="1_5tsy0"]
+[ext_resource type="Texture2D" uid="uid://dusb33r5ax07v" path="res://assets/Nivel_1/3 Big bloated/ataque_cuerpo.png" id="1_pb1be"]
+[ext_resource type="Texture2D" uid="uid://dp8mogvyytno0" path="res://assets/Nivel_1/3 Big bloated/Big_bloated_walk.png" id="2_5tsy0"]
+[ext_resource type="Texture2D" uid="uid://bp60b5edv0c6y" path="res://assets/Nivel_1/3 Big bloated/Big_bloated_hurt.png" id="3_vm8w3"]
+[ext_resource type="Texture2D" uid="uid://bnl7l3ysnij5j" path="res://assets/Nivel_1/3 Big bloated/Big_bloated_death.png" id="4_agoei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnxan"]
+atlas = ExtResource("1_pb1be")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne7u6"]
+atlas = ExtResource("1_pb1be")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_micge"]
+atlas = ExtResource("1_pb1be")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1npu"]
+atlas = ExtResource("1_pb1be")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy4f3"]
+atlas = ExtResource("2_5tsy0")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6b85"]
+atlas = ExtResource("2_5tsy0")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0giwb"]
+atlas = ExtResource("2_5tsy0")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g18sm"]
+atlas = ExtResource("2_5tsy0")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3v12"]
+atlas = ExtResource("2_5tsy0")
+region = Rect2(288, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6oue"]
+atlas = ExtResource("2_5tsy0")
+region = Rect2(360, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4duo5"]
+atlas = ExtResource("3_vm8w3")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wxe5"]
+atlas = ExtResource("3_vm8w3")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7tca"]
+atlas = ExtResource("4_agoei")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1hik"]
+atlas = ExtResource("4_agoei")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf8tp"]
+atlas = ExtResource("4_agoei")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3yva"]
+atlas = ExtResource("4_agoei")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5xbur"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnxan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne7u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_micge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1npu")
+}],
+"loop": false,
+"name": &"gorila_ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wy4f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6b85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0giwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g18sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3v12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6oue")
+}],
+"loop": true,
+"name": &"gorila_caminata",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4duo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wxe5")
+}],
+"loop": true,
+"name": &"gorila_hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7tca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1hik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf8tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3yva")
+}],
+"loop": false,
+"name": &"gorila_muerte",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ljq0"]
+size = Vector2(6.5, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gecup"]
+size = Vector2(6, 6.25)
+
+[node name="Gorila" type="CharacterBody2D"]
+script = ExtResource("1_5tsy0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(46, 58.5)
+scale = Vector2(0.138889, 0.152778)
+sprite_frames = SubResource("SpriteFrames_5xbur")
+animation = &"gorila_ataque"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(47.75, 61)
+shape = SubResource("RectangleShape2D_4ljq0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(46, 60.875)
+shape = SubResource("RectangleShape2D_gecup")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

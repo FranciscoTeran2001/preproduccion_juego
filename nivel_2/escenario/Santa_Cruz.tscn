@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://wut6crka1xe3"]
+[gd_scene load_steps=43 format=3 uid="uid://wut6crka1xe3"]
 
 [ext_resource type="Texture2D" uid="uid://466g03u6o3o2" path="res://assets/nivel_2/fondo_santacruz.png" id="1_j3mkr"]
 [ext_resource type="Texture2D" uid="uid://by54wem0nyi86" path="res://assets/nivel_2/vegetación.png" id="2_dkmsn"]
@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://bjefj5usp3np0" path="res://nivel_2/nodos/plataforma_movil.tscn" id="25_dkmsn"]
 [ext_resource type="PackedScene" uid="uid://bkxjjpvtdmgvk" path="res://nivel_2/nodos/plataforma_movil2.tscn" id="26_tm28b"]
 [ext_resource type="PackedScene" uid="uid://d16f8v1i67l6t" path="res://Personaje/barra.tscn" id="28_mhiia"]
-[ext_resource type="Texture2D" uid="uid://c2ht0vumemx0j" path="res://assets/dardo.png" id="29_sufx4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfivp"]
 shader = ExtResource("3_tm28b")
@@ -80,11 +79,16 @@ size = Vector2(12, 6.5)
 
 [node name="Nivel2" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BarraVida" parent="CanvasLayer" instance=ExtResource("28_mhiia")]
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 2)
 
 [node name="Fondo" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(273, -6)
-scale = Vector2(0.668945, 0.0795929)
+position = Vector2(273, -12.7575)
+scale = Vector2(0.668945, 0.103513)
 texture = ExtResource("1_j3mkr")
 
 [node name="Nube" type="Sprite2D" parent="StaticBody2D"]
@@ -606,8 +610,8 @@ scale = Vector2(1.2083, 1.1758)
 texture = ExtResource("10_3y47k")
 
 [node name="piso" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(-48, 14)
-scale = Vector2(0.0281863, 0.0243719)
+position = Vector2(-48, 14.2665)
+scale = Vector2(0.0281863, 0.0249383)
 texture = ExtResource("6_mhiia")
 
 [node name="piso2" type="Sprite2D" parent="StaticBody2D/piso"]
@@ -816,7 +820,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_sykvh")
 
 [node name="colision_piso2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(67, 22)
+position = Vector2(67, 23)
 shape = SubResource("RectangleShape2D_symxa")
 
 [node name="colision_piso3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -917,17 +921,17 @@ shape = SubResource("RectangleShape2D_8u613")
 position = Vector2(48, 19)
 
 [node name="flor_curativa" parent="." instance=ExtResource("22_y6lf5")]
-position = Vector2(96, 16)
+position = Vector2(263, 15)
 
 [node name="flor_armadura" parent="." instance=ExtResource("23_6q0n0")]
-position = Vector2(23, 15)
+position = Vector2(369, 13)
 
 [node name="enemigo" parent="." instance=ExtResource("24_v8jnx")]
-position = Vector2(132, 15)
+position = Vector2(254, 15)
 collision_layer = 1
 
 [node name="jugador" parent="." instance=ExtResource("20_y4fxv")]
-position = Vector2(-18, 16)
+position = Vector2(-29, 17)
 
 [node name="Serpiente" parent="." instance=ExtResource("24_j3mkr")]
 position = Vector2(396, 16)
@@ -937,28 +941,3 @@ position = Vector2(379, 78)
 
 [node name="PlataformaMovil" parent="." instance=ExtResource("25_dkmsn")]
 position = Vector2(342, 79)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="BarraVida" parent="CanvasLayer" instance=ExtResource("28_mhiia")]
-anchors_preset = -1
-offset_left = -20.0
-offset_top = 9.0
-offset_right = 1004.0
-offset_bottom = 1033.0
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(-20, -24)
-scale = Vector2(0.00219727, 0.00170898)
-texture = ExtResource("29_sufx4")
-
-[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/Sprite2D"]
-position = Vector2(1820.44, 0)
-scale = Vector2(1, 1)
-texture = ExtResource("29_sufx4")
-
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/Sprite2D"]
-position = Vector2(910.221, 0)
-scale = Vector2(1, 1)
-texture = ExtResource("29_sufx4")

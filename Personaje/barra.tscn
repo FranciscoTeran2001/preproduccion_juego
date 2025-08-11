@@ -1,14 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://d16f8v1i67l6t"]
 
-[ext_resource type="Texture2D" uid="uid://c0dmw0s7ocoqu" path="res://Myassents/barra_vacia.png" id="1_2qkg3"]
-[ext_resource type="Texture2D" uid="uid://bc1sk88uunf56" path="res://Myassents/vida.png" id="2_u6kfo"]
+[ext_resource type="Texture2D" uid="uid://c0dmw0s7ocoqu" path="res://assets/barra_vacia.png" id="1_2qkg3"]
+[ext_resource type="Texture2D" uid="uid://bc1sk88uunf56" path="res://assets/vida.png" id="2_u6kfo"]
 
 [node name="BarraVida" type="TextureProgressBar"]
-offset_left = -5.0
-offset_top = -4.0
-offset_right = 1019.0
-offset_bottom = 1020.0
-scale = Vector2(0.01, 0.01)
+offset_right = 1024.0
+offset_bottom = 1024.0
+scale = Vector2(0.5, 0.5)
 max_value = 125.0
 value = 125.0
 texture_under = ExtResource("1_2qkg3")

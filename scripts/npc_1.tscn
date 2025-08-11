@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://48y5n6cgdj7w"]
+
+[ext_resource type="Texture2D" uid="uid://cgiifh3nxr3qg" path="res://Myassents/Nivel_1/npcs/City_men_1/Idle.png" id="1_03dtn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oufk2"]
+atlas = ExtResource("1_03dtn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2ccq"]
+atlas = ExtResource("1_03dtn")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjngn"]
+atlas = ExtResource("1_03dtn")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gj78"]
+atlas = ExtResource("1_03dtn")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sbfe"]
+atlas = ExtResource("1_03dtn")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb3bf"]
+atlas = ExtResource("1_03dtn")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4w5we"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oufk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2ccq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjngn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gj78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sbfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb3bf")
+}],
+"loop": true,
+"name": &"inactivo",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hmhe"]
+size = Vector2(7, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7nr0"]
+size = Vector2(8, 14)
+
+[node name="npc1" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-26, 43)
+scale = Vector2(0.226563, 0.175781)
+sprite_frames = SubResource("SpriteFrames_4w5we")
+animation = &"inactivo"
+frame_progress = 0.241094
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-27, 48)
+shape = SubResource("RectangleShape2D_2hmhe")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-27, 48)
+shape = SubResource("RectangleShape2D_i7nr0")

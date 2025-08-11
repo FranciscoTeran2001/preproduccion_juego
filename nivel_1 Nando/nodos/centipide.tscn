@@ -1,0 +1,207 @@
+[gd_scene load_steps=30 format=3 uid="uid://h4purme361xt"]
+
+[ext_resource type="Texture2D" uid="uid://hhkvh24l136p" path="res://Myassents/Nivel_1/1 Centipede/Centipede_attack2.png" id="1_n7a5i"]
+[ext_resource type="Script" uid="uid://ci3kisbnwalix" path="res://scripts/centipide.gd" id="1_pdhgn"]
+[ext_resource type="Texture2D" uid="uid://ct8ra4vuri5jb" path="res://Myassents/Nivel_1/1 Centipede/Centipede_walk.png" id="2_pdhgn"]
+[ext_resource type="Texture2D" uid="uid://cc8uw81sg0ypy" path="res://Myassents/Nivel_1/1 Centipede/Centipede_hurt.png" id="3_w3he5"]
+[ext_resource type="Texture2D" uid="uid://dhs2yo0t6nkma" path="res://Myassents/Nivel_1/1 Centipede/Centipede_idle.png" id="4_vf1of"]
+[ext_resource type="Texture2D" uid="uid://ktirsxomuxb6" path="res://Myassents/Nivel_1/1 Centipede/Centipede_death.png" id="5_3bjk2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx7jk"]
+atlas = ExtResource("1_n7a5i")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq5v4"]
+atlas = ExtResource("1_n7a5i")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq4e8"]
+atlas = ExtResource("1_n7a5i")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4afp"]
+atlas = ExtResource("1_n7a5i")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix43j"]
+atlas = ExtResource("1_n7a5i")
+region = Rect2(288, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03gm5"]
+atlas = ExtResource("1_n7a5i")
+region = Rect2(360, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47t88"]
+atlas = ExtResource("2_pdhgn")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjtnp"]
+atlas = ExtResource("2_pdhgn")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be01s"]
+atlas = ExtResource("2_pdhgn")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp3ju"]
+atlas = ExtResource("2_pdhgn")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkwqf"]
+atlas = ExtResource("3_w3he5")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dugwn"]
+atlas = ExtResource("3_w3he5")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkwht"]
+atlas = ExtResource("4_vf1of")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvyrt"]
+atlas = ExtResource("4_vf1of")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igt61"]
+atlas = ExtResource("4_vf1of")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s55g5"]
+atlas = ExtResource("4_vf1of")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqw7i"]
+atlas = ExtResource("5_3bjk2")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0md66"]
+atlas = ExtResource("5_3bjk2")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjbju"]
+atlas = ExtResource("5_3bjk2")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5e2c"]
+atlas = ExtResource("5_3bjk2")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26aky"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx7jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq5v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq4e8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4afp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix43j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03gm5")
+}],
+"loop": true,
+"name": &"centipide_ataque1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47t88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjtnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be01s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp3ju")
+}],
+"loop": true,
+"name": &"centipide_caminata",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkwqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dugwn")
+}],
+"loop": true,
+"name": &"centipide_hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkwht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvyrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igt61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s55g5")
+}],
+"loop": true,
+"name": &"centipide_inactivo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqw7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0md66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjbju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5e2c")
+}],
+"loop": true,
+"name": &"centipide_muerte",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8jpp"]
+size = Vector2(5, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwfpi"]
+size = Vector2(5, 3)
+
+[node name="Centipide" type="CharacterBody2D"]
+script = ExtResource("1_pdhgn")
+
+[node name="centipide" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, 72)
+scale = Vector2(0.111111, 0.0833335)
+sprite_frames = SubResource("SpriteFrames_26aky")
+animation = &"centipide_hurt"
+frame_progress = 0.689692
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13.5, 73.5)
+shape = SubResource("RectangleShape2D_c8jpp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(13.5, 73.5)
+shape = SubResource("RectangleShape2D_bwfpi")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://ce031om8goqsi"]
+[gd_scene load_steps=114 format=3 uid="uid://ce031om8goqsi"]
 
 [ext_resource type="PackedScene" uid="uid://dsvlswyiokh2t" path="res://Personaje/BalaArea2D.tscn" id="1_8uaeg"]
 [ext_resource type="Texture2D" uid="uid://bxog2tu7yhb43" path="res://Personaje/normal/Attack_1.png" id="1_e8xpl"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://oftmmwb1auam" path="res://Personaje/normal/Run.png" id="8_0uo38"]
 [ext_resource type="Texture2D" uid="uid://b4b0etgb25x4n" path="res://Personaje/normal/Shot.png" id="9_60530"]
 [ext_resource type="Texture2D" uid="uid://bswyah1jgou60" path="res://Personaje/normal/Walk.png" id="10_w7cp6"]
-[ext_resource type="Texture2D" uid="uid://c2ht0vumemx0j" path="res://assets/dardo.png" id="15_fdbxi"]
 [ext_resource type="AudioStream" uid="uid://ctmkxmgt4e3wb" path="res://efectos_sonidos/walk.mp3" id="17_db7tr"]
 [ext_resource type="AudioStream" uid="uid://dttvtgafilchd" path="res://efectos_sonidos/jump.mp3" id="18_hr85y"]
 [ext_resource type="AudioStream" uid="uid://c6bu85vhuspni" path="res://efectos_sonidos/dead.mp3" id="19_6xc2w"]
@@ -35,7 +34,6 @@ const LOW_JUMP_MULTIPLIER = 0.8
 const LIMITE_CAIDA_Y = 20.0
 
 var posicion_fija_camara := Vector2.ZERO
-var camara_siguiendo := true
 var tiene_armadura := false
 var esta_muerto := false
 var ya_inicio_muerte_caida := false
@@ -133,7 +131,6 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	verificar_caida_para_camara(delta)
-	controlar_camara_en_saltos()
 	
 	if Input.is_action_just_pressed(\"disparar\"):
 		if puede_disparar and not esta_disparando and is_on_floor():
@@ -184,25 +181,23 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func controlar_camara_en_saltos() -> void:
-	if not has_node(\"Camera2D\"):
-		return
-	
-	var camara = $Camera2D
-	
-	if is_on_floor() and not camara_siguiendo:
-		camara.position_smoothing_enabled = true
-		camara_siguiendo = true
-	elif not is_on_floor() and camara_siguiendo:
-		camara.position_smoothing_enabled = false
-		camara_siguiendo = false
+
 
 func verificar_caida_para_camara(delta: float) -> void:
 	if global_position.y > LIMITE_CAIDA_Y:
 		if not ya_inicio_muerte_caida:
 			ya_inicio_muerte_caida = true
+			print(\"🔥 ¡Jugador cayendo! Muerte en 2 segundos...\")
 			fijar_camara_en_posicion()
+			
+			# DELAY de 2 segundos antes de morir
+			await get_tree().create_timer(0.5).timeout
+			
+			# Después del delay, poner vida a 0 y morir
+			bajar_vida(125)
 			reproducir_sonido_seguro(sonido_muerte)
+			await morir()
+			
 
 func fijar_camara_en_posicion() -> void:
 	if has_node(\"Camera2D\"):
@@ -210,6 +205,9 @@ func fijar_camara_en_posicion() -> void:
 		posicion_fija_camara = camara.global_position
 		camara.position_smoothing_enabled = false
 		hacer_camara_independiente()
+	
+		
+		
 
 func hacer_camara_independiente() -> void:
 	if has_node(\"Camera2D\"):
@@ -295,39 +293,9 @@ func marcar_posicion_actual_como_fija() -> void:
 	else:
 		posicion_fija_camara = global_position + Vector2(0, -10)
 
-func reactivar_seguimiento_camara() -> void:
-	var camara_en_nivel = get_parent().get_node_or_null(\"Camera2D\")
-	if camara_en_nivel:
-		get_parent().remove_child(camara_en_nivel)
-		add_child(camara_en_nivel)
-		camara_en_nivel.position = Vector2(6, -10)
-		camara_en_nivel.position_smoothing_enabled = true
-		camara_siguiendo = true
-	elif has_node(\"Camera2D\"):
-		var camara = $Camera2D
-		camara.position_smoothing_enabled = true
-		camara_siguiendo = true
 
-func resetear_control_caida() -> void:
-	ya_inicio_muerte_caida = false
-	camara_siguiendo = true
-	reactivar_seguimiento_camara()
 
-func teletransportar_a_seguro(posicion: Vector2) -> void:
-	global_position = posicion
-	velocity = Vector2.ZERO
-	resetear_control_caida()
 
-func alternar_camara_fija_saltos(activar: bool) -> void:
-	if not activar and has_node(\"Camera2D\"):
-		$Camera2D.position_smoothing_enabled = true
-		camara_siguiendo = true
-
-func forzar_reactivacion_camara() -> void:
-	if has_node(\"Camera2D\"):
-		var camara = $Camera2D
-		camara.position_smoothing_enabled = true
-		camara_siguiendo = true
 
 # SISTEMA DE VIDA Y DAÑO
 func bajar_vida(cantidad: int) -> void:
@@ -1105,8 +1073,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8unad"]
-size = Vector2(2, 6.8)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pipto"]
+radius = 1.0
+height = 8.0
 
 [node name="jugador" type="CharacterBody2D"]
 script = SubResource("GDScript_e8xpl")
@@ -1120,36 +1089,20 @@ sprite_frames = SubResource("SpriteFrames_e8xpl")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(7, -7)
-rotation = 6.28319
+position = Vector2(5, -16)
 offset = Vector2(10, 0)
-zoom = Vector2(45, 30)
-limit_left = -10000006
+ignore_rotation = false
+zoom = Vector2(40, 20)
+limit_left = -1000
 position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-drag_horizontal_enabled = true
+position_smoothing_speed = 8.0
 drag_left_margin = 0.05
 drag_right_margin = 0.05
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -0.9)
-shape = SubResource("RectangleShape2D_8unad")
+position = Vector2(2, -1)
+shape = SubResource("CapsuleShape2D_pipto")
 one_way_collision_margin = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-20, -24)
-scale = Vector2(0.00219727, 0.00170898)
-texture = ExtResource("15_fdbxi")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(1820.44, 0)
-scale = Vector2(1, 1)
-texture = ExtResource("15_fdbxi")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(910.221, 0)
-scale = Vector2(1, 1)
-texture = ExtResource("15_fdbxi")
 
 [node name="SonidoPasos" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_db7tr")
