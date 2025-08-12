@@ -1,6 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://b4jil023rco6c"]
+[gd_scene load_steps=32 format=3 uid="uid://b4jil023rco6c"]
 
 [ext_resource type="Texture2D" uid="uid://0daah5p45aw3" path="res://nivel_5/enemigos/Boss/big_boss.png" id="1_b6oxp"]
+[ext_resource type="Script" uid="uid://wfyrljx1qvdf" path="res://scripts/boss.gd" id="1_h2k0m"]
+[ext_resource type="Script" uid="uid://1744rfpvv0qd" path="res://scripts/boss_effects_manager.gd" id="3_qbo05"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6oxp"]
 atlas = ExtResource("1_b6oxp")
@@ -200,13 +202,16 @@ height = 32.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quiff"]
 radius = 8.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a655o"]
+height = 34.0
+
 [node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_h2k0m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.306452, 0.3)
 sprite_frames = SubResource("SpriteFrames_1h2ti")
-animation = &"angry1"
-frame_progress = 0.390378
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_b6oxp")
@@ -215,3 +220,42 @@ shape = SubResource("CapsuleShape2D_b6oxp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("CapsuleShape2D_quiff")
+
+[node name="EffectsContainer" type="Node2D" parent="."]
+script = ExtResource("3_qbo05")
+
+[node name="RageParticles" type="CPUParticles2D" parent="EffectsContainer"]
+
+[node name="ChargeParticles" type="CPUParticles2D" parent="EffectsContainer"]
+
+[node name="AreaAttackEffect" type="Node2D" parent="EffectsContainer"]
+
+[node name="WarningCircle" type="Line2D" parent="EffectsContainer/AreaAttackEffect"]
+
+[node name="ExplosionEffect" type="CPUParticles2D" parent="EffectsContainer/AreaAttackEffect"]
+
+[node name="HealthBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBackground" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthFill" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthLabel" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CapsuleShape2D_a655o")
