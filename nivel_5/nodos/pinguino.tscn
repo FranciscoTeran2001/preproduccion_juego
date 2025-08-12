@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://jm8qb3l32t1n"]
+
+[ext_resource type="Texture2D" uid="uid://hrnl1as6oaut" path="res://nivel_5/enemigos/Penguin/penguin.png" id="1_d3p15"]
+[ext_resource type="Script" uid="uid://4wd42jqgg6qx" path="res://scripts/pinguino.gd" id="1_tec4x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ko0o"]
+atlas = ExtResource("1_d3p15")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnnah"]
+atlas = ExtResource("1_d3p15")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg35a"]
+atlas = ExtResource("1_d3p15")
+region = Rect2(64, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48u7d"]
+atlas = ExtResource("1_d3p15")
+region = Rect2(96, 16, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7l8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ko0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnnah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vg35a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48u7d")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37m3f"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tec4x"]
+radius = 2.0
+
+[node name="Pinguino" type="CharacterBody2D"]
+script = ExtResource("1_tec4x")
+
+[node name="RayCast_suelo" type="RayCast2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.171875, 0.25)
+sprite_frames = SubResource("SpriteFrames_e7l8e")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_37m3f")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_tec4x")

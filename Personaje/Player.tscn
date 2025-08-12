@@ -1,30 +1,32 @@
 [gd_scene load_steps=114 format=3 uid="uid://ce031om8goqsi"]
 
 [ext_resource type="PackedScene" uid="uid://dsvlswyiokh2t" path="res://Personaje/BalaArea2D.tscn" id="1_8uaeg"]
-[ext_resource type="Texture2D" uid="uid://bxog2tu7yhb43" path="res://Personaje/normal/Attack_1.png" id="1_e8xpl"]
-[ext_resource type="Texture2D" uid="uid://ptn1o5wxc0gr" path="res://Personaje/escudo/Run.png" id="2_c18lw"]
-[ext_resource type="Texture2D" uid="uid://c3s0fsccbr30m" path="res://Personaje/normal/Attack_2.png" id="2_y701l"]
-[ext_resource type="Texture2D" uid="uid://bkexkmc6gke3g" path="res://Personaje/escudo/Shot_1.png" id="3_i4lpm"]
-[ext_resource type="Texture2D" uid="uid://kp2ns3n71ayr" path="res://Personaje/escudo/Idle.png" id="3_kjt6i"]
-[ext_resource type="Texture2D" uid="uid://dvgw330o2j2ru" path="res://Personaje/normal/Dead.png" id="3_uv3yo"]
-[ext_resource type="Texture2D" uid="uid://3jn3n4oansmt" path="res://Personaje/normal/Hurt.png" id="4_0ax5s"]
-[ext_resource type="Texture2D" uid="uid://dhwp8kliox54" path="res://Personaje/normal/Idle.png" id="5_c18lw"]
-[ext_resource type="Texture2D" uid="uid://uqlofwy8t6ty" path="res://Personaje/normal/Jump.png" id="6_kjt6i"]
-[ext_resource type="Texture2D" uid="uid://batwxk0kn4wi5" path="res://Personaje/normal/Recharge.png" id="7_ray7a"]
-[ext_resource type="Texture2D" uid="uid://oftmmwb1auam" path="res://Personaje/normal/Run.png" id="8_0uo38"]
-[ext_resource type="Texture2D" uid="uid://b4b0etgb25x4n" path="res://Personaje/normal/Shot.png" id="9_60530"]
-[ext_resource type="Texture2D" uid="uid://bswyah1jgou60" path="res://Personaje/normal/Walk.png" id="10_w7cp6"]
-[ext_resource type="AudioStream" uid="uid://ctmkxmgt4e3wb" path="res://efectos_sonidos/walk.mp3" id="17_db7tr"]
-[ext_resource type="AudioStream" uid="uid://dttvtgafilchd" path="res://efectos_sonidos/jump.mp3" id="18_hr85y"]
-[ext_resource type="AudioStream" uid="uid://c6bu85vhuspni" path="res://efectos_sonidos/dead.mp3" id="19_6xc2w"]
-[ext_resource type="AudioStream" uid="uid://rhycjt4dgfbc" path="res://efectos_sonidos/hurt.mp3" id="20_imvnc"]
-[ext_resource type="AudioStream" uid="uid://bfe3w6luvcv3n" path="res://efectos_sonidos/shoot.mp3" id="21_pipto"]
-[ext_resource type="AudioStream" uid="uid://cansbw8ofq7t2" path="res://efectos_sonidos/flor_vida.mp3" id="22_8unad"]
-[ext_resource type="AudioStream" uid="uid://d317g46y5r1ix" path="res://efectos_sonidos/flor_armadura.mp3" id="23_i4lpm"]
+[ext_resource type="Texture2D" uid="uid://b4jti1cludsd8" path="res://Personaje/normal/Attack_1.png" id="1_e8xpl"]
+[ext_resource type="Texture2D" uid="uid://tb3mi2kc8vve" path="res://Personaje/escudo/Run.png" id="2_c18lw"]
+[ext_resource type="Texture2D" uid="uid://c6lu5uxtdytst" path="res://Personaje/normal/Attack_2.png" id="2_y701l"]
+[ext_resource type="Texture2D" uid="uid://dv0hb6knsbeun" path="res://Personaje/escudo/Shot_1.png" id="3_i4lpm"]
+[ext_resource type="Texture2D" uid="uid://owlr0tdjajd4" path="res://Personaje/escudo/Idle.png" id="3_kjt6i"]
+[ext_resource type="Texture2D" uid="uid://d15pkqu4oektl" path="res://Personaje/normal/Dead.png" id="3_uv3yo"]
+[ext_resource type="Texture2D" uid="uid://mu6unuo5fx7p" path="res://Personaje/normal/Hurt.png" id="4_0ax5s"]
+[ext_resource type="Texture2D" uid="uid://dhtiwkg56byvp" path="res://Personaje/normal/Idle.png" id="5_c18lw"]
+[ext_resource type="Texture2D" uid="uid://duynmd41cipju" path="res://Personaje/normal/Jump.png" id="6_kjt6i"]
+[ext_resource type="Texture2D" uid="uid://b3yr41wx5glgc" path="res://Personaje/normal/Recharge.png" id="7_ray7a"]
+[ext_resource type="Texture2D" uid="uid://bryfjuc0othdb" path="res://Personaje/normal/Run.png" id="8_0uo38"]
+[ext_resource type="Texture2D" uid="uid://gqc2dvd068qw" path="res://Personaje/normal/Shot.png" id="9_60530"]
+[ext_resource type="Texture2D" uid="uid://cqsrjg27smhae" path="res://Personaje/normal/Walk.png" id="10_w7cp6"]
+[ext_resource type="AudioStream" uid="uid://dab0mtgglp617" path="res://efectos_sonidos/walk.mp3" id="17_db7tr"]
+[ext_resource type="AudioStream" uid="uid://crysdaqu4r7gk" path="res://efectos_sonidos/jump.mp3" id="18_hr85y"]
+[ext_resource type="AudioStream" uid="uid://bdov4ad8cjdwe" path="res://efectos_sonidos/dead.mp3" id="19_6xc2w"]
+[ext_resource type="AudioStream" uid="uid://bdi53doxwupw4" path="res://efectos_sonidos/hurt.mp3" id="20_imvnc"]
+[ext_resource type="AudioStream" uid="uid://bupl57to5nx0e" path="res://efectos_sonidos/shoot.mp3" id="21_pipto"]
+[ext_resource type="AudioStream" uid="uid://2tuvu277wxni" path="res://efectos_sonidos/flor_vida.mp3" id="22_8unad"]
+[ext_resource type="AudioStream" uid="uid://cqiriu827pn2l" path="res://efectos_sonidos/flor_armadura.mp3" id="23_i4lpm"]
 
 [sub_resource type="GDScript" id="GDScript_e8xpl"]
 script/source = "# Script del jugador con UI fija corregida
 extends CharacterBody2D
+
+signal player_died
 
 const SPEED = 20.0
 const JUMP_VELOCITY = -60.0
@@ -130,7 +132,7 @@ func _physics_process(delta: float) -> void:
 	if esta_muerto:
 		return
 	
-	verificar_caida_para_camara(delta)
+	verificar_caida_para_camara()
 	
 	if Input.is_action_just_pressed(\"disparar\"):
 		if puede_disparar and not esta_disparando and is_on_floor():
@@ -183,7 +185,7 @@ func _physics_process(delta: float) -> void:
 
 
 
-func verificar_caida_para_camara(delta: float) -> void:
+func verificar_caida_para_camara() -> void:
 	if global_position.y > LIMITE_CAIDA_Y:
 		if not ya_inicio_muerte_caida:
 			ya_inicio_muerte_caida = true
@@ -367,6 +369,7 @@ func morir() -> void:
 		return
 	esta_muerto = true
 	
+	emit_signal(\"player_died\")
 	reproducir_sonido_seguro(sonido_muerte)
 	detener_sonido_seguro(sonido_pasos)
 	

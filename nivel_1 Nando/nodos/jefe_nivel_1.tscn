@@ -1,12 +1,15 @@
-[gd_scene load_steps=43 format=3 uid="uid://bic50320ij4d2"]
+[gd_scene load_steps=46 format=3 uid="uid://bic50320ij4d2"]
 
-[ext_resource type="Texture2D" uid="uid://cbu1fpma8kewt" path="res://Myassents/Nivel_1/jefe1/Walk.png" id="1_kjbin"]
-[ext_resource type="Script" uid="uid://eb5qgksdwb7j" path="res://scripts/jefe_nivel_1.gd" id="1_qbrw1"]
-[ext_resource type="Texture2D" uid="uid://67q4mrojjnhy" path="res://Myassents/Nivel_1/jefe1/Hurt.png" id="2_qbrw1"]
-[ext_resource type="Texture2D" uid="uid://c0pghrc8sfxaa" path="res://Myassents/Nivel_1/jefe1/Attack1.png" id="3_i8vq2"]
-[ext_resource type="Texture2D" uid="uid://cshxw8xtjqahp" path="res://Myassents/Nivel_1/jefe1/Idle.png" id="4_0xwpa"]
-[ext_resource type="Texture2D" uid="uid://dj23k2ncd8mdb" path="res://Myassents/Nivel_1/jefe1/Attack2.png" id="5_yu72r"]
-[ext_resource type="Texture2D" uid="uid://coowekit2ldcq" path="res://Myassents/Nivel_1/jefe1/Death.png" id="6_75u84"]
+[ext_resource type="Texture2D"  path="res://assets/Nivel_1/jefe1/Walk.png" id="1_kjbin"]
+[ext_resource type="Script"  path="res://scripts/jefe_nivel_1.gd" id="1_qbrw1"]
+[ext_resource type="Texture2D"  path="res://assets/Nivel_1/jefe1/Hurt.png" id="2_qbrw1"]
+[ext_resource type="Texture2D" path="res://assets/Nivel_1/jefe1/Attack1.png" id="3_i8vq2"]
+[ext_resource type="Texture2D"  path="res://assets/Nivel_1/jefe1/Idle.png" id="4_0xwpa"]
+[ext_resource type="Texture2D"  path="res://assets/Nivel_1/jefe1/Attack2.png" id="5_yu72r"]
+[ext_resource type="Texture2D"  path="res://assets/Nivel_1/jefe1/Death.png" id="6_75u84"]
+[ext_resource type="AudioStream"  path="res://efectos_sonidos/jefe/Mordida de ataque -JEFE_nivel1.mp3" id="8_0xwpa"]
+[ext_resource type="AudioStream"  path="res://efectos_sonidos/jefe/muerte.mp3" id="9_yu72r"]
+[ext_resource type="AudioStream"  path="res://efectos_sonidos/jefe/jefe recibiendo daño.mp3" id="10_yu72r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_852nv"]
 atlas = ExtResource("1_kjbin")
@@ -265,33 +268,39 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nf8wc")
 }],
-"loop": true,
+"loop": false,
 "name": &"muerte_jefe1",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4y3b"]
-size = Vector2(12.875, 9.75)
+size = Vector2(11, 9.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g18nu"]
-size = Vector2(13, 10)
+size = Vector2(13.125, 10)
 
 [node name="Jefe_nivel1" type="CharacterBody2D"]
 script = ExtResource("1_qbrw1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(25.75, 8.31251)
-scale = Vector2(0.213542, 0.214844)
+position = Vector2(-2, -5)
+scale = Vector2(0.190104, 0.214844)
 sprite_frames = SubResource("SpriteFrames_h3ds8")
 animation = &"caminata_jefe"
-frame_progress = 0.0911876
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(28.5625, 14.125)
 shape = SubResource("RectangleShape2D_f4y3b")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(28.5, 14)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("RectangleShape2D_g18nu")
+
+[node name="AudioAtaque" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_0xwpa")
+
+[node name="AudioMuerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_yu72r")
+
+[node name="AudioDaño" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_yu72r")

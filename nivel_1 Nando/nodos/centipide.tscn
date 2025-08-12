@@ -1,11 +1,11 @@
 [gd_scene load_steps=30 format=3 uid="uid://h4purme361xt"]
 
-[ext_resource type="Texture2D" uid="uid://hhkvh24l136p" path="res://Myassents/Nivel_1/1 Centipede/Centipede_attack2.png" id="1_n7a5i"]
+[ext_resource type="Texture2D" uid="uid://0sb3kd7t7toh" path="res://assets/Nivel_1/1 Centipede/Centipede_attack2.png" id="1_n7a5i"]
 [ext_resource type="Script" uid="uid://ci3kisbnwalix" path="res://scripts/centipide.gd" id="1_pdhgn"]
-[ext_resource type="Texture2D" uid="uid://ct8ra4vuri5jb" path="res://Myassents/Nivel_1/1 Centipede/Centipede_walk.png" id="2_pdhgn"]
-[ext_resource type="Texture2D" uid="uid://cc8uw81sg0ypy" path="res://Myassents/Nivel_1/1 Centipede/Centipede_hurt.png" id="3_w3he5"]
-[ext_resource type="Texture2D" uid="uid://dhs2yo0t6nkma" path="res://Myassents/Nivel_1/1 Centipede/Centipede_idle.png" id="4_vf1of"]
-[ext_resource type="Texture2D" uid="uid://ktirsxomuxb6" path="res://Myassents/Nivel_1/1 Centipede/Centipede_death.png" id="5_3bjk2"]
+[ext_resource type="Texture2D" uid="uid://4ch8vvh562w6" path="res://assets/Nivel_1/1 Centipede/Centipede_walk.png" id="2_pdhgn"]
+[ext_resource type="Texture2D" uid="uid://bdjfmg4qpwyhv" path="res://assets/Nivel_1/1 Centipede/Centipede_hurt.png" id="3_w3he5"]
+[ext_resource type="Texture2D" uid="uid://btb4f3s8sskwh" path="res://assets/Nivel_1/1 Centipede/Centipede_idle.png" id="4_vf1of"]
+[ext_resource type="Texture2D" uid="uid://edvqhecbmjk6" path="res://assets/Nivel_1/1 Centipede/Centipede_death.png" id="5_3bjk2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jx7jk"]
 atlas = ExtResource("1_n7a5i")

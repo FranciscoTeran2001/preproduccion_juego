@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://rn8q0ir0mih7"]
 
 [ext_resource type="Script" uid="uid://cai825vihfi5y" path="res://scripts/flor.gd" id="1_5u18k"]
-[ext_resource type="Texture2D" uid="uid://b8u6crpjvk7os" path="res://Myassents/flor_escudo.png" id="2_gme7e"]
+[ext_resource type="Texture2D"  path="res://assets/flor_escudo.png" id="2_gme7e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf2dw"]
 radius = 1.0

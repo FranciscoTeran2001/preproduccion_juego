@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://dinckg6bgecch"]
+
+[ext_resource type="Texture2D" uid="uid://dbch1qk4komtq" path="res://nivel_5/enemigos/Bat/bad_bat.png" id="1_4pncm"]
+[ext_resource type="Script" uid="uid://dc2nv3yp81p2k" path="res://scripts/bat.gd" id="1_esd5r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esd5r"]
+atlas = ExtResource("1_4pncm")
+region = Rect2(0, 40, 30, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4312x"]
+atlas = ExtResource("1_4pncm")
+region = Rect2(30, 40, 30, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b40dx"]
+atlas = ExtResource("1_4pncm")
+region = Rect2(60, 40, 30, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocahg"]
+atlas = ExtResource("1_4pncm")
+region = Rect2(90, 40, 30, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glm15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esd5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4312x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b40dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocahg")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4pncm"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esd5r"]
+radius = 2.0
+
+[node name="Murcielago" type="CharacterBody2D"]
+script = ExtResource("1_esd5r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 1.19209e-07)
+scale = Vector2(0.266667, 0.276316)
+sprite_frames = SubResource("SpriteFrames_glm15")
+animation = &"attack"
+frame_progress = 0.707865
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_4pncm")
+
+[node name="DamageArea" type="Area2D" parent="."]
+position = Vector2(6, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-6, -1)
+shape = SubResource("CircleShape2D_esd5r")

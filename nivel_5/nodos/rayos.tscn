@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgbor6edcyrx3"]
+
+[ext_resource type="Texture2D" uid="uid://s3a4hy20fvdb" path="res://nivel_5/enemigos/Rayos/lightning.png" id="1_yjf6m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10344"]
+atlas = ExtResource("1_yjf6m")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uy5x"]
+atlas = ExtResource("1_yjf6m")
+region = Rect2(64, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4t84"]
+atlas = ExtResource("1_yjf6m")
+region = Rect2(128, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta0tc"]
+atlas = ExtResource("1_yjf6m")
+region = Rect2(192, 0, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_53lju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10344")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uy5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4t84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta0tc")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[node name="Node 2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-10, -94.5)
+scale = Vector2(0.34375, 4.88542)
+sprite_frames = SubResource("SpriteFrames_53lju")
+animation = &"attack"
+frame_progress = 0.596753

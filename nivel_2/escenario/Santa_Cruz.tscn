@@ -1,25 +1,26 @@
-[gd_scene load_steps=43 format=3 uid="uid://wut6crka1xe3"]
+[gd_scene load_steps=46 format=3 uid="uid://wut6crka1xe3"]
 
-[ext_resource type="Texture2D" uid="uid://466g03u6o3o2" path="res://assets/nivel_2/fondo_santacruz.png" id="1_j3mkr"]
-[ext_resource type="Texture2D" uid="uid://by54wem0nyi86" path="res://assets/nivel_2/vegetación.png" id="2_dkmsn"]
+[ext_resource type="Script" uid="uid://wpgsn26dp3co" path="res://nivel_2/escenario/santa_cruz.gd" id="1_mhiia"]
+[ext_resource type="Texture2D" uid="uid://bop8nr7j81qla" path="res://assets/nivel_5/fondo_santacruz.png" id="2_8u613"]
 [ext_resource type="Shader" uid="uid://bs5g1ebuvufyl" path="res://nivel_2/Shader/nube.gdshader" id="3_tm28b"]
-[ext_resource type="Texture2D" uid="uid://h78m8y6o3ftx" path="res://assets/nivel_2/nube.png" id="4_74bwm"]
-[ext_resource type="Texture2D" uid="uid://cd5mntdj8tbiy" path="res://assets/nivel_2/piso.png" id="6_mhiia"]
-[ext_resource type="Texture2D" uid="uid://bn2en4hrql2vu" path="res://assets/nivel_2/precipicio.png" id="7_sufx4"]
-[ext_resource type="Texture2D" uid="uid://wqh61k5gu1f4" path="res://assets/nivel_2/arbol.png" id="8_6xjko"]
+[ext_resource type="Texture2D" uid="uid://llj6tlof7pub" path="res://assets/nivel_2/nube_nivel2.png" id="4_mhiia"]
+[ext_resource type="Texture2D" uid="uid://bhavgh347uaqo" path="res://assets/nivel_2/vegetación_nivel2.png" id="5_sufx4"]
+[ext_resource type="Texture2D" uid="uid://7dn6l4cch1we" path="res://assets/nivel_2/arbol_nivel2.png" id="6_6xjko"]
 [ext_resource type="Shader" uid="uid://lqc7riys2jkd" path="res://nivel_2/Shader/hojas.gdshader" id="8_axkiq"]
-[ext_resource type="Texture2D" uid="uid://dulahsn5x638b" path="res://assets/nivel_2/hojas.png" id="10_3y47k"]
+[ext_resource type="Texture2D" uid="uid://dahjpvrgmsi5q" path="res://assets/nivel_2/hojas_nivel2.png" id="8_o0x16"]
+[ext_resource type="Texture2D" uid="uid://v1ykgw678odc" path="res://assets/nivel_2/piso_nivel2.png" id="9_3y47k"]
 [ext_resource type="Shader" uid="uid://bcpu213x3jqy5" path="res://nivel_2/Shader/rio.gdshader" id="11_8u3d3"]
-[ext_resource type="Texture2D" uid="uid://ctdi3ijj3xyyn" path="res://assets/nivel_2/rio.png" id="12_trsk1"]
-[ext_resource type="Texture2D" uid="uid://bhf7v65efge0q" path="res://assets/nivel_2/cartel_siguiente_isla.png" id="13_27p37"]
-[ext_resource type="Texture2D" uid="uid://dlspy7ttiqt8i" path="res://assets/nivel_2/roca.png" id="14_kfv8f"]
-[ext_resource type="Texture2D" uid="uid://dsixm3adwps7k" path="res://assets/nivel_2/roca2.png" id="15_7x4o1"]
-[ext_resource type="Texture2D" uid="uid://dhv444dsa483k" path="res://assets/nivel_2/plataforma.png" id="16_xvuls"]
-[ext_resource type="Texture2D" uid="uid://1s1ff6x4xlab" path="res://assets/nivel_2/advertencia.png" id="17_noch3"]
-[ext_resource type="Texture2D" uid="uid://5pi7wyumqxdl" path="res://assets/final.png" id="18_ally5"]
-[ext_resource type="Texture2D" uid="uid://dvw6uqsklcmk3" path="res://assets/inicio.png" id="19_5yxkm"]
-[ext_resource type="PackedScene" uid="uid://b82tti85lgdav" path="res://nivel_2/nodos/piso_llamas.tscn" id="19_axkiq"]
-[ext_resource type="Texture2D" uid="uid://qj6ddelp5ebo" path="res://assets/nivel_2/tierraalsa.png" id="20_74bwm"]
+[ext_resource type="Texture2D" uid="uid://dbwtistdg7vgm" path="res://assets/nivel_2/rio_nivel2.png" id="11_trsk1"]
+[ext_resource type="Texture2D" uid="uid://ckcjrfi0h1w4y" path="res://assets/nivel_2/roca_nivel2.png" id="12_27p37"]
+[ext_resource type="Texture2D" uid="uid://gny1oxqx2hse" path="res://assets/nivel_2/precipicio_nivel2.png" id="13_kfv8f"]
+[ext_resource type="Texture2D" uid="uid://bkb1sk344fjj2" path="res://assets/nivel_2/plataforma_nivel2.png" id="14_7x4o1"]
+[ext_resource type="Texture2D" uid="uid://bu0ygpjsq8r6g" path="res://assets/nivel_2/roca2_nivel2.png" id="15_xvuls"]
+[ext_resource type="Texture2D" uid="uid://b8l0dm4qd134x" path="res://assets/nivel_2/cartel_siguiente_isla_nivel2.png" id="16_noch3"]
+[ext_resource type="Texture2D" uid="uid://p8ylanltr4pw" path="res://assets/nivel_2/advertencia_nivel2.png" id="17_ally5"]
+[ext_resource type="Texture2D" uid="uid://br15ngv8qphxa" path="res://assets/final.png" id="18_ally5"]
+[ext_resource type="Texture2D" uid="uid://pr7xp8lluhdv" path="res://assets/inicio.png" id="19_5yxkm"]
+[ext_resource type="PackedScene" uid="uid://b82tti85lgdav" path="res://nivel_5/nodos/piso_llamas.tscn" id="19_axkiq"]
+[ext_resource type="Texture2D" uid="uid://bg1bx1pp85m60" path="res://assets/nivel_2/tierraalsa.png" id="20_74bwm"]
 [ext_resource type="PackedScene" uid="uid://ce031om8goqsi" path="res://Personaje/Player.tscn" id="20_y4fxv"]
 [ext_resource type="PackedScene" uid="uid://rn8q0ir0mih7" path="res://nivel_2/nodos/flor.tscn" id="22_y6lf5"]
 [ext_resource type="PackedScene" uid="uid://bt1s8y8jbalg6" path="res://nivel_2/nodos/flor_armadura.tscn" id="23_6q0n0"]
@@ -46,6 +47,9 @@ shader_parameter/wave_speed = 0.5
 shader_parameter/wave_strength = 0.01
 shader_parameter/wave_frequency = 20.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5yxkm"]
+load_path = "res://.godot/imported/roca.png-6ef3e086b45ba1df48a67c7ce65e511e.ctex"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ouqr"]
 size = Vector2(31.5, 50.4297)
 
@@ -63,7 +67,10 @@ size = Vector2(116, 4)
 size = Vector2(298, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b7r1"]
-size = Vector2(4.57813, 1.5)
+size = Vector2(5.25, 2.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhiia"]
+size = Vector2(4, 2.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3mkr"]
 size = Vector2(85.8438, 6)
@@ -78,10 +85,13 @@ size = Vector2(4.5, 2)
 size = Vector2(12, 6.5)
 
 [node name="Nivel2" type="Node2D"]
+script = ExtResource("1_mhiia")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BarraVida" parent="CanvasLayer" instance=ExtResource("28_mhiia")]
+offset_left = -2.0
+offset_right = 1022.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
@@ -89,693 +99,693 @@ position = Vector2(0, 2)
 [node name="Fondo" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(273, -12.7575)
 scale = Vector2(0.668945, 0.103513)
-texture = ExtResource("1_j3mkr")
+texture = ExtResource("2_8u613")
 
 [node name="Nube" type="Sprite2D" parent="StaticBody2D"]
 material = SubResource("ShaderMaterial_xfivp")
 position = Vector2(-19, -20)
 scale = Vector2(0.064951, 0.0440356)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube2" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_2lyu8")
 position = Vector2(1019.23, 0)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube3" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_xfivp")
 position = Vector2(307.924, 204.38)
 scale = Vector2(1.53962, 1.54421)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube4" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_2lyu8")
 position = Vector2(1878.34, 204.38)
 scale = Vector2(1.53962, 1.54421)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube5" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_xfivp")
 position = Vector2(2032.3, 0)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube6" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_2lyu8")
 position = Vector2(3048.45, 0)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube7" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_xfivp")
 position = Vector2(4064.6, 0)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube8" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_2lyu8")
 position = Vector2(5080.75, 0)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube9" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_xfivp")
 position = Vector2(6096.9, 0)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube10" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_2lyu8")
 position = Vector2(7097.66, 0)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube11" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_xfivp")
 position = Vector2(3448.75, 204.38)
 scale = Vector2(1.53962, 1.54421)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube12" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_2lyu8")
 position = Vector2(5019.17, 204.38)
 scale = Vector2(1.53962, 1.54421)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube13" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_2lyu8")
 position = Vector2(6589.58, 204.38)
 scale = Vector2(1.53962, 1.54421)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Nube14" type="Sprite2D" parent="StaticBody2D/Nube"]
 material = SubResource("ShaderMaterial_2lyu8")
 position = Vector2(8160, 204.38)
 scale = Vector2(1.53962, 1.54421)
-texture = ExtResource("4_74bwm")
+texture = ExtResource("4_mhiia")
 
 [node name="Arbustos" type="Sprite2D" parent="StaticBody2D"]
 texture_repeat = 3
-position = Vector2(17.375, 15)
+position = Vector2(18, 15)
 scale = Vector2(0.171324, 0.0567216)
-texture = ExtResource("2_dkmsn")
+texture = ExtResource("5_sufx4")
 flip_h = true
 
 [node name="Arbustos2" type="Sprite2D" parent="StaticBody2D/Arbustos"]
 texture_repeat = 3
 position = Vector2(1016.72, 0)
-texture = ExtResource("2_dkmsn")
+texture = ExtResource("5_sufx4")
 
 [node name="Arbustos3" type="Sprite2D" parent="StaticBody2D/Arbustos"]
 texture_repeat = 3
 position = Vector2(2033.44, 0)
-texture = ExtResource("2_dkmsn")
+texture = ExtResource("5_sufx4")
 flip_h = true
 
 [node name="Arbustos4" type="Sprite2D" parent="StaticBody2D/Arbustos"]
 texture_repeat = 3
 position = Vector2(3047.7, 0)
 scale = Vector2(0.995179, 1)
-texture = ExtResource("2_dkmsn")
+texture = ExtResource("5_sufx4")
 
 [node name="arbol" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(-43, 8)
 scale = Vector2(0.0474265, 0.0524044)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas" type="Sprite2D" parent="StaticBody2D/arbol"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.53674e-07, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol2" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(295.194, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas2" type="Sprite2D" parent="StaticBody2D/arbol/arbol2"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77019, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol3" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(590.387, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas3" type="Sprite2D" parent="StaticBody2D/arbol/arbol3"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.53674e-07, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol4" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(843.41, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas4" type="Sprite2D" parent="StaticBody2D/arbol/arbol4"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-1.52588e-05, -31.1961)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol5" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(1391.63, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas5" type="Sprite2D" parent="StaticBody2D/arbol/arbol5"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.53674e-07, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol6" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(1644.65, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas6" type="Sprite2D" parent="StaticBody2D/arbol/arbol6"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.53674e-07, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol7" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(1960.93, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas7" type="Sprite2D" parent="StaticBody2D/arbol/arbol7"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77019, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol8" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(2277.21, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas8" type="Sprite2D" parent="StaticBody2D/arbol/arbol8"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol9" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(2593.49, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas9" type="Sprite2D" parent="StaticBody2D/arbol/arbol9"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77005, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol10" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(2930.85, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas10" type="Sprite2D" parent="StaticBody2D/arbol/arbol10"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol11" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(3226.04, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas11" type="Sprite2D" parent="StaticBody2D/arbol/arbol11"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol12" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(3415.81, -19.0824)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas12" type="Sprite2D" parent="StaticBody2D/arbol/arbol12"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77005, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol13" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(3985.11, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas13" type="Sprite2D" parent="StaticBody2D/arbol/arbol13"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol14" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(4280.31, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas14" type="Sprite2D" parent="StaticBody2D/arbol/arbol14"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77005, -49.3533)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol15" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(4512.24, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas15" type="Sprite2D" parent="StaticBody2D/arbol/arbol15"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol16" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(4828.52, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas16" type="Sprite2D" parent="StaticBody2D/arbol/arbol16"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol17" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(5123.72, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas17" type="Sprite2D" parent="StaticBody2D/arbol/arbol17"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77005, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol18" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(5461.08, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas18" type="Sprite2D" parent="StaticBody2D/arbol/arbol18"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol19" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(5777.36, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas19" type="Sprite2D" parent="StaticBody2D/arbol/arbol19"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77005, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol20" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(6114.72, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas20" type="Sprite2D" parent="StaticBody2D/arbol/arbol20"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol21" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(6431, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas21" type="Sprite2D" parent="StaticBody2D/arbol/arbol21"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-8.01086e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol22" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(6747.28, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas22" type="Sprite2D" parent="StaticBody2D/arbol/arbol22"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(0.000210762, -31.1961)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol23" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(7063.56, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas23" type="Sprite2D" parent="StaticBody2D/arbol/arbol23"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol24" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(7358.76, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas24" type="Sprite2D" parent="StaticBody2D/arbol/arbol24"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77032, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol25" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(7717.2, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas25" type="Sprite2D" parent="StaticBody2D/arbol/arbol25"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol26" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(8033.48, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas26" type="Sprite2D" parent="StaticBody2D/arbol/arbol26"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol27" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(8349.76, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas27" type="Sprite2D" parent="StaticBody2D/arbol/arbol27"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77032, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol28" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(8666.04, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas28" type="Sprite2D" parent="StaticBody2D/arbol/arbol28"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol29" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(8961.24, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas29" type="Sprite2D" parent="StaticBody2D/arbol/arbol29"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77032, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol30" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(9319.68, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas30" type="Sprite2D" parent="StaticBody2D/arbol/arbol30"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol31" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(9678.13, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas31" type="Sprite2D" parent="StaticBody2D/arbol/arbol31"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol32" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(9973.33, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas32" type="Sprite2D" parent="StaticBody2D/arbol/arbol32"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(0.000210762, -31.1961)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol33" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(10310.7, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas33" type="Sprite2D" parent="StaticBody2D/arbol/arbol33"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol34" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(10627, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas34" type="Sprite2D" parent="StaticBody2D/arbol/arbol34"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77032, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol35" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(10964.3, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas35" type="Sprite2D" parent="StaticBody2D/arbol/arbol35"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol36" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(11280.6, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas36" type="Sprite2D" parent="StaticBody2D/arbol/arbol36"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(-7.9155e-05, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol37" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(11596.9, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas37" type="Sprite2D" parent="StaticBody2D/arbol/arbol37"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77032, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol38" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(11913.2, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas38" type="Sprite2D" parent="StaticBody2D/arbol/arbol38"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(0.000563622, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol39" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(12208.4, -38.1647)
 scale = Vector2(1.18023, 1.22338)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas39" type="Sprite2D" parent="StaticBody2D/arbol/arbol39"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(9.77032, -33.7553)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="arbol40" type="Sprite2D" parent="StaticBody2D/arbol"]
 position = Vector2(12566.8, 0)
-texture = ExtResource("8_6xjko")
+texture = ExtResource("6_6xjko")
 
 [node name="hojas40" type="Sprite2D" parent="StaticBody2D/arbol/arbol40"]
 material = SubResource("ShaderMaterial_6wygg")
 position = Vector2(0.000563622, -38.1647)
 scale = Vector2(1.2083, 1.1758)
-texture = ExtResource("10_3y47k")
+texture = ExtResource("8_o0x16")
 
 [node name="piso" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(-48, 14.2665)
 scale = Vector2(0.0281863, 0.0249383)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso2" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(1018.23, 1.8078)
 scale = Vector2(1, 1.00384)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso3" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(2022.26, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 flip_h = true
 
 [node name="piso4" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(3040.49, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso5" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(4044.52, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso6" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(5469.42, 0)
 scale = Vector2(1.79738, 1)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso8" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(6972.81, 0)
 scale = Vector2(1.22001, 1)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso9" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(8089.04, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso10" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(9107.27, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso11" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(10111.3, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 flip_h = true
 
 [node name="piso12" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(11129.5, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso13" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(12133.6, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso14" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(13151.8, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso15" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(14155.8, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 flip_h = true
 
 [node name="piso16" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(15174.1, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso17" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(16178.1, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso18" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(17196.3, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso19" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(18200.3, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 flip_h = true
 
 [node name="piso20" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(19218.6, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso21" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(20222.6, 0)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso22" type="Sprite2D" parent="StaticBody2D/piso"]
 position = Vector2(21393.4, 0)
 scale = Vector2(1.319, 1)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="rio" type="Sprite2D" parent="StaticBody2D"]
 material = SubResource("ShaderMaterial_symxa")
 position = Vector2(-3, 15.5)
 scale = Vector2(0.0776367, 0.0244421)
-texture = ExtResource("12_trsk1")
+texture = ExtResource("11_trsk1")
 
 [node name="rio2" type="Sprite2D" parent="StaticBody2D/rio"]
 material = SubResource("ShaderMaterial_symxa")
 position = Vector2(49.2205, -13.8387)
 scale = Vector2(0.94044, 0.970589)
-texture = ExtResource("12_trsk1")
+texture = ExtResource("11_trsk1")
 
 [node name="piedra" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(-9, 15)
 scale = Vector2(0.0395508, 0.0335414)
-texture = ExtResource("14_kfv8f")
+texture = ExtResource("12_27p37")
 
 [node name="piedra2" type="Sprite2D" parent="StaticBody2D/piedra"]
 position = Vector2(1188.35, 0)
-texture = ExtResource("14_kfv8f")
+texture = SubResource("CompressedTexture2D_5yxkm")
 
 [node name="piedra3" type="Sprite2D" parent="StaticBody2D/piedra"]
 position = Vector2(1997.43, 0)
-texture = ExtResource("14_kfv8f")
+texture = SubResource("CompressedTexture2D_5yxkm")
 
 [node name="piedra4" type="Sprite2D" parent="StaticBody2D/piedra"]
 position = Vector2(2857.09, -29.8138)
-texture = ExtResource("14_kfv8f")
+texture = SubResource("CompressedTexture2D_5yxkm")
 
 [node name="piedra5" type="Sprite2D" parent="StaticBody2D/piedra"]
 position = Vector2(5511.9, 0)
-texture = ExtResource("14_kfv8f")
+texture = SubResource("CompressedTexture2D_5yxkm")
 
 [node name="piedra6" type="Sprite2D" parent="StaticBody2D/piedra"]
 position = Vector2(6371.55, -29.8138)
-texture = ExtResource("14_kfv8f")
+texture = SubResource("CompressedTexture2D_5yxkm")
 
 [node name="piedra7" type="Sprite2D" parent="StaticBody2D/piedra"]
 position = Vector2(8798.81, 0)
-texture = ExtResource("14_kfv8f")
+texture = SubResource("CompressedTexture2D_5yxkm")
 
 [node name="piedra8" type="Sprite2D" parent="StaticBody2D/piedra"]
 position = Vector2(9658.47, -29.8138)
-texture = ExtResource("14_kfv8f")
+texture = SubResource("CompressedTexture2D_5yxkm")
 
 [node name="precipicio" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(150, 20)
 scale = Vector2(0.103065, 0.0377754)
-texture = ExtResource("7_sufx4")
+texture = ExtResource("13_kfv8f")
 
 [node name="plataforma" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(132, 17)
 scale = Vector2(0.00807621, 0.00905037)
-texture = ExtResource("16_xvuls")
+texture = ExtResource("14_7x4o1")
 
 [node name="piedra_rio" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(3, 20)
 scale = Vector2(0.00833336, 0.00642296)
-texture = ExtResource("15_7x4o1")
+texture = ExtResource("15_xvuls")
 
 [node name="CartelSiguienteIsla" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(518, 15)
 scale = Vector2(0.00500489, 0.00549317)
-texture = ExtResource("13_27p37")
+texture = ExtResource("16_noch3")
 
 [node name="plataforma2" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(143, 12)
 scale = Vector2(0.00807621, 0.00905037)
-texture = ExtResource("16_xvuls")
+texture = ExtResource("14_7x4o1")
 
 [node name="letrero_cuidado" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(124, 16)
 scale = Vector2(0.00512695, 0.00406901)
-texture = ExtResource("17_noch3")
+texture = ExtResource("17_ally5")
 
 [node name="letrero_bienvenido" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(-26.5313, 15.625)
@@ -785,17 +795,17 @@ texture = ExtResource("19_5yxkm")
 [node name="precipicio2" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(482, 19)
 scale = Vector2(0.122892, 0.0377754)
-texture = ExtResource("7_sufx4")
+texture = ExtResource("13_kfv8f")
 
 [node name="piso23" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(507.74, 16)
 scale = Vector2(0.0367455, 0.0179951)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="piso24" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(434.88, 15.8166)
 scale = Vector2(0.0355296, 0.0173929)
-texture = ExtResource("6_mhiia")
+texture = ExtResource("9_3y47k")
 
 [node name="cueva" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(542, 10.2366)
@@ -835,14 +845,9 @@ shape = SubResource("RectangleShape2D_3b7r1")
 position = Vector2(143, 13)
 shape = SubResource("RectangleShape2D_3b7r1")
 
-[node name="plataforma3" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(49, 13)
-scale = Vector2(0.00807621, 0.00905037)
-texture = ExtResource("16_xvuls")
-
 [node name="colision_plataforma3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(49, 14)
-shape = SubResource("RectangleShape2D_3b7r1")
+position = Vector2(49, 14.1875)
+shape = SubResource("RectangleShape2D_mhiia")
 
 [node name="piso_llamas2" parent="StaticBody2D" instance=ExtResource("19_axkiq")]
 position = Vector2(68, 19)
@@ -851,12 +856,15 @@ position = Vector2(68, 19)
 position = Vector2(9, 0)
 
 [node name="plataforma4" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(72.9062, 13)
-scale = Vector2(0.00982403, 0.00905037)
-texture = ExtResource("16_xvuls")
+position = Vector2(74, 13)
+scale = Vector2(0.0101706, 0.0108211)
+texture = ExtResource("14_7x4o1")
+
+[node name="piso_llamas" parent="StaticBody2D" instance=ExtResource("19_axkiq")]
+position = Vector2(47, 19)
 
 [node name="colision_plataforma4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(72.375, 14)
+position = Vector2(73.625, 15)
 shape = SubResource("RectangleShape2D_3b7r1")
 
 [node name="piso_llamas3" parent="StaticBody2D" instance=ExtResource("19_axkiq")]
@@ -877,15 +885,20 @@ position = Vector2(36, 0)
 [node name="piso_llamas2" parent="StaticBody2D/piso_llamas3/piso_llamas4" instance=ExtResource("19_axkiq")]
 position = Vector2(9, 0)
 
+[node name="plataforma3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(49, 13)
+scale = Vector2(0.00789538, 0.00905037)
+texture = ExtResource("14_7x4o1")
+
 [node name="plataforma5" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(462, 17)
 scale = Vector2(0.00807621, 0.00905037)
-texture = ExtResource("16_xvuls")
+texture = ExtResource("14_7x4o1")
 
 [node name="plataforma6" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(477, 21)
 scale = Vector2(0.00807621, 0.00905037)
-texture = ExtResource("16_xvuls")
+texture = ExtResource("14_7x4o1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(532, 23)
@@ -917,9 +930,6 @@ shape = SubResource("RectangleShape2D_8u613")
 position = Vector2(369, 18)
 shape = SubResource("RectangleShape2D_8u613")
 
-[node name="piso_llamas" parent="." instance=ExtResource("19_axkiq")]
-position = Vector2(48, 19)
-
 [node name="flor_curativa" parent="." instance=ExtResource("22_y6lf5")]
 position = Vector2(263, 15)
 
@@ -928,16 +938,17 @@ position = Vector2(369, 13)
 
 [node name="enemigo" parent="." instance=ExtResource("24_v8jnx")]
 position = Vector2(254, 15)
-collision_layer = 1
 
 [node name="jugador" parent="." instance=ExtResource("20_y4fxv")]
 position = Vector2(-29, 17)
 
 [node name="Serpiente" parent="." instance=ExtResource("24_j3mkr")]
-position = Vector2(396, 16)
+position = Vector2(396, 18)
 
 [node name="PlataformaMovil2" parent="." instance=ExtResource("26_tm28b")]
-position = Vector2(379, 78)
+position = Vector2(379, 80)
 
 [node name="PlataformaMovil" parent="." instance=ExtResource("25_dkmsn")]
-position = Vector2(342, 79)
+position = Vector2(342, 81)
+
+[connection signal="player_died" from="jugador" to="." method="_on_jugador_player_died"]

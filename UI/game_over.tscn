@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://mky4waes6lnv"]
+
+[ext_resource type="Script" uid="uid://ser3mdel0fd3" path="res://UI/game_over.gd" id="1_jawqf"]
+
+[node name="GameOverScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jawqf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.364706)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Has Muerto"
+
+[node name="Button_Repetir" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Repetir Nivel"
+
+[node name="Button_Salir" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Salir"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Repetir" to="." method="_on_button_repetir_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Salir" to="." method="_on_button_salir_pressed"]

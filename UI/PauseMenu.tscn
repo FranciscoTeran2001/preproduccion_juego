@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjj2djwjs8lkx"]
+
+[ext_resource type="Script" uid="uid://bvy16kp7u2wvv" path="res://UI/pause_menu.gd" id="1_05bun"]
+[ext_resource type="Texture2D" uid="uid://cgue7xdw0arbn" path="res://Menus/MenuPrincipal.png" id="2_tsvmi"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_05bun")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tsvmi")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Menú"
+horizontal_alignment = 1
+
+[node name="Button_Resume" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reanudar"
+
+[node name="Button_Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Resume" to="." method="_on_button_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]

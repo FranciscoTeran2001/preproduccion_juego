@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cepm3m0v0g40d"
+path="res://.godot/imported/Mordida de ataque -JEFE_nivel1.mp3-de244640ff7d4a5c11128cc815d45ba4.mp3str"
+
+[deps]
+
+source_file="res://efectos_sonidos/jefe/Mordida de ataque -JEFE_nivel1.mp3"
+dest_files=["res://.godot/imported/Mordida de ataque -JEFE_nivel1.mp3-de244640ff7d4a5c11128cc815d45ba4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

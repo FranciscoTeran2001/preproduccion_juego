@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c16vqojbaruh7"
+path="res://.godot/imported/gorila atacando.mp3-f4daa0dfc15539f40cd4dc1170031053.mp3str"
+
+[deps]
+
+source_file="res://efectos_sonidos/gorilla/gorila atacando.mp3"
+dest_files=["res://.godot/imported/gorila atacando.mp3-f4daa0dfc15539f40cd4dc1170031053.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

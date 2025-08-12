@@ -28,7 +28,7 @@ var rng = RandomNumberGenerator.new()
 # Configuración
 @export var patrol_speed: float = 20.0
 @export var chase_speed: float = 80.0
-@export var patrol_distance: float = 35.0
+@export var patrol_distance: float = 10.0
 @export var detection_radius: float = 30.0
 
 # Constantes del script anterior

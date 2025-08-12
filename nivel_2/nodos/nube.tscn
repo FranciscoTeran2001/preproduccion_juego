@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ft7m1q3xdpg8"]
 
 [ext_resource type="Shader" uid="uid://bs5g1ebuvufyl" path="res://nivel_2/Shader/nube.gdshader" id="1_4fy5g"]
-[ext_resource type="Texture2D" uid="uid://h78m8y6o3ftx" path="res://Myassents/nivel_2/nube.png" id="2_47te0"]
+[ext_resource type="Texture2D" uid="uid://btdm56vkv5io" path="res://assets/nivel_5/nube.png" id="2_47te0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0q80i"]
 shader = ExtResource("1_4fy5g")

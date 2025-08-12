@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crju3xitywgjo"
+path="res://.godot/imported/gorila dañado.mp3-a39e7264e93df77c4500c39d9ba136f7.mp3str"
+
+[deps]
+
+source_file="res://efectos_sonidos/gorilla/gorila dañado.mp3"
+dest_files=["res://.godot/imported/gorila dañado.mp3-a39e7264e93df77c4500c39d9ba136f7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

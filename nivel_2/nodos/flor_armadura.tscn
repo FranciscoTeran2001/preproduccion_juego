@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bt1s8y8jbalg6"]
 
 [ext_resource type="Script" uid="uid://caf33lupbt37v" path="res://scripts/flor_armadura.gd" id="1_7ju17"]
-[ext_resource type="Texture2D" uid="uid://cghafxdol7uif" path="res://Myassents/Yellow_Flower_4.png" id="2_eg6td"]
+[ext_resource type="Texture2D"  path="res://assets/Yellow_Flower_4.png" id="2_eg6td"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oer64"]
 radius = 1.0

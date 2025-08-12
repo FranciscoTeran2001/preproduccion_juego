@@ -1,0 +1,896 @@
+[gd_scene load_steps=41 format=3 uid="uid://db6ai1bfo6o72"]
+
+[ext_resource type="Texture2D" uid="uid://xctbe7iwsrwl" path="res://assets/nivel_5/fondo_isabella.png" id="1_6vvgj"]
+[ext_resource type="Script" uid="uid://dq585icsox2em" path="res://nivel_5/escenario/isabella.gd" id="1_7ul4b"]
+[ext_resource type="PackedScene" uid="uid://cgbor6edcyrx3" path="res://nivel_5/nodos/rayos.tscn" id="2_5s2dv"]
+[ext_resource type="Shader" uid="uid://bs5g1ebuvufyl" path="res://nivel_2/Shader/nube.gdshader" id="2_cy27u"]
+[ext_resource type="Texture2D" uid="uid://btdm56vkv5io" path="res://assets/nivel_5/nube.png" id="3_ykx8l"]
+[ext_resource type="Texture2D" uid="uid://osiy0jl4xk4n" path="res://assets/nivel_5/vegetación.png" id="4_yfq3g"]
+[ext_resource type="Texture2D" uid="uid://18d7mjqxudh5" path="res://assets/nivel_5/arbol.png" id="5_5s2dv"]
+[ext_resource type="Shader" uid="uid://lqc7riys2jkd" path="res://nivel_2/Shader/hojas.gdshader" id="6_uklxq"]
+[ext_resource type="Texture2D" uid="uid://c0wgw8btcx8pk" path="res://assets/nivel_5/hojas.png" id="7_7ul4b"]
+[ext_resource type="Texture2D" uid="uid://dj5waaoydkymc" path="res://assets/nivel_5/piso.png" id="8_53co0"]
+[ext_resource type="Shader" uid="uid://bcpu213x3jqy5" path="res://nivel_2/Shader/rio.gdshader" id="9_pufqe"]
+[ext_resource type="Texture2D" uid="uid://be361kxqq6ho6" path="res://assets/nivel_5/rio.png" id="10_hs6to"]
+[ext_resource type="Texture2D" uid="uid://bg5xlbbr7vtav" path="res://assets/nivel_5/roca.png" id="11_uvolx"]
+[ext_resource type="Texture2D" uid="uid://cn8apgiku4ua4" path="res://assets/nivel_5/precipicio.png" id="12_7kwia"]
+[ext_resource type="Texture2D" uid="uid://br7va2yti5mlm" path="res://assets/nivel_5/plataforma.png" id="13_pmvvn"]
+[ext_resource type="Texture2D" uid="uid://daet6dd8babc3" path="res://assets/nivel_5/roca2.png" id="14_hitut"]
+[ext_resource type="Texture2D" uid="uid://b1h7npqiikkas" path="res://assets/nivel_5/cartel_siguiente_isla.png" id="15_pdlkd"]
+[ext_resource type="Texture2D" uid="uid://bvxst17eybkxx" path="res://assets/nivel_5/advertencia.png" id="16_vhbtd"]
+[ext_resource type="Texture2D" uid="uid://br15ngv8qphxa" path="res://assets/final.png" id="17_255hi"]
+[ext_resource type="Texture2D" uid="uid://pr7xp8lluhdv" path="res://assets/inicio.png" id="18_mwfaw"]
+[ext_resource type="PackedScene" uid="uid://b82tti85lgdav" path="res://nivel_5/nodos/piso_llamas.tscn" id="19_m1k4n"]
+[ext_resource type="PackedScene" uid="uid://rn8q0ir0mih7" path="res://nivel_2/nodos/flor.tscn" id="20_minfi"]
+[ext_resource type="PackedScene" uid="uid://bt1s8y8jbalg6" path="res://nivel_2/nodos/flor_armadura.tscn" id="21_uhl65"]
+[ext_resource type="PackedScene" uid="uid://qgn16mtmqb68" path="res://nivel_2/nodos/enemigo.tscn" id="22_jnw8p"]
+[ext_resource type="PackedScene" uid="uid://ce031om8goqsi" path="res://Personaje/Player.tscn" id="23_va4dg"]
+[ext_resource type="PackedScene" uid="uid://brtm3whxr3g3f" path="res://nivel_5/nodos/sapo.tscn" id="24_yfq3g"]
+[ext_resource type="PackedScene" uid="uid://jm8qb3l32t1n" path="res://nivel_5/nodos/pinguino.tscn" id="25_cy27u"]
+[ext_resource type="PackedScene" uid="uid://dinckg6bgecch" path="res://nivel_5/nodos/murcielago.tscn" id="25_yfq3g"]
+[ext_resource type="PackedScene" uid="uid://b4jil023rco6c" path="res://nivel_5/nodos/boss.tscn" id="29_7ul4b"]
+[ext_resource type="AudioStream" uid="uid://bo0ri4ouabyf7" path="res://canciones/yoquierounheroe.mp3" id="29_uklxq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfivp"]
+shader = ExtResource("2_cy27u")
+shader_parameter/speed = 0.03
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lyu8"]
+shader = ExtResource("2_cy27u")
+shader_parameter/speed = 0.03
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wygg"]
+shader = ExtResource("6_uklxq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_symxa"]
+shader = ExtResource("9_pufqe")
+shader_parameter/wave_speed = 0.5
+shader_parameter/wave_strength = 0.01
+shader_parameter/wave_frequency = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ouqr"]
+size = Vector2(43.75, 50.4297)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5p4id"]
+size = Vector2(71.0078, 4.25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sykvh"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_symxa"]
+size = Vector2(105.75, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f143b"]
+size = Vector2(368, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b7r1"]
+size = Vector2(5.25, 1.5)
+
+[node name="Nivel5" type="Node2D"]
+script = ExtResource("1_7ul4b")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Fondo" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(267.5, -4.485)
+scale = Vector2(1.03252, 0.0795929)
+texture = ExtResource("1_6vvgj")
+
+[node name="Rayos" parent="StaticBody2D" instance=ExtResource("2_5s2dv")]
+position = Vector2(100, -4.76837e-07)
+scale = Vector2(1.03252, 0.0795929)
+
+[node name="Nube" type="Sprite2D" parent="StaticBody2D"]
+material = SubResource("ShaderMaterial_xfivp")
+position = Vector2(-19, -20)
+scale = Vector2(0.064951, 0.0440356)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube2" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_2lyu8")
+position = Vector2(1019.23, 0)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube3" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_xfivp")
+position = Vector2(307.924, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube4" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_2lyu8")
+position = Vector2(1878.34, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube5" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_xfivp")
+position = Vector2(2032.3, 0)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube6" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_2lyu8")
+position = Vector2(3048.45, 0)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube7" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_xfivp")
+position = Vector2(4064.6, 0)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube8" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_2lyu8")
+position = Vector2(5080.75, 0)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube9" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_xfivp")
+position = Vector2(6096.9, 0)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube10" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_2lyu8")
+position = Vector2(7097.66, 0)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube11" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_xfivp")
+position = Vector2(3448.75, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube12" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_2lyu8")
+position = Vector2(5019.17, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube13" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_2lyu8")
+position = Vector2(6589.58, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("3_ykx8l")
+
+[node name="Nube14" type="Sprite2D" parent="StaticBody2D/Nube"]
+material = SubResource("ShaderMaterial_2lyu8")
+position = Vector2(8160, 204.38)
+scale = Vector2(1.53962, 1.54421)
+texture = ExtResource("3_ykx8l")
+
+[node name="Arbustos" type="Sprite2D" parent="StaticBody2D"]
+texture_repeat = 3
+position = Vector2(27, 15)
+scale = Vector2(0.152451, 0.0567216)
+texture = ExtResource("4_yfq3g")
+flip_h = true
+
+[node name="Arbustos2" type="Sprite2D" parent="StaticBody2D/Arbustos"]
+texture_repeat = 3
+position = Vector2(1016.72, 0)
+texture = ExtResource("4_yfq3g")
+
+[node name="Arbustos3" type="Sprite2D" parent="StaticBody2D/Arbustos"]
+texture_repeat = 3
+position = Vector2(2033.44, 0)
+texture = ExtResource("4_yfq3g")
+flip_h = true
+
+[node name="Arbustos4" type="Sprite2D" parent="StaticBody2D/Arbustos"]
+texture_repeat = 3
+position = Vector2(3047.7, 0)
+scale = Vector2(0.995179, 1)
+texture = ExtResource("4_yfq3g")
+
+[node name="arbol" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-43, 8)
+scale = Vector2(0.0474265, 0.0524044)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas" type="Sprite2D" parent="StaticBody2D/arbol"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.53674e-07, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol2" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(295.194, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas2" type="Sprite2D" parent="StaticBody2D/arbol/arbol2"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77019, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol3" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(590.387, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas3" type="Sprite2D" parent="StaticBody2D/arbol/arbol3"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(6.37587, -37.3445)
+scale = Vector2(1.25182, 1.3346)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol4" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(843.41, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas4" type="Sprite2D" parent="StaticBody2D/arbol/arbol4"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-1.52588e-05, -31.1961)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol5" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(1391.63, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas5" type="Sprite2D" parent="StaticBody2D/arbol/arbol5"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.53674e-07, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol6" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(1644.65, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas6" type="Sprite2D" parent="StaticBody2D/arbol/arbol6"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.53674e-07, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol7" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(1960.93, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas7" type="Sprite2D" parent="StaticBody2D/arbol/arbol7"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77019, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol8" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(2277.21, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas8" type="Sprite2D" parent="StaticBody2D/arbol/arbol8"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol9" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(2593.49, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas9" type="Sprite2D" parent="StaticBody2D/arbol/arbol9"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77005, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol10" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(2930.85, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas10" type="Sprite2D" parent="StaticBody2D/arbol/arbol10"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol11" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(3226.04, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas11" type="Sprite2D" parent="StaticBody2D/arbol/arbol11"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol12" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(3415.81, -19.0824)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas12" type="Sprite2D" parent="StaticBody2D/arbol/arbol12"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77005, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol13" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(3985.11, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas13" type="Sprite2D" parent="StaticBody2D/arbol/arbol13"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol14" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(4280.31, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas14" type="Sprite2D" parent="StaticBody2D/arbol/arbol14"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77005, -49.3533)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol15" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(4512.24, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas15" type="Sprite2D" parent="StaticBody2D/arbol/arbol15"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol16" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(4828.52, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas16" type="Sprite2D" parent="StaticBody2D/arbol/arbol16"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol17" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(5123.72, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas17" type="Sprite2D" parent="StaticBody2D/arbol/arbol17"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77005, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol18" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(5461.08, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas18" type="Sprite2D" parent="StaticBody2D/arbol/arbol18"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol19" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(5777.36, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas19" type="Sprite2D" parent="StaticBody2D/arbol/arbol19"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77005, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol20" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(6114.72, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas20" type="Sprite2D" parent="StaticBody2D/arbol/arbol20"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol21" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(6431, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas21" type="Sprite2D" parent="StaticBody2D/arbol/arbol21"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-8.01086e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol22" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(6747.28, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas22" type="Sprite2D" parent="StaticBody2D/arbol/arbol22"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(0.000210762, -31.1961)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol23" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(7063.56, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas23" type="Sprite2D" parent="StaticBody2D/arbol/arbol23"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol24" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(7358.76, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas24" type="Sprite2D" parent="StaticBody2D/arbol/arbol24"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77032, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol25" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(7717.2, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas25" type="Sprite2D" parent="StaticBody2D/arbol/arbol25"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol26" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(8033.48, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas26" type="Sprite2D" parent="StaticBody2D/arbol/arbol26"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol27" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(8349.76, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas27" type="Sprite2D" parent="StaticBody2D/arbol/arbol27"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77032, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol28" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(8666.04, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas28" type="Sprite2D" parent="StaticBody2D/arbol/arbol28"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol29" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(8961.24, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas29" type="Sprite2D" parent="StaticBody2D/arbol/arbol29"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77032, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol30" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(9319.68, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas30" type="Sprite2D" parent="StaticBody2D/arbol/arbol30"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol31" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(9678.13, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas31" type="Sprite2D" parent="StaticBody2D/arbol/arbol31"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol32" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(9973.33, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas32" type="Sprite2D" parent="StaticBody2D/arbol/arbol32"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(0.000210762, -31.1961)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol33" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(10310.7, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas33" type="Sprite2D" parent="StaticBody2D/arbol/arbol33"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol34" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(10627, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas34" type="Sprite2D" parent="StaticBody2D/arbol/arbol34"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77032, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol35" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(10964.3, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas35" type="Sprite2D" parent="StaticBody2D/arbol/arbol35"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol36" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(11280.6, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas36" type="Sprite2D" parent="StaticBody2D/arbol/arbol36"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(-7.9155e-05, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol37" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(11596.9, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas37" type="Sprite2D" parent="StaticBody2D/arbol/arbol37"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77032, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol38" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(11913.2, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas38" type="Sprite2D" parent="StaticBody2D/arbol/arbol38"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(0.000563622, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol39" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(12208.4, -38.1647)
+scale = Vector2(1.18023, 1.22338)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas39" type="Sprite2D" parent="StaticBody2D/arbol/arbol39"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(9.77032, -33.7553)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="arbol40" type="Sprite2D" parent="StaticBody2D/arbol"]
+position = Vector2(12566.8, 0)
+texture = ExtResource("5_5s2dv")
+
+[node name="hojas40" type="Sprite2D" parent="StaticBody2D/arbol/arbol40"]
+material = SubResource("ShaderMaterial_6wygg")
+position = Vector2(0.000563622, -38.1647)
+scale = Vector2(1.2083, 1.1758)
+texture = ExtResource("7_7ul4b")
+
+[node name="piso" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-35.36, 15)
+scale = Vector2(0.0281863, 0.0269585)
+texture = ExtResource("8_53co0")
+
+[node name="piso2" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(1018.23, 1.8078)
+scale = Vector2(1, 1.00384)
+texture = ExtResource("8_53co0")
+
+[node name="piso3" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(2022.26, 0)
+texture = ExtResource("8_53co0")
+flip_h = true
+
+[node name="piso4" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(3040.49, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso5" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(4044.52, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso6" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(5469.42, 0)
+scale = Vector2(1.79738, 1)
+texture = ExtResource("8_53co0")
+
+[node name="piso8" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(7185.68, 0)
+scale = Vector2(0.802621, 1)
+texture = ExtResource("8_53co0")
+
+[node name="piso9" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(8089.04, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso10" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(9107.27, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso11" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(10111.3, 0)
+texture = ExtResource("8_53co0")
+flip_h = true
+
+[node name="piso12" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(11129.5, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso13" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(12133.6, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso14" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(13151.8, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso15" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(14155.8, 0)
+texture = ExtResource("8_53co0")
+flip_h = true
+
+[node name="piso16" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(15174.1, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso17" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(16178.1, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso18" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(17196.3, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso19" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(18200.3, 0)
+texture = ExtResource("8_53co0")
+flip_h = true
+
+[node name="piso20" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(19218.6, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso21" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(20222.6, 0)
+texture = ExtResource("8_53co0")
+
+[node name="piso22" type="Sprite2D" parent="StaticBody2D/piso"]
+position = Vector2(21393.4, 0)
+scale = Vector2(1.319, 1)
+texture = ExtResource("8_53co0")
+
+[node name="rio" type="Sprite2D" parent="StaticBody2D"]
+material = SubResource("ShaderMaterial_symxa")
+position = Vector2(10.64, 16)
+scale = Vector2(0.0776367, 0.0223167)
+texture = ExtResource("10_hs6to")
+
+[node name="piedra" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-9, 15)
+scale = Vector2(0.0395508, 0.0335414)
+texture = ExtResource("11_uvolx")
+
+[node name="piedra2" type="Sprite2D" parent="StaticBody2D/piedra"]
+position = Vector2(1163.06, 0)
+texture = ExtResource("11_uvolx")
+
+[node name="piedra3" type="Sprite2D" parent="StaticBody2D/piedra"]
+position = Vector2(1997.43, 0)
+texture = ExtResource("11_uvolx")
+
+[node name="piedra4" type="Sprite2D" parent="StaticBody2D/piedra"]
+position = Vector2(2857.09, -29.8138)
+texture = ExtResource("11_uvolx")
+
+[node name="piedra5" type="Sprite2D" parent="StaticBody2D/piedra"]
+position = Vector2(5511.9, 0)
+texture = ExtResource("11_uvolx")
+
+[node name="piedra6" type="Sprite2D" parent="StaticBody2D/piedra"]
+position = Vector2(6371.55, -29.8138)
+texture = ExtResource("11_uvolx")
+
+[node name="piedra7" type="Sprite2D" parent="StaticBody2D/piedra"]
+position = Vector2(8798.81, 0)
+texture = ExtResource("11_uvolx")
+
+[node name="piedra8" type="Sprite2D" parent="StaticBody2D/piedra"]
+position = Vector2(9658.47, -29.8138)
+texture = ExtResource("11_uvolx")
+
+[node name="precipicio" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(151.061, 21)
+scale = Vector2(0.100172, 0.0377754)
+texture = ExtResource("12_7kwia")
+
+[node name="rio2" type="Sprite2D" parent="StaticBody2D/precipicio"]
+material = SubResource("ShaderMaterial_symxa")
+position = Vector2(95.6255, -175.379)
+scale = Vector2(0.638624, 0.752532)
+texture = ExtResource("10_hs6to")
+
+[node name="plataforma" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(130, 17)
+scale = Vector2(0.00807621, 0.00905037)
+texture = ExtResource("13_pmvvn")
+
+[node name="piedra_rio" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(13.64, 21)
+scale = Vector2(0.00833336, 0.00642296)
+texture = ExtResource("14_hitut")
+
+[node name="CartelSiguienteIsla" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(518, 15)
+scale = Vector2(0.00500489, 0.00549317)
+texture = ExtResource("15_pdlkd")
+
+[node name="plataforma2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(140.188, 12.3125)
+scale = Vector2(0.00807621, 0.00905037)
+texture = ExtResource("13_pmvvn")
+
+[node name="plataforma5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(152.188, 9.3125)
+scale = Vector2(0.00807621, 0.00905037)
+texture = ExtResource("13_pmvvn")
+
+[node name="plataforma6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(165.188, 7.3125)
+scale = Vector2(0.00807621, 0.00905037)
+texture = ExtResource("13_pmvvn")
+
+[node name="letrero_cuidado" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(124, 16)
+scale = Vector2(0.00512695, 0.00406901)
+texture = ExtResource("16_vhbtd")
+
+[node name="cueva" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(542, 10.2366)
+scale = Vector2(0.0647388, 0.0576636)
+texture = ExtResource("17_255hi")
+
+[node name="letrero_bienvenido" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-26.5313, 15.625)
+scale = Vector2(0.00776954, 0.00588566)
+texture = ExtResource("18_mwfaw")
+
+[node name="Pared_inicio" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-46, -1)
+shape = SubResource("RectangleShape2D_0ouqr")
+
+[node name="colision_piso" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-29.36, 23)
+shape = SubResource("RectangleShape2D_5p4id")
+
+[node name="Pared_final" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(546.875, -2.21484)
+shape = SubResource("RectangleShape2D_0ouqr")
+
+[node name="colision_pidra_rio" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(13.64, 21)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sykvh")
+
+[node name="colision_piso2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(73.64, 23)
+shape = SubResource("RectangleShape2D_symxa")
+
+[node name="colision_piso3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(347, 22)
+shape = SubResource("RectangleShape2D_f143b")
+
+[node name="colision_plataforma" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(130, 18)
+shape = SubResource("RectangleShape2D_3b7r1")
+
+[node name="colision_plataforma2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(140, 14)
+shape = SubResource("RectangleShape2D_3b7r1")
+
+[node name="colision_plataforma5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(152.188, 10.3125)
+shape = SubResource("RectangleShape2D_3b7r1")
+
+[node name="colision_plataforma6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(165.188, 8.3125)
+shape = SubResource("RectangleShape2D_3b7r1")
+
+[node name="plataforma3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(44, 13)
+scale = Vector2(0.00807621, 0.00905037)
+texture = ExtResource("13_pmvvn")
+
+[node name="colision_plataforma3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(44, 14)
+shape = SubResource("RectangleShape2D_3b7r1")
+
+[node name="piso_llamas2" parent="StaticBody2D" instance=ExtResource("19_m1k4n")]
+position = Vector2(55, 19)
+
+[node name="plataforma4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(72.9062, 13)
+scale = Vector2(0.00982403, 0.00905037)
+texture = ExtResource("13_pmvvn")
+
+[node name="colision_plataforma4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(72.375, 14)
+shape = SubResource("RectangleShape2D_3b7r1")
+
+[node name="flor_curativa" parent="." instance=ExtResource("20_minfi")]
+position = Vector2(96, 16)
+
+[node name="flor_armadura" parent="." instance=ExtResource("21_uhl65")]
+position = Vector2(215, 17)
+
+[node name="enemigo" parent="." instance=ExtResource("22_jnw8p")]
+position = Vector2(216, 16)
+
+[node name="jugador" parent="." instance=ExtResource("23_va4dg")]
+position = Vector2(-5, 16)
+
+[node name="piso_llamas2" parent="." instance=ExtResource("19_m1k4n")]
+position = Vector2(79, 19)
+
+[node name="Sapo" parent="." instance=ExtResource("24_yfq3g")]
+position = Vector2(105, 19)
+
+[node name="Murcielago" parent="." instance=ExtResource("25_yfq3g")]
+position = Vector2(-3, 2)
+
+[node name="Murcielago2" parent="." instance=ExtResource("25_yfq3g")]
+position = Vector2(56, -12)
+
+[node name="Murcielago3" parent="." instance=ExtResource("25_yfq3g")]
+position = Vector2(114, 0)
+
+[node name="Pinguino" parent="." instance=ExtResource("25_cy27u")]
+position = Vector2(-19, 18)
+
+[node name="Pinguino2" parent="." instance=ExtResource("25_cy27u")]
+position = Vector2(42, 18)
+
+[node name="Pinguino3" parent="." instance=ExtResource("25_cy27u")]
+position = Vector2(186, 18)
+
+[node name="Boss" parent="." instance=ExtResource("29_7ul4b")]
+position = Vector2(486, 5)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1, 0)
+stream = ExtResource("29_uklxq")
+autoplay = true
+
+[connection signal="player_died" from="jugador" to="." method="_on_jugador_player_died"]

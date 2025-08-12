@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://b82tti85lgdav"]
+
+[ext_resource type="Script" uid="uid://yw6114u1an01" path="res://scripts/piso_llamas.gd" id="1_0r07n"]
+[ext_resource type="Texture2D" uid="uid://3sfauibnclee" path="res://assets/piso_quemado.png" id="2_ujbgg"]
+[ext_resource type="Shader" uid="uid://bfurricxic654" path="res://nivel_5/Shader/fuego.gdshader" id="3_lim4h"]
+[ext_resource type="Texture2D" uid="uid://3p5sw4ajrw53" path="res://assets/fire.png" id="4_un82k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vms0p"]
+shader = ExtResource("3_lim4h")
+shader_parameter/time_scale = 1.0
+shader_parameter/intensity = 5.0
+shader_parameter/speed = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8hsy"]
+size = Vector2(9.5, 4.3)
+
+[node name="piso_llamas" type="Area2D"]
+script = ExtResource("1_0r07n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(5, 1)
+scale = Vector2(0.0384523, 0.0261018)
+texture = ExtResource("2_ujbgg")
+
+[node name="llamas" type="Sprite2D" parent="Sprite2D2"]
+material = SubResource("ShaderMaterial_vms0p")
+position = Vector2(-104.025, -134.09)
+scale = Vector2(2.16719, 5.98618)
+texture = ExtResource("4_un82k")
+
+[node name="complemento_llamas" type="Sprite2D" parent="Sprite2D2/llamas"]
+material = SubResource("ShaderMaterial_vms0p")
+position = Vector2(10.2858, -3.2)
+scale = Vector2(1.07143, 1.4)
+texture = ExtResource("4_un82k")
+
+[node name="llamas2" type="Sprite2D" parent="Sprite2D2"]
+material = SubResource("ShaderMaterial_vms0p")
+position = Vector2(-97.5234, -95.7789)
+scale = Vector2(2.03174, 5.98618)
+texture = ExtResource("4_un82k")
+
+[node name="complemento_llamas" type="Sprite2D" parent="Sprite2D2/llamas2"]
+material = SubResource("ShaderMaterial_vms0p")
+position = Vector2(3.42855, -3.2)
+scale = Vector2(1.21429, 1.4)
+texture = ExtResource("4_un82k")
+
+[node name="llamas3" type="Sprite2D" parent="Sprite2D2"]
+material = SubResource("ShaderMaterial_vms0p")
+position = Vector2(-104.025, -57.4674)
+scale = Vector2(2.16719, 5.98618)
+texture = ExtResource("4_un82k")
+
+[node name="complemento_llamas" type="Sprite2D" parent="Sprite2D2/llamas3"]
+material = SubResource("ShaderMaterial_vms0p")
+position = Vector2(10.2858, -3.2)
+scale = Vector2(1.07143, 1.4)
+texture = ExtResource("4_un82k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.25, -0.85)
+shape = SubResource("RectangleShape2D_v8hsy")

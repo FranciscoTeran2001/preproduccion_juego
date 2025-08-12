@@ -1,24 +1,28 @@
-[gd_scene load_steps=30 format=3 uid="uid://kvpq7munv7d2"]
+[gd_scene load_steps=38 format=3 uid="uid://kvpq7munv7d2"]
 
-[ext_resource type="Texture2D" uid="uid://2mthirojxgpc" path="res://assets/Nivel_1/fondo_santacruz.png" id="1_18gi3"]
-[ext_resource type="Texture2D" uid="uid://bjpeggq62r4q5" path="res://assets/Nivel_1/fondo_tierra.png" id="2_70s1p"]
-[ext_resource type="Texture2D" uid="uid://cj04lbcocncoy" path="res://assets/Nivel_1/playa.webp" id="2_vhwei"]
-[ext_resource type="Texture2D" uid="uid://q1wt8o5hh3ud" path="res://assets/Nivel_1/fondo final.webp" id="4_xjwsq"]
-[ext_resource type="Texture2D" uid="uid://d0m2gqeolf8i5" path="res://assets/Nivel_1/carro.png" id="5_u86tr"]
-[ext_resource type="Texture2D" uid="uid://b6ck2xs6piupq" path="res://assets/Nivel_1/controles_movimiento-removebg-preview.png" id="8_fcovq"]
-[ext_resource type="Texture2D" uid="uid://dwoe7inhinnmf" path="res://assets/Nivel_1/rocas.webp" id="9_70s1p"]
-[ext_resource type="Texture2D" uid="uid://crohh02fajrfi" path="res://assets/Nivel_1/arbusto.png" id="9_u86tr"]
-[ext_resource type="Texture2D" uid="uid://chjdhoaydoifb" path="res://assets/Nivel_1/cascada.png" id="10_02o5j"]
-[ext_resource type="Texture2D" uid="uid://cgquroqpotvx4" path="res://assets/Nivel_1/roca2.png" id="11_or3o3"]
+[ext_resource type="Texture2D" uid="uid://cfag5uhgsx0sq" path="res://assets/Nivel_1/fondo_santacruz.png" id="1_18gi3"]
+[ext_resource type="Script" uid="uid://c1y26in3rac51" path="res://nivel_1 Nando/escenario/san_cristobal.gd" id="1_80g61"]
+[ext_resource type="Texture2D" uid="uid://lmu8nxntjm4i" path="res://assets/Nivel_1/fondo_tierra.png" id="2_70s1p"]
+[ext_resource type="Texture2D" uid="uid://bipglae7vrkn7" path="res://assets/Nivel_1/playa.webp" id="2_vhwei"]
+[ext_resource type="Texture2D" uid="uid://bloyuvirl2077" path="res://assets/Nivel_1/fondo_final2.png" id="4_dp0yt"]
+[ext_resource type="Texture2D" uid="uid://dx036g5lenv7l" path="res://assets/Nivel_1/fondo final.webp" id="4_xjwsq"]
+[ext_resource type="Texture2D" uid="uid://b4t3yvg3bl27g" path="res://assets/Nivel_1/carro.png" id="5_u86tr"]
+[ext_resource type="Texture2D" uid="uid://bur6dghkrwyk3" path="res://assets/Nivel_1/controles_movimiento-removebg-preview.png" id="8_fcovq"]
+[ext_resource type="Texture2D" uid="uid://dqcwj6ebcqxsa" path="res://assets/Nivel_1/rocas.webp" id="9_70s1p"]
+[ext_resource type="Texture2D" uid="uid://casq420fvt6n7" path="res://assets/Nivel_1/arbusto.png" id="9_u86tr"]
+[ext_resource type="Texture2D" uid="uid://ydoje525g71q" path="res://assets/Nivel_1/cascada.png" id="10_02o5j"]
+[ext_resource type="Texture2D" uid="uid://cs1hx2ixauc6t" path="res://assets/Nivel_1/roca2.png" id="11_or3o3"]
 [ext_resource type="PackedScene" uid="uid://ce031om8goqsi" path="res://Personaje/Player.tscn" id="12_02o5j"]
-[ext_resource type="Texture2D" uid="uid://dxkw24fiu3qhy" path="res://assets/Nivel_1/click.png" id="12_or3o3"]
+[ext_resource type="Texture2D" uid="uid://441f60ou01qe" path="res://assets/Nivel_1/click.png" id="12_or3o3"]
 [ext_resource type="PackedScene" uid="uid://bic50320ij4d2" path="res://nivel_1 Nando/nodos/jefe_nivel_1.tscn" id="13_bxep4"]
-[ext_resource type="Texture2D" uid="uid://buic22qh0ekks" path="res://assets/Nivel_1/cabana.png" id="13_or3o3"]
+[ext_resource type="Texture2D" uid="uid://b37pc72xewfie" path="res://assets/Nivel_1/cabana.png" id="13_or3o3"]
 [ext_resource type="PackedScene" uid="uid://h4purme361xt" path="res://nivel_1 Nando/nodos/centipide.tscn" id="14_u86tr"]
 [ext_resource type="Shader" uid="uid://bs5g1ebuvufyl" path="res://nivel_2/Shader/nube.gdshader" id="14_ws0ce"]
-[ext_resource type="PackedScene" uid="uid://dif08yv7qsngt" path="res://nivel_1 Nando/nodos/gorila.tscn" id="15_02o5j"]
-[ext_resource type="Texture2D" uid="uid://h78m8y6o3ftx" path="res://assets/nivel_2/nube.png" id="15_sd3sb"]
+[ext_resource type="PackedScene" uid="uid://b5x2nuge3tg5w" path="res://nivel_1 Nando/nodos/gorila.tscn" id="15_02o5j"]
+[ext_resource type="Texture2D" uid="uid://btdm56vkv5io" path="res://assets/nivel_5/nube.png" id="15_sd3sb"]
+[ext_resource type="Texture2D" uid="uid://cfh8yg4ywhdi6" path="res://assets/Nivel_1/cabanadestrozada.png" id="15_ttjyl"]
 [ext_resource type="PackedScene" uid="uid://d16f8v1i67l6t" path="res://Personaje/barra.tscn" id="18_ws0ce"]
+[ext_resource type="Script" uid="uid://cur534j38vop1" path="res://scripts/pasarANivel2.gd" id="20_sd3sb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u86tr"]
 size = Vector2(27, 181)
@@ -52,9 +56,21 @@ b = Vector2(-1, 12)
 size = Vector2(661.25, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ws0ce"]
-size = Vector2(18.75, 2)
+size = Vector2(26.75, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp0yt"]
+size = Vector2(41, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80g61"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkilx"]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttjyl"]
 
 [node name="Nivel 1" type="Node2D"]
+script = ExtResource("1_80g61")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(775, -65)
@@ -82,7 +98,18 @@ position = Vector2(4569.98, -6.481)
 texture = ExtResource("2_70s1p")
 
 [node name="base5" type="Sprite2D" parent="StaticBody2D/base1"]
-position = Vector2(6060.36, -6.4811)
+position = Vector2(6071.76, -6.4811)
+scale = Vector2(1.01485, 1)
+texture = ExtResource("2_70s1p")
+
+[node name="base6" type="Sprite2D" parent="StaticBody2D/base1"]
+position = Vector2(7763.64, -6.48102)
+scale = Vector2(1.20792, 1.01266)
+texture = ExtResource("2_70s1p")
+
+[node name="base6" type="Sprite2D" parent="StaticBody2D/base1/base6"]
+position = Vector2(1687.08, 0.00012207)
+scale = Vector2(1.20792, 1.01266)
 texture = ExtResource("2_70s1p")
 
 [node name="Fondo Tierra1" type="Sprite2D" parent="StaticBody2D"]
@@ -110,18 +137,19 @@ scale = Vector2(0.860658, 1)
 texture = ExtResource("2_vhwei")
 
 [node name="Fondo Tierra6" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
-position = Vector2(6433.58, 9.7511)
-scale = Vector2(0.573771, 1)
-texture = ExtResource("2_vhwei")
-
-[node name="Fondo Tierra7" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
-position = Vector2(7642.23, 9.7511)
+position = Vector2(6175.47, -21.1303)
+scale = Vector2(0.893443, 1.04127)
 texture = ExtResource("2_vhwei")
 
 [node name="Fondo Tierra8" type="Sprite2D" parent="StaticBody2D/Fondo Tierra1"]
-position = Vector2(8850.89, 1.62341)
-scale = Vector2(0.573771, 1)
+position = Vector2(7220.46, -34.1334)
+scale = Vector2(0.581967, 1.06667)
 texture = ExtResource("2_vhwei")
+
+[node name="fondofinal" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-271, 66)
+scale = Vector2(0.0374349, 0.0281982)
+texture = ExtResource("4_dp0yt")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-900, -8)
@@ -181,6 +209,16 @@ texture = ExtResource("9_u86tr")
 [node name="arbusto5" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(-705, 69)
 scale = Vector2(0.0425265, 0.0265059)
+texture = ExtResource("9_u86tr")
+
+[node name="arbusto6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-301.5, 70)
+scale = Vector2(0.0375817, 0.0245098)
+texture = ExtResource("9_u86tr")
+
+[node name="arbusto7" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-293.5, 72.5)
+scale = Vector2(0.0343137, 0.0269608)
 texture = ExtResource("9_u86tr")
 
 [node name="cascada" type="Sprite2D" parent="StaticBody2D"]
@@ -353,8 +391,8 @@ scale = Vector2(0.0259396, 0.0214461)
 texture = ExtResource("8_fcovq")
 
 [node name="cabana" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(-651.688, 61.75)
-scale = Vector2(0.123162, 0.11152)
+position = Vector2(-646.688, 61.25)
+scale = Vector2(0.139503, 0.113971)
 texture = ExtResource("13_or3o3")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
@@ -380,11 +418,35 @@ scale = Vector2(0.0210376, 0.0193015)
 texture = ExtResource("12_or3o3")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-633.375, 65)
+position = Vector2(-629.375, 65)
 shape = SubResource("RectangleShape2D_ws0ce")
 
-[node name="Jefe_nivel1" parent="." instance=ExtResource("13_bxep4")]
-position = Vector2(216, -76)
+[node name="cabanadestrozada" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-428, 61)
+scale = Vector2(0.141033, 0.106924)
+texture = ExtResource("15_ttjyl")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-441.5, 64)
+shape = SubResource("RectangleShape2D_dp0yt")
+
+[node name="rocas2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-454.5, 67.5)
+scale = Vector2(0.0266927, 0.0244141)
+texture = ExtResource("9_70s1p")
+
+[node name="rocas3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-464.5, 71)
+scale = Vector2(0.0201823, 0.015625)
+texture = ExtResource("9_70s1p")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-470, 74)
+shape = SubResource("CircleShape2D_80g61")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-463, 70)
+shape = SubResource("CircleShape2D_mkilx")
 
 [node name="jugador" parent="." instance=ExtResource("12_02o5j")]
 position = Vector2(-90, 9)
@@ -392,9 +454,39 @@ position = Vector2(-90, 9)
 [node name="Centipide" parent="." instance=ExtResource("14_u86tr")]
 position = Vector2(43, -124)
 
-[node name="Gorila" parent="." instance=ExtResource("15_02o5j")]
-position = Vector2(14, -54)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BarraVida" parent="CanvasLayer" instance=ExtResource("18_ws0ce")]
+
+[node name="Gorila" parent="." instance=ExtResource("15_02o5j")]
+position = Vector2(46, 4)
+
+[node name="Gorila2" parent="." instance=ExtResource("15_02o5j")]
+position = Vector2(103, 5)
+
+[node name="Gorila3" parent="." instance=ExtResource("15_02o5j")]
+position = Vector2(134, -8)
+
+[node name="Gorila4" parent="." instance=ExtResource("15_02o5j")]
+position = Vector2(186, 4)
+
+[node name="Gorila5" parent="." instance=ExtResource("15_02o5j")]
+position = Vector2(335, -9)
+
+[node name="Gorila6" parent="." instance=ExtResource("15_02o5j")]
+position = Vector2(326, 5)
+
+[node name="Gorila7" parent="." instance=ExtResource("15_02o5j")]
+position = Vector2(406, 4)
+
+[node name="Jefe_nivel1" parent="." instance=ExtResource("13_bxep4")]
+position = Vector2(457, 5)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("20_sd3sb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(517, 2)
+shape = SubResource("RectangleShape2D_ttjyl")
+
+[connection signal="player_died" from="jugador" to="." method="_on_jugador_player_died"]

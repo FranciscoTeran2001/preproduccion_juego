@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 # ============ CONFIGURACIÓN SIMPLE ============
-@export var speed: float = 50.0
+@export var speed: float = 25.0
 @export var detection_range: float = 10.0
-@export var patrol_distance: float = 20.0
+@export var patrol_distance: float = 7.0
 
 # ========== SISTEMA DE VIDA ==========
 var vida := 50
