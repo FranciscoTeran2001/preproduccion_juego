@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://kvpq7munv7d2"]
+[gd_scene load_steps=39 format=3 uid="uid://kvpq7munv7d2"]
 
 [ext_resource type="Texture2D" uid="uid://cfag5uhgsx0sq" path="res://assets/Nivel_1/fondo_santacruz.png" id="1_18gi3"]
 [ext_resource type="Script" uid="uid://c1y26in3rac51" path="res://nivel_1 Nando/escenario/san_cristobal.gd" id="1_80g61"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cfh8yg4ywhdi6" path="res://assets/Nivel_1/cabanadestrozada.png" id="15_ttjyl"]
 [ext_resource type="PackedScene" uid="uid://d16f8v1i67l6t" path="res://Personaje/barra.tscn" id="18_ws0ce"]
 [ext_resource type="Script" uid="uid://cur534j38vop1" path="res://scripts/pasarANivel2.gd" id="20_sd3sb"]
+[ext_resource type="AudioStream" uid="uid://yjo6ocjyam8g" path="res://canciones/Musica_nivel_1.mp3" id="24_mkilx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u86tr"]
 size = Vector2(27, 181)
@@ -449,7 +450,7 @@ position = Vector2(-463, 70)
 shape = SubResource("CircleShape2D_mkilx")
 
 [node name="jugador" parent="." instance=ExtResource("12_02o5j")]
-position = Vector2(-90, 9)
+position = Vector2(-88, 9)
 
 [node name="Centipide" parent="." instance=ExtResource("14_u86tr")]
 position = Vector2(43, -124)
@@ -488,5 +489,9 @@ script = ExtResource("20_sd3sb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(517, 2)
 shape = SubResource("RectangleShape2D_ttjyl")
+
+[node name="musica_nivel1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_mkilx")
+autoplay = true
 
 [connection signal="player_died" from="jugador" to="." method="_on_jugador_player_died"]

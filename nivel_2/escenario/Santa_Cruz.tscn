@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://wut6crka1xe3"]
+[gd_scene load_steps=49 format=3 uid="uid://wut6crka1xe3"]
 
 [ext_resource type="Script" uid="uid://wpgsn26dp3co" path="res://nivel_2/escenario/santa_cruz.gd" id="1_mhiia"]
 [ext_resource type="Texture2D" uid="uid://bop8nr7j81qla" path="res://assets/nivel_5/fondo_santacruz.png" id="2_8u613"]
@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://bjefj5usp3np0" path="res://nivel_2/nodos/plataforma_movil.tscn" id="25_dkmsn"]
 [ext_resource type="PackedScene" uid="uid://bkxjjpvtdmgvk" path="res://nivel_2/nodos/plataforma_movil2.tscn" id="26_tm28b"]
 [ext_resource type="PackedScene" uid="uid://d16f8v1i67l6t" path="res://Personaje/barra.tscn" id="28_mhiia"]
+[ext_resource type="Script" uid="uid://dtpjbksn652pu" path="res://scripts/pasarANivel3.gd" id="30_sufx4"]
+[ext_resource type="AudioStream" uid="uid://crsket2wg3ofe" path="res://canciones/Musica_nivel_2.mp3" id="31_6xjko"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfivp"]
 shader = ExtResource("3_tm28b")
@@ -83,6 +85,8 @@ size = Vector2(4.5, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8u613"]
 size = Vector2(12, 6.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xjko"]
 
 [node name="Nivel2" type="Node2D"]
 script = ExtResource("1_mhiia")
@@ -820,10 +824,6 @@ shape = SubResource("RectangleShape2D_0ouqr")
 position = Vector2(-37, 23)
 shape = SubResource("RectangleShape2D_5p4id")
 
-[node name="Pared_final" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(546.875, -2.21484)
-shape = SubResource("RectangleShape2D_0ouqr")
-
 [node name="colision_pidra_rio" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(3, 20)
 rotation = 1.5708
@@ -950,5 +950,16 @@ position = Vector2(379, 80)
 
 [node name="PlataformaMovil" parent="." instance=ExtResource("25_dkmsn")]
 position = Vector2(342, 81)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("30_sufx4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(537, 13)
+shape = SubResource("RectangleShape2D_6xjko")
+
+[node name="musica_nivel2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_6xjko")
+autoplay = true
 
 [connection signal="player_died" from="jugador" to="." method="_on_jugador_player_died"]

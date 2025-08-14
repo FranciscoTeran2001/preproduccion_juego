@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://citqiiutiar4j"]
+[gd_scene load_steps=4 format=3 uid="uid://citqiiutiar4j"]
 
 [ext_resource type="Texture2D" uid="uid://cgue7xdw0arbn" path="res://Menus/MenuPrincipal.png" id="1_1gktw"]
+[ext_resource type="Script" uid="uid://bdgtcd865e28c" path="res://UI/menu_jugar.gd" id="1_6atis"]
+[ext_resource type="AudioStream" uid="uid://cs4o5b1sno0r" path="res://canciones/musica_menu.mp3" id="3_kn3fy"]
 
 [node name="Menu_Jugar" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6atis")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -56,9 +59,20 @@ text = "CONTINUAR PARTIDA "
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "MENU PRINCIPAL"
+text = "Creditos
+"
 
 [node name="Button4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
+text = "MENU PRINCIPAL"
+
+[node name="Button5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "SALIR"
+
+[node name="cancion_menu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kn3fy")
+autoplay = true
+parameters/looping = true

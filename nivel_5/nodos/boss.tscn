@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://0daah5p45aw3" path="res://nivel_5/enemigos/Boss/big_boss.png" id="1_b6oxp"]
 [ext_resource type="Script" uid="uid://ce60bdv0pn74g" path="res://scripts/boss.gd" id="1_h2k0m"]
-[ext_resource type="Script" uid="uid://1744rfpvv0qd" path="res://scripts/boss_effects_manager.gd" id="3_qbo05"]
+[ext_resource type="AudioStream" uid="uid://8tdc4a86p740" path="res://efectos_sonidos/boss/hurt_boss.mp3" id="3_qbo05"]
+[ext_resource type="AudioStream" uid="uid://8r7tw2jem526" path="res://efectos_sonidos/boss/attack_boss.mp3" id="4_a655o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6oxp"]
 atlas = ExtResource("1_b6oxp")
@@ -195,80 +196,37 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b6oxp"]
-radius = 7.0
-height = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quiff"]
+size = Vector2(13, 27)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quiff"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_h2k0m"]
-radius = 40.0
+radius = 9.0
+height = 28.0
 
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_h2k0m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
 scale = Vector2(0.306452, 0.3)
 sprite_frames = SubResource("SpriteFrames_1h2ti")
-animation = &"attack"
+animation = &"angry1"
+frame_progress = 0.777491
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_b6oxp")
+position = Vector2(1, -12)
+shape = SubResource("RectangleShape2D_quiff")
 
 [node name="DamageArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_quiff")
 
-[node name="EffectsContainer" type="Node2D" parent="."]
-script = ExtResource("3_qbo05")
+[node name="AudioHurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qbo05")
 
-[node name="RageParticles" type="CPUParticles2D" parent="EffectsContainer"]
-emitting = false
-amount = 50
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_a655o")
 
-[node name="ChargeParticles" type="CPUParticles2D" parent="EffectsContainer"]
-emitting = false
-amount = 30
-lifetime = 0.8
-
-[node name="AreaAttackEffect" type="Node2D" parent="EffectsContainer"]
-
-[node name="WarningCircle" type="Line2D" parent="EffectsContainer/AreaAttackEffect"]
-
-[node name="ExplosionEffect" type="CPUParticles2D" parent="EffectsContainer/AreaAttackEffect"]
-emitting = false
-amount = 100
-lifetime = 1.5
-
-[node name="HealthBar" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HealthBackground" type="ColorRect" parent="HealthBar"]
-layout_mode = 0
-offset_left = 101.0
-offset_top = 35.0
-offset_right = 141.0
-offset_bottom = 75.0
-
-[node name="HealthFill" type="ColorRect" parent="HealthBar"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 14.0
-offset_right = 85.0
-offset_bottom = 54.0
-
-[node name="HealthLabel" type="Label" parent="HealthBar"]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 11.0
-offset_right = 74.0
-offset_bottom = 34.0
-
-[node name="DetectionArea" type="Area2D" parent="."]
-
-[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_h2k0m")
+[node name="AudioDeath" type="AudioStreamPlayer2D" parent="."]

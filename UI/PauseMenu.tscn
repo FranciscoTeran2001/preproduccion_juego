@@ -52,9 +52,14 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Reanudar"
 
+[node name="Button_MainMenu" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Menú Principal"
+
 [node name="Button_Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Salir"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Resume" to="." method="_on_button_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_MainMenu" to="." method="_on_button_main_menu_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]

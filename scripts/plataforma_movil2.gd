@@ -1,31 +1,31 @@
 extends AnimatableBody2D
 
 # CONFIGURACIÓN DE MOVIMIENTO
-@export var velocidad := 50.0  # Velocidad de movimiento
-@export var distancia := -15.0  # Distancia total a recorrer
-@export var direccion_inicial := Vector2.RIGHT  # Dirección inicial (RIGHT, LEFT, UP, DOWN)
-@export var pausa_en_extremos := 0.5  # Segundos de pausa al llegar a los extremos
-@export var auto_iniciar := true  # Si inicia automáticamente
+@export var velocidad := 50.0
+@export var distancia := -15.0
+@export var direccion_inicial := Vector2.RIGHT
+@export var pausa_en_extremos := 0.5
+@export var auto_iniciar := true
 
 # CONFIGURACIÓN AVANZADA
 @export var tipo_movimiento: TipoMovimiento = TipoMovimiento.LINEAL
-@export var detectar_jugador := false  # Si debe activarse solo cuando el jugador esté cerca
+@export var detectar_jugador := false
 
 enum TipoMovimiento {
-	LINEAL,      # Movimiento constante
-	SUAVE,       # Movimiento con curvas suaves
-	ELASTICO     # Movimiento con rebote
+	LINEAL,
+	SUAVE,
+	ELASTICO
 }
 
 # VARIABLES INTERNAS
 var posicion_inicial: Vector2
 var posicion_final: Vector2
 var esta_moviendo := false
-var direccion_actual := 1  # 1 = hacia adelante, -1 = hacia atrás
+var direccion_actual := 1
 var esta_pausado := false
 var jugador_encima := false
-
-# NODOS
+var objetivo_actual: Vector2
+var timer_pausa: Timer
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
@@ -33,32 +33,25 @@ var jugador_encima := false
 func _ready() -> void:
 	print("=== PLATAFORMA MÓVIL INICIALIZADA ===")
 	
-	# Configurar posiciones inicial y final
+	# Crear timer para pausas
+	timer_pausa = Timer.new()
+	timer_pausa.wait_time = pausa_en_extremos
+	timer_pausa.one_shot = true
+	timer_pausa.timeout.connect(_on_pausa_terminada)
+	add_child(timer_pausa)
+	
+	# Configurar posiciones
 	configurar_posiciones()
 	
-
-	
-	# Iniciar movimiento si está configurado
+	# Iniciar movimiento
 	if auto_iniciar:
 		iniciar_movimiento()
-	
-	print("Posición inicial: ", posicion_inicial)
-	print("Posición final: ", posicion_final)
-	print("Distancia: ", distancia)
 
 func configurar_posiciones() -> void:
 	posicion_inicial = global_position
-	
-	# Calcular posición final según dirección y distancia
 	var offset = direccion_inicial.normalized() * distancia
 	posicion_final = posicion_inicial + offset
-	
-	print("📍 Configurando movimiento:")
-	print("  - Desde: ", posicion_inicial)
-	print("  - Hasta: ", posicion_final)
-	print("  - Dirección: ", direccion_inicial)
-
-
+	objetivo_actual = posicion_final
 
 func iniciar_movimiento() -> void:
 	if esta_moviendo:
@@ -66,96 +59,96 @@ func iniciar_movimiento() -> void:
 	
 	esta_moviendo = true
 	print("🚀 Iniciando movimiento de plataforma")
-	
-	match tipo_movimiento:
-		TipoMovimiento.LINEAL:
-			movimiento_lineal()
-		TipoMovimiento.SUAVE:
-			movimiento_suave()
-		TipoMovimiento.ELASTICO:
-			movimiento_elastico()
 
 func detener_movimiento() -> void:
 	esta_moviendo = false
-	print("⏹️ Movimiento de plataforma detenido")
+	print("⏹️ Movimiento detenido")
 
-# MOVIMIENTO LINEAL (Constante)
-func movimiento_lineal() -> void:
-	while esta_moviendo:
-		# Determinar objetivo actual
-		var objetivo = posicion_final if direccion_actual == 1 else posicion_inicial
-		
-		# Mover hacia el objetivo
-		while global_position.distance_to(objetivo) > 2.0 and esta_moviendo:
-			var direccion_movimiento = (objetivo - global_position).normalized()
-			global_position += direccion_movimiento * velocidad * get_process_delta_time()
-			await get_tree().process_frame
-		
-		# Ajustar posición exacta
-		global_position = objetivo
-		
-		# Cambiar dirección
-		direccion_actual *= -1
-		
-		# Pausa en los extremos
-		if pausa_en_extremos > 0:
-			esta_pausado = true
-			await get_tree().create_timer(pausa_en_extremos).timeout
-			esta_pausado = false
-		
-		# Si solo debe moverse cuando el jugador está cerca
-		if detectar_jugador and not jugador_encima:
-			esta_moviendo = false
-			break
+func _physics_process(delta: float) -> void:
+	if not esta_moviendo or esta_pausado:
+		return
+	
+	match tipo_movimiento:
+		TipoMovimiento.LINEAL:
+			_movimiento_lineal_physics(delta)
+		TipoMovimiento.SUAVE:
+			_movimiento_suave_physics(delta)
+		TipoMovimiento.ELASTICO:
+			_movimiento_elastico_physics(delta)
 
-# MOVIMIENTO SUAVE (Con Tween)
-func movimiento_suave() -> void:
-	while esta_moviendo:
-		var objetivo = posicion_final if direccion_actual == 1 else posicion_inicial
-		var distancia_objetivo = global_position.distance_to(objetivo)
-		var tiempo_movimiento = distancia_objetivo / velocidad
-		
-		# Crear tween para movimiento suave
-		var tween = create_tween()
-		tween.set_ease(Tween.EASE_IN_OUT)
-		tween.set_trans(Tween.TRANS_SINE)
-		
-		# Animar hacia el objetivo
-		tween.tween_property(self, "global_position", objetivo, tiempo_movimiento)
-		await tween.finished
-		
-		# Cambiar dirección
-		direccion_actual *= -1
-		
-		# Pausa
-		if pausa_en_extremos > 0:
-			await get_tree().create_timer(pausa_en_extremos).timeout
-		
-		if detectar_jugador and not jugador_encima:
-			break
+func _movimiento_lineal_physics(delta: float) -> void:
+	# Calcular distancia al objetivo
+	var distancia_objetivo = global_position.distance_to(objetivo_actual)
+	
+	# Si llegamos al objetivo
+	if distancia_objetivo < 2.0:
+		global_position = objetivo_actual
+		_cambiar_objetivo()
+		return
+	
+	# Mover hacia el objetivo
+	var direccion_movimiento = (objetivo_actual - global_position).normalized()
+	global_position += direccion_movimiento * velocidad * delta
 
-# MOVIMIENTO ELÁSTICO (Con rebote)
-func movimiento_elastico() -> void:
-	while esta_moviendo:
-		var objetivo = posicion_final if direccion_actual == 1 else posicion_inicial
-		var distancia_objetivo = global_position.distance_to(objetivo)
-		var tiempo_movimiento = distancia_objetivo / velocidad
+func _movimiento_suave_physics(delta: float) -> void:
+	# Implementación similar pero con interpolación suave
+	var distancia_objetivo = global_position.distance_to(objetivo_actual)
+	
+	if distancia_objetivo < 2.0:
+		global_position = objetivo_actual
+		_cambiar_objetivo()
+		return
+	
+	# Movimiento suave usando lerp
+	var factor_suavizado = min(velocidad * delta / distancia_objetivo, 1.0)
+	global_position = global_position.lerp(objetivo_actual, factor_suavizado)
+
+func _movimiento_elastico_physics(delta: float) -> void:
+	# Usar tween para movimiento elástico
+	if not esta_moviendo:
+		return
 		
-		# Crear tween con efecto elástico
-		var tween = create_tween()
-		tween.set_ease(Tween.EASE_OUT)
-		tween.set_trans(Tween.TRANS_ELASTIC)
-		
-		tween.tween_property(self, "global_position", objetivo, tiempo_movimiento)
-		await tween.finished
-		
-		direccion_actual *= -1
-		
-		if pausa_en_extremos > 0:
-			await get_tree().create_timer(pausa_en_extremos).timeout
-		
-		if detectar_jugador and not jugador_encima:
-			break
+	var distancia_objetivo = global_position.distance_to(objetivo_actual)
+	
+	if distancia_objetivo < 2.0:
+		global_position = objetivo_actual
+		_cambiar_objetivo_con_elastico()
+
+func _cambiar_objetivo() -> void:
+	# Cambiar dirección
+	direccion_actual *= -1
+	objetivo_actual = posicion_final if direccion_actual == 1 else posicion_inicial
+	
+	# Aplicar pausa si está configurada
+	if pausa_en_extremos > 0:
+		esta_pausado = true
+		timer_pausa.start()
+	
+	# Verificar si debe seguir moviéndose
+	if detectar_jugador and not jugador_encima:
+		detener_movimiento()
+
+func _cambiar_objetivo_con_elastico() -> void:
+	direccion_actual *= -1
+	var nuevo_objetivo = posicion_final if direccion_actual == 1 else posicion_inicial
+	
+	# Crear tween elástico
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_ELASTIC)
+	
+	var tiempo = global_position.distance_to(nuevo_objetivo) / velocidad
+	tween.tween_property(self, "global_position", nuevo_objetivo, tiempo)
+	
+	await tween.finished
+	objetivo_actual = nuevo_objetivo
+	
+	if pausa_en_extremos > 0:
+		esta_pausado = true
+		timer_pausa.start()
+
+func _on_pausa_terminada() -> void:
+	esta_pausado = false
 
 # DETECCIÓN DE JUGADOR
 func _on_jugador_entro(body: Node) -> void:
@@ -170,52 +163,25 @@ func _on_jugador_salio(body: Node) -> void:
 	if body.is_in_group("jugador"):
 		jugador_encima = false
 		print("👤 Jugador bajó de la plataforma")
-		
-		# Opcional: detener después de un delay
-		if detectar_jugador:
-			await get_tree().create_timer(2.0).timeout  # Esperar 2 segundos
-			if not jugador_encima:
-				detener_movimiento()
 
-# FUNCIONES DE CONTROL EXTERNO
+# FUNCIONES DE CONTROL
 func cambiar_velocidad(nueva_velocidad: float) -> void:
 	velocidad = nueva_velocidad
-	print("⚡ Velocidad cambiada a: ", velocidad)
 
 func cambiar_direccion() -> void:
 	direccion_actual *= -1
-	print("🔄 Dirección invertida")
+	objetivo_actual = posicion_final if direccion_actual == 1 else posicion_inicial
 
 func ir_a_posicion_inicial() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", posicion_inicial, 1.0)
 	await tween.finished
 	direccion_actual = 1
-	print("🏠 Plataforma regresada a posición inicial")
+	objetivo_actual = posicion_final
 
 func ir_a_posicion_final() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", posicion_final, 1.0)
 	await tween.finished
 	direccion_actual = -1
-	print("🎯 Plataforma movida a posición final")
-
-# FUNCIONES DE DEBUG
-func mostrar_info() -> void:
-	print("=== INFO DE PLATAFORMA ===")
-	print("Posición actual: ", global_position)
-	print("Está moviendo: ", esta_moviendo)
-	print("Dirección actual: ", direccion_actual)
-	print("Jugador encima: ", jugador_encima)
-	print("Está pausado: ", esta_pausado)
-
-func _input(event: InputEvent) -> void:
-	# Debug controls (opcional)
-	if event.is_action_pressed("ui_accept"):  # Barra espaciadora
-		if esta_moviendo:
-			detener_movimiento()
-		else:
-			iniciar_movimiento()
-	
-	if event.is_action_pressed("ui_up"):
-		mostrar_info()
+	objetivo_actual = posicion_inicial

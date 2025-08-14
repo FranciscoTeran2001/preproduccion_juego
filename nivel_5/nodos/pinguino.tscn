@@ -41,7 +41,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37m3f"]
 radius = 1.0
-height = 4.0
+height = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tec4x"]
 radius = 2.0
@@ -52,12 +52,13 @@ script = ExtResource("1_tec4x")
 [node name="RayCast_suelo" type="RayCast2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.171875, 0.25)
+position = Vector2(-0.625, -1)
+scale = Vector2(0.210938, 0.375)
 sprite_frames = SubResource("SpriteFrames_e7l8e")
 animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-1, -1)
 shape = SubResource("CapsuleShape2D_37m3f")
 
 [node name="DamageArea" type="Area2D" parent="."]

@@ -13,3 +13,9 @@ func _on_button_quit_pressed():
 	# Antes de cambiar de escena, siempre es buena idea quitar la pausa.
 	print("Botón de salir presionado. El juego se cerraría ahora.")
 	get_tree().quit()
+
+
+func _on_button_main_menu_pressed() -> void:
+	print("Ir al menú principal desde pausa")
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://UI/menu_jugar.tscn")

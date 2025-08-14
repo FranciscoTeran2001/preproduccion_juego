@@ -1,0 +1,158 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbahpmq3w5q8e"]
+
+[ext_resource type="Script" uid="uid://b8h534q2yig3b" path="res://UI/credits.gd" id="1_pf5uk"]
+[ext_resource type="Texture2D" uid="uid://cgue7xdw0arbn" path="res://Menus/MenuPrincipal.png" id="2_5wgop"]
+[ext_resource type="AudioStream" uid="uid://b3p1fjw4gsph5" path="res://canciones/Musica_creditos.mp3" id="3_x8bbp"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5uja2"]
+
+[node name="CreditScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pf5uk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.768627)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5wgop")
+
+[node name="TextContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -326.5
+offset_top = -375.0
+offset_right = 326.5
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.768627, 0.560784, 0.286275, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 60
+text = "Créditos"
+
+[node name="Label2" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 40
+text = "Josue Merino"
+
+[node name="Label3" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 35
+text = "Programador y Coordinación Técnica"
+
+[node name="HSeparator" type="HSeparator" parent="TextContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_5uja2")
+
+[node name="Label4" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 40
+text = "Fernando Cueva"
+
+[node name="Label5" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 35
+text = "Programador y Tester"
+
+[node name="HSeparator2" type="HSeparator" parent="TextContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_5uja2")
+
+[node name="Label6" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 40
+text = "Miguel Gutierrez"
+
+[node name="Label7" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 35
+text = "Programador y Tester"
+
+[node name="HSeparator3" type="HSeparator" parent="TextContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_5uja2")
+
+[node name="Label8" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 40
+text = "Francisco Terán"
+
+[node name="Label9" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 35
+text = "Programador, Tester y Documentación"
+
+[node name="HSeparator4" type="HSeparator" parent="TextContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_5uja2")
+
+[node name="Label10" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 40
+text = "Jerly Reinoso"
+
+[node name="Label11" type="Label" parent="TextContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 35
+text = "Diseñadora Gráfica y UI/UX"
+
+[node name="HSeparator5" type="HSeparator" parent="TextContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_5uja2")
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 43.0
+offset_right = 201.0
+offset_bottom = 93.0
+text = "Volver al menu"
+
+[node name="musica_creditos" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_x8bbp")
+autoplay = true

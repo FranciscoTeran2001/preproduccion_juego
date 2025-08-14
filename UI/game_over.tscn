@@ -43,10 +43,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Repetir Nivel"
 
+[node name="Button_MainMenu" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Menú Principal"
+
 [node name="Button_Salir" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Salir"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Repetir" to="." method="_on_button_repetir_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_MainMenu" to="." method="_on_button_main_menu_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Salir" to="." method="_on_button_salir_pressed"]

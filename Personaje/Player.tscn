@@ -369,15 +369,20 @@ func morir() -> void:
 		return
 	esta_muerto = true
 	
-	emit_signal(\"player_died\")
+	# PRIMERO: Reproducir sonidos y animación
 	reproducir_sonido_seguro(sonido_muerte)
 	detener_sonido_seguro(sonido_pasos)
 	
 	velocity = Vector2.ZERO
 	$AnimatedSprite2D.play(\"dead\")
+	
+	# ESPERAR que termine la animación ANTES de pausar
 	await $AnimatedSprite2D.animation_finished
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.frame = $AnimatedSprite2D.sprite_frames.get_frame_count(\"dead\") - 1
+	
+	# ÚLTIMO: Emitir la señal (esto pausará el juego)
+	emit_signal(\"player_died\")
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8vf7"]
@@ -1089,7 +1094,7 @@ texture_filter = 1
 position = Vector2(2, -4)
 scale = Vector2(0.0635376, 0.101624)
 sprite_frames = SubResource("SpriteFrames_e8xpl")
-animation = &"idle"
+animation = &"dead"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(5, -16)

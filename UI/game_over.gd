@@ -16,3 +16,9 @@ func _on_button_repetir_pressed():
 	
 	get_tree().paused = false
 	get_tree().change_scene_to_file(level_path_to_reload)
+
+
+func _on_button_main_menu_pressed() -> void:
+	print("Ir al menú principal desde pausa")
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://UI/menu_jugar.tscn")

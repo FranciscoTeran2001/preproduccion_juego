@@ -6,6 +6,10 @@ extends CharacterBody2D
 @export var patrol_distance_max := 40.0
 const LIMITE_PERSECUCION := 100.0
 
+# Sistema de vida
+@export var vida := 60
+@export var vida_maxima := 60
+
 var jugador: Node2D = null
 var punto_patrulla: Vector2 = Vector2.ZERO
 var estado := "patrulla"
@@ -23,7 +27,7 @@ const DANIO_POR_ATAQUE := 25
 var raycast_suelo: RayCast2D = null
 
 func _ready():
-	# Inicializar raycast_suelo (agregalo en el editor o con esto)
+	# Inicializar raycast_suelo
 	if not has_node("Raycast_suelo"):
 		raycast_suelo = RayCast2D.new()
 		raycast_suelo.name = "Raycast_suelo"
@@ -44,6 +48,7 @@ func _ready():
 	else:
 		printerr("DamageArea no encontrada - no podrá atacar")
 
+	# Timer para empuje continuo
 	var timer_empuje = Timer.new()
 	timer_empuje.name = "TimerEmpuje"
 	timer_empuje.wait_time = TIEMPO_ENTRE_EMPUJES
@@ -51,9 +56,23 @@ func _ready():
 	add_child(timer_empuje)
 	timer_empuje.start()
 
-	# IMPORTANTE: inicializar el punto patrulla con uno NUEVO que sea distinto de la posición actual
+	# Configurar área para recibir daño
+	var hit_area = Area2D.new()
+	hit_area.name = "HitArea"
+	add_child(hit_area)
+	
+	var hit_shape = CollisionShape2D.new()
+	var shape = RectangleShape2D.new()
+	shape.size = Vector2(20, 25)  # Ajusta según el tamaño del pingüino
+	hit_shape.shape = shape
+	hit_area.add_child(hit_shape)
+	
+	hit_area.body_entered.connect(_on_hit_by_projectile)
+	hit_area.area_entered.connect(_on_hit_by_area)
+
+	# Inicializar punto de patrulla
 	nuevo_punto_patrulla()
-	sprite.play("attack")  # animación que usás para moverse
+	sprite.play("attack")
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -64,7 +83,7 @@ func _physics_process(delta):
 	ia_con_ataque(delta)
 	move_and_slide()
 
-	# Siempre mantén la animación attack para que mueva patas
+	# Mantener animación de movimiento
 	if sprite.animation != "attack":
 		sprite.play("attack")
 
@@ -102,12 +121,10 @@ func patrullar(delta):
 
 	var distancia_punto = global_position.distance_to(punto_patrulla)
 
-	# Si ya llegó o tiempo se acabó, busca nuevo punto
 	if tiempo_patrulla > 3.0 or distancia_punto < 10:
 		nuevo_punto_patrulla()
 		tiempo_patrulla = 0.0
 
-	# Mover hacia el punto patrulla
 	var direccion = (punto_patrulla - global_position).normalized()
 	velocity.x = direccion.x * speed * 0.4
 	sprite.flip_h = velocity.x < 0
@@ -125,7 +142,64 @@ func nuevo_punto_patrulla():
 	var distancia = randf_range(patrol_distance_min, patrol_distance_max)
 	var direccion = 1 if randf() > 0.5 else -1
 	punto_patrulla = global_position + Vector2(distancia * direccion, 0)
-	print("Nuevo punto patrulla:", punto_patrulla)
+
+# ===== SISTEMA DE DAÑO =====
+
+func _on_hit_by_projectile(body):
+	if body.name.contains("bala") or body.has_method("get_damage"):
+		var damage = 25  # Las balas hacen 25 de daño
+		if body.has_method("get_damage"):
+			damage = body.get_damage()
+		
+		recibir_danio(damage)
+		
+		if body.has_method("queue_free"):
+			body.queue_free()
+
+func _on_hit_by_area(area):
+	if area.get_parent().name.contains("bala"):
+		var damage = 25  # Las balas hacen 25 de daño
+		if area.has_method("get_damage"):
+			damage = area.get_damage()
+		elif area.get_parent().has_method("get_damage"):
+			damage = area.get_parent().get_damage()
+		
+		recibir_danio(damage)
+		
+		if area.get_parent().has_method("queue_free"):
+			area.get_parent().queue_free()
+
+func recibir_danio(cantidad: int):
+	vida -= cantidad
+	print("💔 Pingüino recibe ", cantidad, " de daño. Vida: ", vida, "/", vida_maxima)
+	
+	# Efecto visual de daño
+	var original_modulate = sprite.modulate
+	sprite.modulate = Color(2, 0.3, 0.3, 1)
+	get_tree().create_timer(0.25).timeout.connect(func():
+		if sprite:
+			sprite.modulate = original_modulate
+	)
+	
+	if vida <= 0:
+		morir()
+	else:
+		# Si está patrullando y recibe daño, volverse agresivo
+		if estado == "patrulla":
+			estado = "persigue"
+
+func morir():
+	print("💀 Pingüino derrotado!")
+	
+	# Efectos de muerte
+	sprite.modulate = Color(1.5, 0, 0, 1)
+	var tween = create_tween()
+	tween.tween_property(sprite, "modulate:a", 0.0, 0.5)
+	
+	await get_tree().create_timer(0.5).timeout
+	queue_free()
+
+# ===== SISTEMA DE ATAQUE =====
 
 func _on_DamageArea_body_entered(body: Node) -> void:
 	if (body.is_in_group("jugador") or body.name == "jugador") and not jugadores_en_area.has(body):
@@ -162,6 +236,3 @@ func aplicar_empuje(jugador_body: Node) -> void:
 		jugador_body.move_and_slide()
 	elif jugador_body is RigidBody2D:
 		jugador_body.apply_central_impulse(direccion_empuje * FUERZA_EMPUJE)
-
-func recibir_danio(cantidad: float):
-	queue_free()

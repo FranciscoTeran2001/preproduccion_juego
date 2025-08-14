@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var destino_nivel: String = "res://nivel_2/escenario/Santa_Cruz.tscn"
-@export var nivel_completado: int = 1  # Nivel que se acaba de completar
-@export var mensaje_transicion: String = "¡Avanzando al Nivel 2!"
+@export var destino_nivel: String = "res://nivel_5/escenario/Isabella.tscn"
+@export var nivel_completado: int = 3  # Nivel que se acaba de completar
+@export var mensaje_transicion: String = "¡Avanzando al Nivel 5!"
 @export var delay_cambio: float = 0.1
 var ya_cambio = false
 
